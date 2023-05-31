@@ -1,0 +1,7 @@
+vimrcs/my_configs.vim
+luas/my_configs.lua
+
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store

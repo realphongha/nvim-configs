@@ -1,0 +1,63 @@
+[submodule "plugins/commentary"]
+	path = plugins/commentary
+	url = https://tpope.io/vim/commentary.git
+[submodule "plugins/nerdtree"]
+	path = plugins/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+[submodule "plugins/vim-yankstack"]
+	path = plugins/vim-yankstack
+	url = https://github.com/maxbrunsfeld/vim-yankstack.git
+[submodule "plugins/lightline.vim"]
+	path = plugins/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "plugins/vim-gitbranch"]
+	path = plugins/vim-gitbranch
+	url = https://github.com/itchyny/vim-gitbranch.git
+[submodule "languagewise_plugins/rust.vim"]
+	path = languagewise_plugins/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
+[submodule "languagewise_plugins/vim-markdown"]
+	path = languagewise_plugins/vim-markdown
+	url = https://github.com/preservim/vim-markdown.git
+[submodule "languagewise_plugins/typescript-vim"]
+	path = languagewise_plugins/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "languagewise_plugins/vim-python-pep8-indent"]
+	path = languagewise_plugins/vim-python-pep8-indent
+	url = https://github.com/Vimjas/vim-python-pep8-indent.git
+[submodule "languagewise_plugins/vim-javascript"]
+	path = languagewise_plugins/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "nvim_plugins/cmp-buffer"]
+	path = nvim_plugins/cmp-buffer
+	url = https://github.com/hrsh7th/cmp-buffer.git
+[submodule "nvim_plugins/cmp-path"]
+	path = nvim_plugins/cmp-path
+	url = https://github.com/hrsh7th/cmp-path.git
+[submodule "nvim_plugins/cmp-cmdline"]
+	path = nvim_plugins/cmp-cmdline
+	url = https://github.com/hrsh7th/cmp-cmdline.git
+[submodule "nvim_plugins/cmp-vsnip"]
+	path = nvim_plugins/cmp-vsnip
+	url = https://github.com/hrsh7th/cmp-vsnip.git
+[submodule "nvim_plugins/cmp-nvim-lsp"]
+	path = nvim_plugins/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
+[submodule "nvim_plugins/nvim-cmp"]
+	path = nvim_plugins/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp.git
+[submodule "nvim_plugins/nvim-lspconfig"]
+	path = nvim_plugins/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "nvim_plugins/nvim-autopairs"]
+	path = nvim_plugins/nvim-autopairs
+	url = https://github.com/windwp/nvim-autopairs.git
+[submodule "nvim_plugins/vim-vsnip"]
+	path = nvim_plugins/vim-vsnip
+	url = https://github.com/hrsh7th/vim-vsnip.git
+[submodule "colorschemes/catppuccin"]
+	path = colorschemes/catppuccin
+	url = https://github.com/catppuccin/nvim.git
+[submodule "colorschemes/tokyonight.nvim"]
+	path = colorschemes/tokyonight.nvim
+	url = https://github.com/folke/tokyonight.nvim.git
