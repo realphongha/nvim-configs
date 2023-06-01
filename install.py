@@ -1,4 +1,5 @@
 import os
+import sys
 import argparse
 import platform
 import shutil
@@ -15,6 +16,14 @@ def main(opt):
         PACK_PATH = os.path.join(HOME_PATH, "AppData/Local/nvim/site/pack")
     else:
         raise NotImplementedError(f"Platform {platf} is not supported!")
+    if opt.reinstall:
+        print("Deleting previous nvim data...")
+        try:
+            shutil.rmtree(CONFIG_PATH)
+            shutil.rmtree(PACK_PATH)
+        except OSError as err:
+            print(err)
+            sys.exit()
     print(f"Platform detected: {platf if platf != 'Darwin' else 'MacOS'}!")
     os.makedirs(CONFIG_PATH, exist_ok=True)
 
@@ -66,8 +75,9 @@ def main(opt):
         if not os.path.isdir(path):
             continue
         shutil.copytree(path, os.path.join(NVIM_PLUGINS_PATH, dn))
-    LUA_CONFIG_PATH = os.path.join(CONFIG_PATH, "lua/config.lua")
-    os.system("cat %s > %s" % ("luas/basic.lua luas/plugins.lua", LUA_CONFIG_PATH))
+    LUA_CONFIG_PATH = os.path.join(CONFIG_PATH, "lua")
+    os.makedirs(LUA_CONFIG_PATH, exist_ok=True)
+    os.system("cat %s > %s" % ("luas/basic.lua luas/plugins.lua", os.path.join(LUA_CONFIG_PATH, "lua/config.lua")))
 
     print("Done! Enjoy! :D")
 
@@ -85,6 +95,12 @@ if __name__ == "__main__":
         action="store_true",
         default=False,
         help="Disable installing nvim plugins"
+    )
+    parser.add_argument(
+        '--reinstall',
+        action="store_true",
+        default=False,
+        help="Delete config and data directory first"
     )
     opt = parser.parse_args()
     main(opt)
