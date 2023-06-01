@@ -1,6 +1,6 @@
 # nvim-configs
 Reusable configurations for Neovim and auto-install script.  
-Tested on nvim 0.9.0
+Tested on nvim 0.9.0, 0.9.1
 
 # How to install  
 First clone this repo  
@@ -9,7 +9,8 @@ First clone this repo
 get all submodules by  
 `git submodule update --init --recursive`
 then  
-`python3 install.py` to install.  
+`python3 install.py` to install. See install.py for more options when
+installing.  
 You can now `rm -rf nvim-configs` to save disk space.  
 For reinstalling, ~/.config/nvim and ~/.local/share/nvim or ~/AppData/Local/nvim
 for Windows must be deleted first. You can also do that with --reinstall flag:  
