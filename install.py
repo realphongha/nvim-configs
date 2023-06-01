@@ -48,7 +48,7 @@ def main(opt):
             shutil.copy(path, COLOR_PATH)
         elif os.path.isdir(path) and not opt.only_configs:
             shutil.copytree(path, os.path.join(COLOR_PACK_PATH, name))
-     if opt.only_configs:
+    if opt.only_configs:
         print("Done! Enjoy! :D")
         sys.exit()
 
