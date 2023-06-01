@@ -77,7 +77,7 @@ def main(opt):
         shutil.copytree(path, os.path.join(NVIM_PLUGINS_PATH, dn))
     LUA_CONFIG_PATH = os.path.join(CONFIG_PATH, "lua")
     os.makedirs(LUA_CONFIG_PATH, exist_ok=True)
-    os.system("cat %s > %s" % ("luas/basic.lua luas/plugins.lua", os.path.join(LUA_CONFIG_PATH, "lua/config.lua")))
+    os.system("cat %s > %s" % ("luas/basic.lua luas/plugins.lua", os.path.join(LUA_CONFIG_PATH, "config.lua")))
 
     print("Done! Enjoy! :D")
 

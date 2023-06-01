@@ -12,7 +12,8 @@ then
 `python3 install.py` to install.  
 You can now `rm -rf nvim-configs` to save disk space.  
 For reinstalling, ~/.config/nvim and ~/.local/share/nvim or ~/AppData/Local/nvim
-for Windows must be deleted first.
+for Windows must be deleted first. You can also do that with --reinstall flag:  
+`python3 install.py --reinstall`
 
 # Install LSP servers:
 ## For pyright:
