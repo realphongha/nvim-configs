@@ -51,6 +51,10 @@ set showmatch
 " ttyfast kept for vim compatibility but not needed for nvim
 set ttyfast lazyredraw
 
+" Split windows to right and below
+set splitright
+set splitbelow
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => UI 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -128,15 +132,39 @@ fun! CleanExtraSpaces()
     call setreg('/', old_query)
 endfun
 
+" Quickly exit Terminal mode
+:tnoremap <Esc> <C-\><C-n>
+
+" Map terminal opening settings
+if has("nvim")
+    command Terminal split term://zsh
+    command TerminalTab tabe term://zsh
+else
+    command Terminal hori term
+    command TerminalTab tab term
+endif
+
+" Quickly open terminal and resize terminal window
+if has("nvim")
+    :nnoremap <leader>t :Terminal<cr>:resize 20<cr>i
+else
+    :nnoremap <leader>t :Terminal<cr><c-w>N:resize 20<cr>i
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Autocmd 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 augroup common
     autocmd!
+
     " Auto open netrw
     autocmd VimEnter * if argc() == 0 | NERDTree | endif
+
     " Auto delete trailing spaces
     autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+
+    " Auto format JSON files
+    autocmd BufWritePre *.json :execute '%!python3 -m json.tool' | w  
 augroup END
 
