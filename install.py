@@ -16,7 +16,7 @@ def main(opt):
         PACK_PATH = os.path.join(HOME_PATH, "AppData/Local/nvim/site/pack")
     else:
         raise NotImplementedError(f"Platform {platf} is not supported!")
-    if opt.reinstall:
+    if opt.reinstall and not opt.only_configs:
         print("Deleting previous nvim data...")
         try:
             shutil.rmtree(CONFIG_PATH)
@@ -46,8 +46,11 @@ def main(opt):
         path = os.path.join("colorschemes", name)
         if os.path.isfile(path) and path.endswith(".vim"):
             shutil.copy(path, COLOR_PATH)
-        elif os.path.isdir(path):
+        elif os.path.isdir(path) and not opt.only_configs:
             shutil.copytree(path, os.path.join(COLOR_PACK_PATH, name))
+    if opt.only_configs:
+        print("Done! Enjoy! :D")
+        sys.exit()
 
     print("Copying plugins...")
     PLUGINS_PATH = os.path.join(PACK_PATH, "basic/start")
@@ -84,6 +87,12 @@ def main(opt):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '--only-configs',
+        action="store_true",
+        default=False,
+        help="Only install configs"
+    )
     parser.add_argument(
         '--disable-plugins',
         action="store_true",
