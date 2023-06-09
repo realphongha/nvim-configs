@@ -26,7 +26,8 @@ Create vimrcs/my_configs.vim or luas/my_configs.lua and customize your own confi
 Then install it with the same commands above.
 
 # Acknowledgements
-This repo is directly inspired by [vimrc](https://github.com/amix/vimrc).  
+This repo is directly inspired by [vimrc](https://github.com/amix/vimrc) and 
+[Learn Vimscript the Hard Way](https://learnvimscriptthehardway.stevelosh.com/).  
 ## Plugins included:
 * [vim-commentary](https://github.com/tpope/vim-commentary)
 * [lightline.vim](https://github.com/itchyny/lightline.vim)

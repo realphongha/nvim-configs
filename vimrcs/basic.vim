@@ -55,6 +55,15 @@ set ttyfast lazyredraw
 set splitright
 set splitbelow
 
+" Detect OS
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => UI 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -132,13 +141,30 @@ fun! CleanExtraSpaces()
     call setreg('/', old_query)
 endfun
 
+" Quickly edit vimrc file in the left window pane
+:nnoremap <leader>ev <c-w>l:e $MYVIMRC<cr>
+
+" Quickly source vimrc file
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Quickly surround selected text in punctuation marks
+:vnoremap <leader>" xa""<Esc>P
+:vnoremap <leader>' xa''<Esc>P
+:vnoremap <leader>( xa()<Esc>P
+:vnoremap <leader>{ xa{}<Esc>P
+
 " Quickly exit Terminal mode
 :tnoremap <Esc> <C-\><C-n>
 
 " Map terminal opening settings
 if has("nvim")
-    command Terminal split term://zsh
-    command TerminalTab tabe term://zsh
+    if g:os == "Darwin"
+        command Terminal split term://zsh
+        command TerminalTab tabe term://zsh
+    elseif g:os == "Linux"
+        command Terminal split term://bash
+        command TerminalTab tabe term://bash
+    endif
 else
     command Terminal hori term
     command TerminalTab tab term
@@ -156,15 +182,23 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 augroup common
-    autocmd!
 
+    autocmd!
+    
     " Auto open netrw
     autocmd VimEnter * if argc() == 0 | NERDTree | endif
+
+    " Cute cat welcomes you each time enter Vim
+    autocmd VimEnter * echo "Hi >^.^<"
 
     " Auto delete trailing spaces
     autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 
+    " Auto save when losing focus
+    autocmd FocusLost * nested silent! wall
+
     " Auto format JSON files
-    autocmd BufWritePre *.json :execute '%!python3 -m json.tool' | w  
+    autocmd BufWritePre *.json :execute '%!python -m json.tool' | w  
+
 augroup END
 
