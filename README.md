@@ -55,6 +55,9 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc) and
 * [monokai](https://github.com/sickill/vim-monokai)
 * [peaksea](https://github.com/vim-scripts/peaksea)
 * [solarized](https://github.com/altercation/vim-colors-solarized)
+## Others
+* [the_silver_searcher](https://github.com/ggreer/the_silver_searcher) is 
+supported as 'grep' command (but you need to install it on your system first)
 
 # PS
-Some other useful plugins like the search tool [ack.vim](https://github.com/mileszs/ack.vim), the fuzzy file finder [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim) or a third-party plugin manager are not included in this project. I'm still using built-in Vim plugins instead :). Feel free to customize them as you like.
+Some other useful plugins the fuzzy file finder [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim) or a third-party plugin manager are not included in this project. I'm still using built-in Vim plugins instead :). Feel free to customize them as you like.
