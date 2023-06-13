@@ -23,7 +23,6 @@ def main(opt):
             shutil.rmtree(PACK_PATH)
         except OSError as err:
             print(err)
-            sys.exit()
     print(f"Platform detected: {platf if platf != 'Darwin' else 'MacOS'}!")
     os.makedirs(CONFIG_PATH, exist_ok=True)
 
