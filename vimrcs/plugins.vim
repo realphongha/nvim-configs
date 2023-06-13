@@ -79,7 +79,5 @@ autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 " }}}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Language-wise plugins 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Language-wise plugins 
 
