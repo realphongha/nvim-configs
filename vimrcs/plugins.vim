@@ -1,7 +1,6 @@
 "" Plugin configs
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => netrw 
+" => netrw {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Hit enter in the file browser to open the selected
@@ -30,8 +29,9 @@ let g:netrw_sort_sequence = '[\/]$,*'
 " Highlight marked files
 hi! link netrwMarkFile Search
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => lightline 
+" }}}
+
+" => lightline {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Statusline contents
@@ -48,16 +48,18 @@ let g:lightline = {
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-yankstack 
+" }}}
+
+" => vim-yankstack  {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Map cycle yank history keybindings to <Leader> key
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => nerdtree 
+" }}}
+
+" => nerdtree {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " tree on left side of the screen
@@ -74,6 +76,8 @@ let g:NERDTreeWinSize=35
 
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+
+" }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Language-wise plugins 

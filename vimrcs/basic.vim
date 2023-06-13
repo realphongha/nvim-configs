@@ -5,8 +5,7 @@
 "" => Mapping
 "" => Autocmd
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
+" => General {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Number of lines of history
@@ -64,8 +63,9 @@ if !exists("g:os")
     endif
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => UI 
+" }}}
+
+" => UI {{{ 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Show line numbers
@@ -104,8 +104,9 @@ function! HasPaste()
     return ''
 endfunction
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Apperance
+" }}}
+
+" => Apperance {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Syntax highlight
@@ -124,9 +125,9 @@ endif
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
+" }}}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Mapping 
+" => Mapping {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set Leader key to Space
@@ -177,8 +178,9 @@ else
     :nnoremap <leader>t :Terminal<cr><c-w>N:resize 20<cr>i
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Autocmd 
+" }}}
+
+" => Autocmd {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 augroup common
@@ -191,14 +193,18 @@ augroup common
     " Cute cat welcomes you each time enter Vim
     autocmd VimEnter * echo "Hi >^.^<"
 
-    " Auto delete trailing spaces
-    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
-
     " Auto save when losing focus
     autocmd FocusLost * nested silent! wall
 
     " Auto format JSON files
     autocmd BufWritePre *.json :execute '%!python -m json.tool' | w  
 
+    " Auto delete trailing spaces
+    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+
+    " Folding vimscript by marker
+    autocmd FileType vim setlocal foldmethod=marker
+
 augroup END
 
+" }}}
