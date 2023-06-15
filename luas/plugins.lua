@@ -8,13 +8,41 @@ require("nvim-autopairs").setup {}
 ------------------------------------------------------------------------------
 -- nvim-lspconfig 
 local lspconfig = require('lspconfig')
-lspconfig.pyright.setup {}
-lspconfig.tsserver.setup {}
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lsp_defaults = lspconfig.util.default_config
+
+lsp_defaults.capabilities = vim.tbl_deep_extend(
+    'force',
+    lsp_defaults.capabilities,
+    capabilities
+)
+
+-- pyright
+lspconfig.pyright.setup {
+    capabilities = capabilities
+}
+
+-- tsserver
+lspconfig.tsserver.setup {
+    capabilities = capabilities
+}
+
+-- rust_analyzer
 lspconfig.rust_analyzer.setup {
     -- Server-specific settings. See `:help lspconfig-setup`
     settings = {
-        ['rust-analyzer'] = {},
+        ['rust-analyzer'] = {
+            diagnostic = {
+                enable = false;
+            }
+        },
     },
+    capabilities = capabilities
+}
+
+-- ccls
+lspconfig.ccls.setup {  
+    capabilities = capabilities
 }
 
 -- Global mappings.
@@ -188,11 +216,3 @@ cmp.event:on(
   'confirm_done',
   cmp_autopairs.on_confirm_done()
 )
-
--- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require('lspconfig')['pyright'].setup {
-    capabilities = capabilities
-}
-
