@@ -17,9 +17,17 @@ for Windows must be deleted first. You can also do that with --reinstall flag:
 `python3 install.py --reinstall`
 
 # Install LSP servers:
+Some LSP servers are already integrated in .lua configs but you need to install
+them first.
 ## For pyright:
 `npm i -g pyright`  
 pyright configs are already on config.lua.
+## For tsserver
+`npm install -g typescript typescript-language-server`
+## For rust-analyzer
+[Install](https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary)
+## For ccls
+[Install](https://github.com/MaskRay/ccls/wiki)
 
 # Add customized configs
 Create vimrcs/my_configs.vim or luas/my_configs.lua and customize your own configs.
@@ -34,10 +42,6 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc) and
 * [nerdtree](https://github.com/preservim/nerdtree)
 * [vim-gitbranch](https://github.com/itchyny/vim-gitbranch)
 * [vim-yankstack](https://github.com/maxbrunsfeld/vim-yankstack)
-* [vim-python-pep8-indent](https://github.com/Vimjas/vim-python-pep8-indent)
-* [rust.vim](https://github.com/rust-lang/rust.vim)
-* [typescript-vim](https://github.com/leafgarland/typescript-vim)
-* [vim-javascript](https://github.com/pangloss/vim-javascript)
 * [vim-markdown](https://github.com/preservim/vim-markdown)
 * [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 * [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
@@ -58,6 +62,9 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc) and
 ## Others
 * [the_silver_searcher](https://github.com/ggreer/the_silver_searcher) is 
 supported as 'grep' command (but you need to install it on your system first)
-
+* [ccls LSP](https://github.com/MaskRay/ccls)
+* [pyright LSP](https://github.com/microsoft/pyright)
+* [tsserver LSP](https://github.com/microsoft/TypeScript/wiki/Standalone-Server-(tsserver))
+* [rust-analyzer LSP](https://github.com/rust-lang/rust-analyzer)
 # PS
 Some other useful plugins the fuzzy file finder [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim) or a third-party plugin manager are not included in this project. I'm still using built-in Vim plugins instead :). Feel free to customize them as you like.

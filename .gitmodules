@@ -13,21 +13,9 @@
 [submodule "plugins/vim-gitbranch"]
 	path = plugins/vim-gitbranch
 	url = https://github.com/itchyny/vim-gitbranch.git
-[submodule "languagewise_plugins/rust.vim"]
-	path = languagewise_plugins/rust.vim
-	url = https://github.com/rust-lang/rust.vim.git
 [submodule "languagewise_plugins/vim-markdown"]
 	path = languagewise_plugins/vim-markdown
 	url = https://github.com/preservim/vim-markdown.git
-[submodule "languagewise_plugins/typescript-vim"]
-	path = languagewise_plugins/typescript-vim
-	url = https://github.com/leafgarland/typescript-vim.git
-[submodule "languagewise_plugins/vim-python-pep8-indent"]
-	path = languagewise_plugins/vim-python-pep8-indent
-	url = https://github.com/Vimjas/vim-python-pep8-indent.git
-[submodule "languagewise_plugins/vim-javascript"]
-	path = languagewise_plugins/vim-javascript
-	url = https://github.com/pangloss/vim-javascript.git
 [submodule "nvim_plugins/cmp-buffer"]
 	path = nvim_plugins/cmp-buffer
 	url = https://github.com/hrsh7th/cmp-buffer.git
