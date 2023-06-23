@@ -1,5 +1,5 @@
 # nvim-configs
-Reusable configurations for Neovim and auto-install script.  
+My neovim configs and auto-install script.  
 Tested on nvim 0.9.0, 0.9.1
 
 # How to install  
