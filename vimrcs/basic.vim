@@ -173,9 +173,9 @@ endif
 
 " Quickly open terminal and resize terminal window
 if has("nvim")
-    :nnoremap <leader>t :Terminal<cr>:resize 20<cr>i
+    :nnoremap <leader>t :Terminal<cr>:resize 10<cr>i
 else
-    :nnoremap <leader>t :Terminal<cr><c-w>N:resize 20<cr>i
+    :nnoremap <leader>t :Terminal<cr><c-w>N:resize 10<cr>i
 endif
 
 " }}}
