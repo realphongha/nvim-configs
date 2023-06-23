@@ -36,6 +36,11 @@ def main(opt):
         vimrcs.append("vimrcs/my_configs.vim")
     os.system("cat %s > %s" % (" ".join(vimrcs), os.path.join(CONFIG_PATH, "init.vim")))
 
+    print("Writing .lua files...")
+    LUA_CONFIG_PATH = os.path.join(CONFIG_PATH, "lua")
+    os.makedirs(LUA_CONFIG_PATH, exist_ok=True)
+    os.system("cat %s > %s" % ("luas/basic.lua luas/plugins.lua", os.path.join(LUA_CONFIG_PATH, "config.lua")))
+
     print("Copying colorschemes...")
     COLOR_PATH = os.path.join(CONFIG_PATH, "colors")
     os.makedirs(COLOR_PATH, exist_ok=True)
@@ -69,7 +74,7 @@ def main(opt):
             continue
         shutil.copytree(path, os.path.join(LPLUGINS_PATH, dn))
 
-    print("Copying nvim plugins and configs...")
+    print("Copying nvim plugins...")
     NVIM_PLUGINS_PATH = os.path.join(PACK_PATH, "nvim/start")
     os.makedirs(NVIM_PLUGINS_PATH, exist_ok=True)
     for dn in os.listdir("nvim_plugins"):
@@ -77,9 +82,6 @@ def main(opt):
         if not os.path.isdir(path):
             continue
         shutil.copytree(path, os.path.join(NVIM_PLUGINS_PATH, dn))
-    LUA_CONFIG_PATH = os.path.join(CONFIG_PATH, "lua")
-    os.makedirs(LUA_CONFIG_PATH, exist_ok=True)
-    os.system("cat %s > %s" % ("luas/basic.lua luas/plugins.lua", os.path.join(LUA_CONFIG_PATH, "config.lua")))
 
     print("Done! Enjoy! :D")
 
