@@ -9,6 +9,10 @@ endif
 " => netrw {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Disables netrw by default to use NERDTree
+let g:loaded_netrw=1
+let g:loaded_netrwPlugin=1
+
 " Hit enter in the file browser to open the selected
 " file with :vsplit to the right of the browser.
 let g:netrw_browse_split=4
