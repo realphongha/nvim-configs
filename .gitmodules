@@ -55,3 +55,6 @@
 [submodule "nvim_plugins/plenary.nvim"]
 	path = nvim_plugins/plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "colorschemes/rose-pine"]
+	path = colorschemes/rose-pine
+	url = https://github.com/rose-pine/neovim.git
