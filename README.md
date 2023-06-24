@@ -53,6 +53,8 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc) and
 * [cmp-vsnip](https://github.com/hrsh7th/cmp-vsnip)
 * [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 * [vim-vsnip](https://github.com/hrsh7th/vim-vsnip)
+* [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+* [plenary.nvim](https://github.com/nvim-lua/plenary.nvim.git)
 ## Colorschemes included:
 * [catppuccin](https://github.com/catppuccin/nvim)
 * [tokyonight](https://github.com/folke/tokyonight.nvim)
@@ -69,4 +71,4 @@ supported as 'grep' command (but you need to install it on your system first)
 * [tsserver LSP](https://github.com/microsoft/TypeScript/wiki/Standalone-Server-(tsserver))
 * [rust-analyzer LSP](https://github.com/rust-lang/rust-analyzer)
 # PS
-Some other useful plugins the fuzzy file finder [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim) or a third-party plugin manager are not included in this project. I'm still using built-in Vim plugins instead :). Feel free to customize them as you like.
+A third-party package manager are not included in this project. I'm still using built-in Vim package manager instead :). Feel free to customize them as you like.

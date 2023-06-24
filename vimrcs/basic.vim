@@ -178,6 +178,16 @@ else
     :nnoremap <leader>t :Terminal<cr><c-w>N:resize 10<cr>i
 endif
 
+" Quickly removes hightlight
+:noremap <leader><Esc> :noh<cr>
+
+" Preserves current yanked after paste
+:vnoremap <leader>p "_dp
+
+" Quickly moves block up and down
+:vnoremap J :m '>+1<CR>gv=gv
+:vnoremap K :m '<-2<CR>gv=gv
+
 " }}}
 
 " => Autocmd {{{

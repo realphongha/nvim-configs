@@ -6,6 +6,12 @@
 require("nvim-autopairs").setup {}
 
 ------------------------------------------------------------------------------
+-- telescope.nvim
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<C-p>a', builtin.find_files, {})
+vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+
+------------------------------------------------------------------------------
 -- nvim-lspconfig 
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()

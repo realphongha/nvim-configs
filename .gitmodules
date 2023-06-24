@@ -13,8 +13,8 @@
 [submodule "plugins/vim-gitbranch"]
 	path = plugins/vim-gitbranch
 	url = https://github.com/itchyny/vim-gitbranch.git
-[submodule "languagewise_plugins/vim-markdown"]
-	path = languagewise_plugins/vim-markdown
+[submodule "language_plugins/vim-markdown"]
+	path = language_plugins/vim-markdown
 	url = https://github.com/preservim/vim-markdown.git
 [submodule "nvim_plugins/cmp-buffer"]
 	path = nvim_plugins/cmp-buffer
@@ -49,3 +49,9 @@
 [submodule "colorschemes/tokyonight.nvim"]
 	path = colorschemes/tokyonight.nvim
 	url = https://github.com/folke/tokyonight.nvim.git
+[submodule "nvim_plugins/telescope.nvim"]
+	path = nvim_plugins/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim.git
+[submodule "nvim_plugins/plenary.nvim"]
+	path = nvim_plugins/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git

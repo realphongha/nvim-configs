@@ -68,8 +68,8 @@ def main(opt):
     print("Copying language-wise plugins...")
     LPLUGINS_PATH = os.path.join(PACK_PATH, "languages/start")
     os.makedirs(LPLUGINS_PATH, exist_ok=True)
-    for dn in os.listdir("languagewise_plugins"):
-        path = os.path.join("languagewise_plugins", dn)
+    for dn in os.listdir("language_plugins"):
+        path = os.path.join("language_plugins", dn)
         if not os.path.isdir(path):
             continue
         shutil.copytree(path, os.path.join(LPLUGINS_PATH, dn))
