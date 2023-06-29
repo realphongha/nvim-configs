@@ -9,7 +9,7 @@ endif
 " => netrw {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Disables netrw by default to use NERDTree
+" Disables netrw by default
 let g:loaded_netrw=1
 let g:loaded_netrwPlugin=1
 
@@ -84,8 +84,6 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 " Window size
 let g:NERDTreeWinSize=35
 
-" Open the existing NERDTree on each new tab.
-autocmd BufWinEnter * if getcmdwintype() == '' && &buftype != 'quickfix' | silent! NERDTreeMirror | endif
 
 " }}}
 
