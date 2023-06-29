@@ -58,3 +58,6 @@
 [submodule "colorschemes/rose-pine"]
 	path = colorschemes/rose-pine
 	url = https://github.com/rose-pine/neovim.git
+[submodule "nvim_plugins/nvim-treesitter"]
+	path = nvim_plugins/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git

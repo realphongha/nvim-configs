@@ -55,6 +55,7 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc) and
 * [vim-vsnip](https://github.com/hrsh7th/vim-vsnip)
 * [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 * [plenary.nvim](https://github.com/nvim-lua/plenary.nvim.git)
+* [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 ## Colorschemes included:
 * [catppuccin](https://github.com/catppuccin/nvim)
 * [tokyonight](https://github.com/folke/tokyonight.nvim)
