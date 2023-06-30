@@ -69,23 +69,5 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 " }}}
 
-" => nerdtree {{{
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" tree on left side of the screen
-let g:NERDTreeWinPos = "left"
-
-" show hidden files
-let NERDTreeShowHidden=1
-
-" Ignore files
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-
-" Window size
-let g:NERDTreeWinSize=35
-
-
-" }}}
-
 "" Language-wise plugins 
 

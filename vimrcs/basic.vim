@@ -36,6 +36,9 @@ set ai " Auto indent
 set si " Smart indent
 set wrap " Wrap lines
 
+" Set relative number
+set relativenumber
+
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
@@ -197,11 +200,6 @@ augroup common
 
     autocmd!
     
-    " Auto open project tree
-    autocmd VimEnter * if argc() == 0 | NERDTree | endif
-
-    " Open the existing NERDTree on each new tab.
-    autocmd BufWinEnter * if getcmdwintype() == '' && &buftype != 'quickfix' | silent! NERDTreeMirror | endif
 
     " Cute cat welcomes you each time enter Vim
     autocmd VimEnter * echo "Hi >^.^<"

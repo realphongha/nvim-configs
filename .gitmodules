@@ -2,7 +2,7 @@
 	path = plugins/commentary
 	url = https://tpope.io/vim/commentary.git
 [submodule "plugins/nerdtree"]
-	path = plugins/nerdtree
+	path = extended_plugins/nerdtree
 	url = https://github.com/preservim/nerdtree.git
 [submodule "plugins/vim-yankstack"]
 	path = plugins/vim-yankstack
@@ -61,3 +61,9 @@
 [submodule "nvim_plugins/nvim-treesitter"]
 	path = nvim_plugins/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "nvim_plugins/nvim-tree.lua"]
+	path = nvim_plugins/nvim-tree.lua
+	url = https://github.com/nvim-tree/nvim-tree.lua.git
+[submodule "nvim_plugins/nvim-web-devicons"]
+	path = nvim_plugins/nvim-web-devicons
+	url = https://github.com/nvim-tree/nvim-web-devicons.git

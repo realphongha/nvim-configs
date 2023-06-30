@@ -14,7 +14,10 @@ installing.
 You can now `rm -rf nvim-configs` to save disk space.  
 For reinstalling, ~/.config/nvim and ~/.local/share/nvim or ~/AppData/Local/nvim
 for Windows must be deleted first. You can also do that with --reinstall flag:  
-`python3 install.py --reinstall`
+`python3 install.py --reinstall`  
+Extended plugins is not installed by default, you can clone repos into
+extended_plugins and install them with --extended-plugins flag: `python3
+install.py --extended-plugins`
 
 # Install LSP servers:
 Some LSP servers are already integrated in .lua configs but you need to install
@@ -56,6 +59,8 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc) and
 * [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 * [plenary.nvim](https://github.com/nvim-lua/plenary.nvim.git)
 * [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+* [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
+* [nvim-web-icons](https://github.com/nvim-tree/nvim-web-devicons)
 ## Colorschemes included:
 * [catppuccin](https://github.com/catppuccin/nvim)
 * [tokyonight](https://github.com/folke/tokyonight.nvim)
@@ -71,5 +76,6 @@ supported as 'grep' command (but you need to install it on your system first)
 * [pyright LSP](https://github.com/microsoft/pyright)
 * [tsserver LSP](https://github.com/microsoft/TypeScript/wiki/Standalone-Server-(tsserver))
 * [rust-analyzer LSP](https://github.com/rust-lang/rust-analyzer)
+* [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
 # PS
 A third-party package manager are not included in this project. I'm still using built-in Vim package manager instead :). Feel free to customize them as you like.
