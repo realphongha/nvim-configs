@@ -13,7 +13,7 @@ set history=500
 
 " Auto read file changes
 set autoread
-au FocusGained,BufEnter * checktime
+au FocusGained,BufEnter * silent! checktime
 
 " Unicode
 set encoding=utf-8
@@ -190,6 +190,9 @@ endif
 " Quickly moves block up and down
 :vnoremap J :m '>+1<CR>gv=gv
 :vnoremap K :m '<-2<CR>gv=gv
+
+:cnoremap <C-k> <Up>
+:cnoremap <C-j> <Down>
 
 " }}}
 
