@@ -170,7 +170,13 @@ capabilities
 )
 
 -- pyright
+local python_path = vim.fn.trim(vim.fn.system("which python"))
 lspconfig.pyright.setup {
+    settings = {
+        python = {
+            pythonPath = python_path,
+        }
+    },
     capabilities = capabilities
 }
 
