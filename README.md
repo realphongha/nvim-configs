@@ -77,5 +77,6 @@ supported as 'grep' command (but you need to install it on your system first)
 * [tsserver LSP](https://github.com/microsoft/TypeScript/wiki/Standalone-Server-(tsserver))
 * [rust-analyzer LSP](https://github.com/rust-lang/rust-analyzer)
 * [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
+* Check out [my minimal configs for tmux](https://gist.github.com/realphongha/abbc89ad908d94afa054049b64eb7917) if you want to use it with nvim
 # PS
 A third-party package manager is not included in this project. I'm still using built-in Vim package manager instead :). Feel free to customize them as you like.
