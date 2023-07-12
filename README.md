@@ -78,4 +78,4 @@ supported as 'grep' command (but you need to install it on your system first)
 * [rust-analyzer LSP](https://github.com/rust-lang/rust-analyzer)
 * [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
 # PS
-A third-party package manager are not included in this project. I'm still using built-in Vim package manager instead :). Feel free to customize them as you like.
+A third-party package manager is not included in this project. I'm still using built-in Vim package manager instead :). Feel free to customize them as you like.
