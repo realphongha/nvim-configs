@@ -13,7 +13,7 @@ def main(opt):
         PACK_PATH = os.path.join(HOME_PATH, ".local/share/nvim/site/pack")
     elif platf == "Windows":
         CONFIG_PATH = os.path.join(HOME_PATH, "AppData/Local/nvim")
-        PACK_PATH = os.path.join(HOME_PATH, "AppData/Local/nvim/site/pack")
+        PACK_PATH = os.path.join(HOME_PATH, "AppData/Local/nvim-data/site/pack")
     else:
         raise NotImplementedError(f"Platform {platf} is not supported!")
     if opt.reinstall and not opt.only_configs:
