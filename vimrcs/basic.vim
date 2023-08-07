@@ -134,9 +134,16 @@ function SeeWaifu() abort
   " Basic
   hi Normal guibg=NONE
   hi NormalNC guibg=NONE
+  " hi Pmenu guibg=NONE
+  " hi NormatFloat guibg=NONE
+  " hi FloatShadow guibg=NONE
   
   " For nvim-tree
   hi NvimTreeNormal guibg=NONE
+  " hi NvimTreePopup guibg=NONE
+
+  " For telescope.nvim
+  hi TelescopeNormal guibg=NONE
 endfunction
 " }}}
 
