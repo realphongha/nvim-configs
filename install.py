@@ -32,10 +32,10 @@ def main(opt):
         vimrcs.append("vimrcs/plugins.vim")
     if not opt.disable_nvim_plugins:
         vimrcs.insert(0, "vimrcs/enable_lua.vim")
-    if os.path.isfile("vimrcs/my_configs.vim"):
-        vimrcs.append("vimrcs/my_configs.vim")
     if opt.extended_plugins:
         vimrcs.append("vimrcs/extended_plugins.vim")
+    if os.path.isfile("vimrcs/my_configs.vim"):
+        vimrcs.append("vimrcs/my_configs.vim")
     os.system("cat %s > %s" % (" ".join(vimrcs), os.path.join(CONFIG_PATH, "init.vim")))
 
     print("Writing .lua files...")
@@ -44,6 +44,8 @@ def main(opt):
     lua_files = "luas/basic.lua luas/plugins.lua"
     if opt.extended_plugins:
         lua_files = f"{lua_files} luas/extended_plugins.lua"
+    if os.path.isfile("luas/my_configs.lua"):
+        lua_files = f"{lua_files} luas/my_configs.lua"
     os.system("cat %s > %s" % (lua_files, os.path.join(LUA_CONFIG_PATH, "config.lua")))
 
     print("Copying colorschemes...")
