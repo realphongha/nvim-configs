@@ -1,6 +1,6 @@
 # nvim-configs
 My neovim configs and auto-install script.  
-Tested on nvim 0.9.0, 0.9.1
+Tested with nvim 0.9.0, 0.9.1 on MacOS zsh, Linux bash and Windows powershell.
 
 # How to install  
 First clone this repo  
@@ -76,5 +76,6 @@ supported as 'grep' command (but you need to install it on your system first)
 * [tsserver LSP](https://github.com/microsoft/TypeScript/wiki/Standalone-Server-(tsserver))
 * [rust-analyzer LSP](https://github.com/rust-lang/rust-analyzer)
 * [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
+* Check out [my minimal configs for tmux](https://gist.github.com/realphongha/abbc89ad908d94afa054049b64eb7917) if you want to use it with nvim
 # PS
-A third-party package manager are not included in this project. I'm still using built-in Vim package manager instead :). Feel free to customize them as you like.
+A third-party package manager is not included in this project. I'm still using built-in Vim package manager instead :). Feel free to customize them as you like.
