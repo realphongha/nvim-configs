@@ -128,6 +128,16 @@ endif
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
+
+" Make background transparent to see your waifu on the terminal
+function SeeWaifu() abort
+  " Basic
+  hi Normal guibg=NONE
+  hi NormalNC guibg=NONE
+  
+  " For nvim-tree
+  hi NvimTreeNormal guibg=NONE
+endfunction
 " }}}
 
 " => Mapping {{{

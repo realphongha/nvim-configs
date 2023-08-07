@@ -11,7 +11,6 @@ get all submodules by
 then  
 `python3 install.py` to install. See install.py for more options when
 installing.  
-You can now `rm -rf nvim-configs` to save disk space.  
 For reinstalling, ~/.config/nvim and ~/.local/share/nvim or ~/AppData/Local/nvim
 for Windows must be deleted first. You can also do that with --reinstall flag:  
 `python3 install.py --reinstall`  
