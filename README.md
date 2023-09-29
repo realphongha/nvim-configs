@@ -61,6 +61,7 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc) and
 * [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
 * [nvim-web-icons](https://github.com/nvim-tree/nvim-web-devicons)
 ## Colorschemes included:
+* [rose-pine](https://github.com/rose-pine/neovim.git)
 * [catppuccin](https://github.com/catppuccin/nvim)
 * [tokyonight](https://github.com/folke/tokyonight.nvim)
 * [gruvbox](https://github.com/morhetz/gruvbox)
