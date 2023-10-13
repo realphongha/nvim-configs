@@ -32,6 +32,8 @@ pyright configs are already on config.lua.
 [Install](https://github.com/MaskRay/ccls/wiki)
 ## For clangd
 [Install](https://clangd.llvm.org/installation.html)
+## For cmake-language-server
+[Install](https://github.com/regen100/cmake-language-server)
 # Add customized configs
 Create vimrcs/my_configs.vim or luas/my_configs.lua and customize your own configs.
 Then install it with the same commands above.
@@ -73,6 +75,7 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc) and
 supported as 'grep' command (but you need to install it on your system first)
 * [ccls LSP](https://github.com/MaskRay/ccls)
 * [clangd LSP](https://clangd.llvm.org/)
+* [cmake LSP](https://github.com/regen100/cmake-language-server)
 * [pyright LSP](https://github.com/microsoft/pyright)
 * [tsserver LSP](https://github.com/microsoft/TypeScript/wiki/Standalone-Server-(tsserver))
 * [rust-analyzer LSP](https://github.com/rust-lang/rust-analyzer)
