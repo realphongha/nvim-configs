@@ -116,8 +116,9 @@ vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 ------------------------------------------------------------------------------
 -- nvim-treesitter
 require'nvim-treesitter.configs'.setup {
-    -- A list of parser names, or "all" (the five listed parsers should always be installed)
-    ensure_installed = { "c", "lua", "vim", "vimdoc", "python", "query", "javascript", "typescript", "rust" },
+    -- A list of parser names, or "all" (the listed parsers should always be installed)
+    ensure_installed = { "c", "lua", "vim", "vimdoc", "python",
+        "query", "javascript", "typescript", "rust", "cmake" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
