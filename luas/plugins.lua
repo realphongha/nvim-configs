@@ -169,9 +169,9 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lsp_defaults = lspconfig.util.default_config
 
 lsp_defaults.capabilities = vim.tbl_deep_extend(
-'force',
-lsp_defaults.capabilities,
-capabilities
+    'force',
+    lsp_defaults.capabilities,
+    capabilities
 )
 
 -- pyright
@@ -205,8 +205,8 @@ lspconfig.rust_analyzer.setup {
 
 -- ccls
 -- lspconfig.ccls.setup {  
-    --     capabilities = capabilities
-    -- }
+--     capabilities = capabilities
+-- }
 
 -- clangd.
 lspconfig.clangd.setup {
@@ -288,8 +288,8 @@ cmp.setup({
         -- { name = 'ultisnips' }, -- For ultisnips users.
         -- { name = 'snippy' }, -- For snippy users.
     }, {
-        { name = 'buffer' },
-    })
+            { name = 'buffer' },
+        })
 })
 
 -- Set configuration for specific filetype.
@@ -297,8 +297,8 @@ cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
         { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
     }, {
-        { name = 'buffer' },
-    })
+            { name = 'buffer' },
+        })
 })
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
@@ -315,8 +315,8 @@ cmp.setup.cmdline(':', {
     sources = cmp.config.sources({
         { name = 'path' }
     }, {
-        { name = 'cmdline' }
-    })
+            { name = 'cmdline' }
+        })
 })
 
 cmp.setup({
@@ -385,6 +385,6 @@ cmp.setup({
 -- If you want insert `(` after select function or method item
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on(
-'confirm_done',
-cmp_autopairs.on_confirm_done()
+    'confirm_done',
+    cmp_autopairs.on_confirm_done()
 )
