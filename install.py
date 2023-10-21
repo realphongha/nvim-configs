@@ -37,6 +37,7 @@ def main(opt):
     if os.path.isfile("vimrcs/my_configs.vim"):
         vimrcs.append("vimrcs/my_configs.vim")
     os.system("cat %s > %s" % (" ".join(vimrcs), os.path.join(CONFIG_PATH, "init.vim")))
+    shutil.copy("vimrcs/ginit.vim", CONFIG_PATH)
 
     print("Writing .lua files...")
     LUA_CONFIG_PATH = os.path.join(CONFIG_PATH, "lua")
