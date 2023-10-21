@@ -193,12 +193,12 @@ endif
 
 " Quickly open terminal and resize terminal window
 if g:os == "Windows"
-    :nnoremap <leader>t :split<cr>:resize 10<cr>:term<cr>i
+    :nnoremap <leader>T :split<cr>:resize 10<cr>:term<cr>i
 else
     if has("nvim")
-        :nnoremap <leader>t :Terminal<cr>:resize 10<cr>i
+        :nnoremap <leader>T :Terminal<cr>:resize 10<cr>i
     else
-        :nnoremap <leader>t :Terminal<cr><c-w>N:resize 10<cr>i
+        :nnoremap <leader>T :Terminal<cr><c-w>N:resize 10<cr>i
     endif
 endif
 
@@ -214,6 +214,9 @@ endif
 
 :cnoremap <C-k> <Up>
 :cnoremap <C-j> <Down>
+
+" Quickly toggle NvimTree
+:noremap <leader>t :NvimTreeToggle<cr>
 
 " }}}
 
