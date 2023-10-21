@@ -16,7 +16,10 @@ for Windows must be deleted first. You can also do that with --reinstall flag:
 `python3 install.py --reinstall`  
 Extended plugins is not installed by default, you can clone repos into
 extended_plugins and install them with --extended-plugins flag: `python3
-install.py --extended-plugins`
+install.py --extended-plugins`  
+
+# How to update
+`git submodule update --remote`
 
 # Install LSP servers:
 Some LSP servers are already integrated in .lua configs but you need to install
