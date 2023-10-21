@@ -90,6 +90,3 @@
 	path = nvim_plugins/nvim-web-devicons
 	url = https://github.com/nvim-tree/nvim-web-devicons.git
     branch = master
-[submodule "nvim_plugins/cmake-language-server"]
-	path = nvim_plugins/cmake-language-server
-	url = https://github.com/regen100/cmake-language-server.git
