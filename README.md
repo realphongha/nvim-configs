@@ -80,6 +80,8 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc) and
 * [the_silver_searcher](https://github.com/ggreer/the_silver_searcher) is 
 supported as 'grep' command (but you need to install it on your system first)
 * [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
+* [ripgrep](https://github.com/BurntSushi/ripgrep#installation) should be
+installed first if you want to use telescope livegrep
 
 # Small notes
 * Use `:call SeeWaifu()` to make your background transparent and see your waifu
