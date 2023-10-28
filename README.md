@@ -1,6 +1,6 @@
 # nvim-configs
 My neovim configs and auto-install script.  
-Tested with nvim 0.9.0, 0.9.1 on MacOS zsh, Linux bash and Windows powershell.
+Tested with nvim 0.9.0, 0.9.1, 0.9.3 on MacOS, Linux and Windows.
 
 # How to install  
 First clone this repo  
