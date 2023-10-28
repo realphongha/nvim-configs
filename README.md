@@ -2,7 +2,7 @@
 My neovim configs and auto-install script.  
 Tested with nvim 0.9.0, 0.9.1, 0.9.3 on MacOS, Linux and Windows.
 
-# How to install  
+# How to install?
 First clone this repo  
 `git clone https://github.com/realphongha/nvim-configs.git`  
 `cd nvim-configs`  
@@ -18,7 +18,14 @@ Extended plugins is not installed by default, you can clone repos into
 extended_plugins and install them with --extended-plugins flag: `python3
 install.py --extended-plugins`  
 
-# How to update
+# How to add new own plugins?
+You can add new plugins as a submodule to install by:  
+`git submodule add <plugin_git_repo_url> my_plugins/<plugin_name>` and
+specify the branch name for the submodule in `.gitmodules` (so it can be
+updated).  
+Plugins can also be removed by `git rm <path/to/submodule>`.
+
+# How to update?
 `git submodule update --remote`
 
 # Install LSP servers:

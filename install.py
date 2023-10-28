@@ -89,6 +89,15 @@ def main(opt):
             continue
         shutil.copytree(path, os.path.join(NVIM_PLUGINS_PATH, dn))
 
+    print("Copying your own plugins...")
+    MY_PLUGINS_PATH = os.path.join(PACK_PATH, "my_plugins/start")
+    os.makedirs(MY_PLUGINS_PATH, exist_ok=True)
+    for dn in os.listdir("my_plugins"):
+        path = os.path.join("my_plugins", dn)
+        if not os.path.isdir(path):
+            continue
+        shutil.copytree(path, os.path.join(MY_PLUGINS_PATH, dn))
+
     if opt.extended_plugins:
         print("Copying extended plugins...")
         EX_PLUGINS_PATH = os.path.join(PACK_PATH, "ex/start")
