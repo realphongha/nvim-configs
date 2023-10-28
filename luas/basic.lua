@@ -246,6 +246,20 @@ vim.api.nvim_set_keymap("", "<leader>t", ":NvimTreeToggle<cr>",
     {noremap = true, silent = true}
 )
 
+function GR(phrase, path, include, exclude)
+    if not path then path = "**" end
+    local command = [[:silent grep! -r "]] .. phrase .. [[" ]] .. path
+    if include then
+        command = command .. " --include " .. include
+    end
+    if exclude then
+        command = command .. " --exclude" .. exclude
+    end
+
+    vim.cmd(command)
+    print("Done searching! :copen to see the results!")
+end
+
 -- }}}
 
 ------------------------------------------------------------------------------
