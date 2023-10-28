@@ -2,11 +2,13 @@
 -- Plugins 
 
 ------------------------------------------------------------------------------
--- nvim-autopairs 
+-- {{{ nvim-autopairs 
 require("nvim-autopairs").setup {}
 
+-- }}}
+
 ------------------------------------------------------------------------------
--- nvim-tree.lua 
+-- {{{ nvim-tree.lua 
 require("nvim-tree").setup({
     sort_by = "case_sensitive",
     view = {
@@ -107,14 +109,18 @@ require'nvim-web-devicons'.setup {
     };
 }
 
+-- }}}
+
 ------------------------------------------------------------------------------
--- telescope.nvim
+-- {{{ telescope.nvim
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>a', builtin.find_files, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 
+-- }}}
+
 ------------------------------------------------------------------------------
--- nvim-treesitter
+-- {{{ nvim-treesitter
 require'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all" (the listed parsers should always be installed)
     ensure_installed = { "c", "lua", "vim", "vimdoc", "python",
@@ -162,8 +168,10 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 
+-- }}}
+
 ------------------------------------------------------------------------------
--- nvim-lspconfig 
+-- {{{ nvim-lspconfig 
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lsp_defaults = lspconfig.util.default_config
@@ -287,8 +295,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
+-- }}}
+
 ------------------------------------------------------------------------------
--- nvim-cmp
+-- {{{ nvim-cmp
 -- Set up nvim-cmp.
 local cmp = require'cmp'
 
@@ -420,3 +430,5 @@ cmp.event:on(
     'confirm_done',
     cmp_autopairs.on_confirm_done()
 )
+
+-- }}}
