@@ -246,7 +246,14 @@ vim.api.nvim_set_keymap("", "<leader>t", ":NvimTreeToggle<cr>",
     {noremap = true, silent = true}
 )
 
-function GR(phrase, path, include, exclude)
+-- Quickly replace in all quickfixes
+function RP(search, replace)
+    local command = ":cdo s/" .. search .. "/" .. replace .. "/g | update"
+    vim.cmd(command)
+end
+
+-- Quickly find in all project files using grep
+function FP(phrase, path, include, exclude)
     if not path then path = "**" end
     local command = [[:silent grep! -r "]] .. phrase .. [[" ]] .. path
     if include then
@@ -258,6 +265,12 @@ function GR(phrase, path, include, exclude)
 
     vim.cmd(command)
     print("Done searching! :copen to see the results!")
+end
+
+-- Quickly find in all project files using grep and replace all results
+function FRP(phrase, replace_phrase, path, include, exclude)
+    FP(phrase, path, include, exclude)
+    RP(phrase, replace_phrase)
 end
 
 -- }}}

@@ -398,7 +398,7 @@ cmp.setup({
                 end
             end,
         }),
-        -- S-Tab to go to next suggestion
+        -- S-Tab to go to last suggestion
         ["<S-Tab>"] = cmp.mapping({
             c = function(fallback)
                 if cmp.visible() then
