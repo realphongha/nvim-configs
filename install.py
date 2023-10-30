@@ -28,10 +28,8 @@ def main(opt):
 
     print("Writing init.vim...")
     vimrcs = ["vimrcs/basic.vim",]
-    if not opt.disable_plugins:
-        vimrcs.append("vimrcs/plugins.vim")
-    if not opt.disable_nvim_plugins:
-        vimrcs.insert(0, "vimrcs/enable_lua.vim")
+    vimrcs.append("vimrcs/plugins.vim")
+    vimrcs.insert(0, "vimrcs/enable_lua.vim")
     if opt.extended_plugins:
         vimrcs.append("vimrcs/extended_plugins.vim")
     if os.path.isfile("vimrcs/my_configs.vim"):
@@ -91,6 +89,15 @@ def main(opt):
             continue
         shutil.copytree(path, os.path.join(NVIM_PLUGINS_PATH, dn))
 
+    print("Copying your own plugins...")
+    MY_PLUGINS_PATH = os.path.join(PACK_PATH, "my_plugins/start")
+    os.makedirs(MY_PLUGINS_PATH, exist_ok=True)
+    for dn in os.listdir("my_plugins"):
+        path = os.path.join("my_plugins", dn)
+        if not os.path.isdir(path):
+            continue
+        shutil.copytree(path, os.path.join(MY_PLUGINS_PATH, dn))
+
     if opt.extended_plugins:
         print("Copying extended plugins...")
         EX_PLUGINS_PATH = os.path.join(PACK_PATH, "ex/start")
@@ -100,7 +107,6 @@ def main(opt):
             if not os.path.isdir(path):
                 continue
             shutil.copytree(path, os.path.join(EX_PLUGINS_PATH, dn))
-
     print("Done! Enjoy! :D")
 
 
@@ -111,18 +117,6 @@ if __name__ == "__main__":
         action="store_true",
         default=False,
         help="Only install configs"
-    )
-    parser.add_argument(
-        '--disable-plugins',
-        action="store_true",
-        default=False,
-        help="Disable installing plugins"
-    )
-    parser.add_argument(
-        '--disable-nvim-plugins',
-        action="store_true",
-        default=False,
-        help="Disable installing nvim plugins"
     )
     parser.add_argument(
         '--reinstall',

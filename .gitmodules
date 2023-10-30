@@ -1,72 +1,92 @@
 [submodule "plugins/commentary"]
 	path = plugins/commentary
 	url = https://tpope.io/vim/commentary.git
+	branch = master
 [submodule "plugins/nerdtree"]
 	path = extended_plugins/nerdtree
 	url = https://github.com/preservim/nerdtree.git
+	branch = master
 [submodule "plugins/vim-yankstack"]
 	path = plugins/vim-yankstack
 	url = https://github.com/maxbrunsfeld/vim-yankstack.git
+	branch = master
 [submodule "plugins/lightline.vim"]
 	path = plugins/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
+	branch = master
 [submodule "plugins/vim-gitbranch"]
 	path = plugins/vim-gitbranch
 	url = https://github.com/itchyny/vim-gitbranch.git
+	branch = master
 [submodule "language_plugins/vim-markdown"]
 	path = language_plugins/vim-markdown
 	url = https://github.com/preservim/vim-markdown.git
+	branch = master
 [submodule "nvim_plugins/cmp-buffer"]
 	path = nvim_plugins/cmp-buffer
 	url = https://github.com/hrsh7th/cmp-buffer.git
+	branch = main
 [submodule "nvim_plugins/cmp-path"]
 	path = nvim_plugins/cmp-path
 	url = https://github.com/hrsh7th/cmp-path.git
+    branch = main
 [submodule "nvim_plugins/cmp-cmdline"]
 	path = nvim_plugins/cmp-cmdline
 	url = https://github.com/hrsh7th/cmp-cmdline.git
+    branch = main
 [submodule "nvim_plugins/cmp-vsnip"]
 	path = nvim_plugins/cmp-vsnip
 	url = https://github.com/hrsh7th/cmp-vsnip.git
+    branch = main
 [submodule "nvim_plugins/cmp-nvim-lsp"]
 	path = nvim_plugins/cmp-nvim-lsp
 	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
+    branch = main
 [submodule "nvim_plugins/nvim-cmp"]
 	path = nvim_plugins/nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp.git
+    branch = main
 [submodule "nvim_plugins/nvim-lspconfig"]
 	path = nvim_plugins/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
+    branch = master
 [submodule "nvim_plugins/nvim-autopairs"]
 	path = nvim_plugins/nvim-autopairs
 	url = https://github.com/windwp/nvim-autopairs.git
+    branch = master
 [submodule "nvim_plugins/vim-vsnip"]
 	path = nvim_plugins/vim-vsnip
 	url = https://github.com/hrsh7th/vim-vsnip.git
+    branch = master
 [submodule "colorschemes/catppuccin"]
 	path = colorschemes/catppuccin
 	url = https://github.com/catppuccin/nvim.git
+    branch = main
 [submodule "colorschemes/tokyonight.nvim"]
 	path = colorschemes/tokyonight.nvim
 	url = https://github.com/folke/tokyonight.nvim.git
+    branch = main
 [submodule "nvim_plugins/telescope.nvim"]
 	path = nvim_plugins/telescope.nvim
 	url = https://github.com/nvim-telescope/telescope.nvim.git
+    branch = master
 [submodule "nvim_plugins/plenary.nvim"]
 	path = nvim_plugins/plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim.git
+    branch = master
 [submodule "colorschemes/rose-pine"]
 	path = colorschemes/rose-pine
 	url = https://github.com/rose-pine/neovim.git
+    branch = main
 [submodule "nvim_plugins/nvim-treesitter"]
 	path = nvim_plugins/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+    branch = master
 [submodule "nvim_plugins/nvim-tree.lua"]
 	path = nvim_plugins/nvim-tree.lua
 	url = https://github.com/nvim-tree/nvim-tree.lua.git
+    branch = master
 [submodule "nvim_plugins/nvim-web-devicons"]
 	path = nvim_plugins/nvim-web-devicons
 	url = https://github.com/nvim-tree/nvim-web-devicons.git
-[submodule "nvim_plugins/cmake-language-server"]
-	path = nvim_plugins/cmake-language-server
-	url = https://github.com/regen100/cmake-language-server.git
+    branch = master

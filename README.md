@@ -1,8 +1,8 @@
 # nvim-configs
 My neovim configs and auto-install script.  
-Tested with nvim 0.9.0, 0.9.1 on MacOS zsh, Linux bash and Windows powershell.
+Tested with nvim 0.9.0, 0.9.1, 0.9.3 on MacOS, Linux and Windows.
 
-# How to install  
+# How to install?
 First clone this repo  
 `git clone https://github.com/realphongha/nvim-configs.git`  
 `cd nvim-configs`  
@@ -16,14 +16,23 @@ for Windows must be deleted first. You can also do that with --reinstall flag:
 `python3 install.py --reinstall`  
 Extended plugins is not installed by default, you can clone repos into
 extended_plugins and install them with --extended-plugins flag: `python3
-install.py --extended-plugins`
+install.py --extended-plugins`  
+
+# How to add new own plugins?
+You can add new plugins as a submodule to install by:  
+`git submodule add <plugin_git_repo_url> my_plugins/<plugin_name>` and
+specify the branch name for the submodule in `.gitmodules` (so it can be
+updated).  
+Plugins can also be removed by `git rm <path/to/submodule>`.
+
+# How to update?
+`git submodule update --remote`
 
 # Install LSP servers:
 Some LSP servers are already integrated in .lua configs but you need to install
 them first.
 ## For pyright:
 `npm i -g pyright`  
-pyright configs are already on config.lua.
 ## For tsserver
 `npm install -g typescript typescript-language-server`
 ## For rust-analyzer
@@ -34,6 +43,10 @@ pyright configs are already on config.lua.
 [Install](https://clangd.llvm.org/installation.html)
 ## For cmake-language-server
 [Install](https://github.com/regen100/cmake-language-server)
+## For rust-analyzer
+* [Install](https://github.com/rust-lang/rust-analyzer)
+## For lua-language-server
+* [Install](https://luals.github.io/#neovim-install) 
 # Add customized configs
 Create vimrcs/my_configs.vim or luas/my_configs.lua and customize your own configs.
 Then install it with the same commands above.
@@ -73,13 +86,9 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc) and
 ## Others
 * [the_silver_searcher](https://github.com/ggreer/the_silver_searcher) is 
 supported as 'grep' command (but you need to install it on your system first)
-* [ccls LSP](https://github.com/MaskRay/ccls)
-* [clangd LSP](https://clangd.llvm.org/)
-* [cmake LSP](https://github.com/regen100/cmake-language-server)
-* [pyright LSP](https://github.com/microsoft/pyright)
-* [tsserver LSP](https://github.com/microsoft/TypeScript/wiki/Standalone-Server-(tsserver))
-* [rust-analyzer LSP](https://github.com/rust-lang/rust-analyzer)
 * [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
+* [ripgrep](https://github.com/BurntSushi/ripgrep#installation) should be
+installed first if you want to use telescope livegrep
 
 # Small notes
 * Use `:call SeeWaifu()` to make your background transparent and see your waifu

@@ -2,11 +2,13 @@
 -- Plugins 
 
 ------------------------------------------------------------------------------
--- nvim-autopairs 
+-- {{{ nvim-autopairs 
 require("nvim-autopairs").setup {}
 
+-- }}}
+
 ------------------------------------------------------------------------------
--- nvim-tree.lua 
+-- {{{ nvim-tree.lua 
 require("nvim-tree").setup({
     sort_by = "case_sensitive",
     view = {
@@ -107,14 +109,19 @@ require'nvim-web-devicons'.setup {
     };
 }
 
+-- }}}
+
 ------------------------------------------------------------------------------
--- telescope.nvim
+-- {{{ telescope.nvim
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>a', builtin.find_files, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>b', builtin.buffers, {})
+-- }}}
 
 ------------------------------------------------------------------------------
--- nvim-treesitter
+-- {{{ nvim-treesitter
 require'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all" (the listed parsers should always be installed)
     ensure_installed = { "c", "lua", "vim", "vimdoc", "python",
@@ -162,8 +169,10 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 
+-- }}}
+
 ------------------------------------------------------------------------------
--- nvim-lspconfig 
+-- {{{ nvim-lspconfig 
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lsp_defaults = lspconfig.util.default_config
@@ -217,6 +226,38 @@ lspconfig.clangd.setup {
 --cmake
 lspconfig.cmake.setup{}
 
+--lua for nvim
+lspconfig.lua_ls.setup {
+  on_init = function(client)
+    local path = client.workspace_folders[1].name
+    if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
+      client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
+        Lua = {
+          runtime = {
+            -- Tell the language server which version of Lua you're using
+            -- (most likely LuaJIT in the case of Neovim)
+            version = 'LuaJIT'
+          },
+          -- Make the server aware of Neovim runtime files
+          workspace = {
+            checkThirdParty = false,
+            library = {
+              vim.env.VIMRUNTIME
+              -- "${3rd}/luv/library"
+              -- "${3rd}/busted/library",
+            }
+            -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+            -- library = vim.api.nvim_get_runtime_file("", true)
+          }
+        }
+      })
+
+      client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+    end
+    return true
+  end
+}
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
@@ -255,8 +296,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
+-- }}}
+
 ------------------------------------------------------------------------------
--- nvim-cmp
+-- {{{ nvim-cmp
 -- Set up nvim-cmp.
 local cmp = require'cmp'
 
@@ -355,7 +398,7 @@ cmp.setup({
                 end
             end,
         }),
-        -- S-Tab to go to next suggestion
+        -- S-Tab to go to last suggestion
         ["<S-Tab>"] = cmp.mapping({
             c = function(fallback)
                 if cmp.visible() then
@@ -388,3 +431,5 @@ cmp.event:on(
     'confirm_done',
     cmp_autopairs.on_confirm_done()
 )
+
+-- }}}
