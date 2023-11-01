@@ -304,6 +304,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local cmp = require'cmp'
 
 cmp.setup({
+    -- to remove LSP priority to select completion
+    preselect = cmp.PreselectMode.None,
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
