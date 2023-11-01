@@ -48,7 +48,7 @@ hi! link netrwMarkFile Search
 let g:lightline = {
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
-      \             ['gitbranch', 'readonly', 'filename', 'modified'] ],
+      \             ['gitbranch', 'readonly', 'relativepath', 'modified'] ],
       \   'right': [ [ 'lineinfo' ], ['percent'] ]
       \ },
       \ 'component_function': {
