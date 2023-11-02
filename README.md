@@ -1,6 +1,6 @@
 # nvim-configs
 My neovim configs and auto-install script.  
-Tested with nvim 0.9.0, 0.9.1, 0.9.3 on MacOS, Linux and Windows.
+Tested with nvim 0.9.0, 0.9.1, 0.9.2, 0.9.3 on MacOS, Linux and Windows.
 
 # How to install?
 First clone this repo  
@@ -44,9 +44,9 @@ them first.
 ## For cmake-language-server
 [Install](https://github.com/regen100/cmake-language-server)
 ## For rust-analyzer
-* [Install](https://github.com/rust-lang/rust-analyzer)
+[Install](https://github.com/rust-lang/rust-analyzer)
 ## For lua-language-server
-* [Install](https://luals.github.io/#neovim-install) 
+[Install](https://luals.github.io/#neovim-install) 
 # Add customized configs
 Create vimrcs/my_configs.vim or luas/my_configs.lua and customize your own configs.
 Then install it with the same commands above.
@@ -91,7 +91,7 @@ supported as 'grep' command (but you need to install it on your system first)
 installed first if you want to use telescope livegrep
 
 # Small notes
-* Use `:call SeeWaifu()` to make your background transparent and see your waifu
+* Use `:lua SeeWaifu()` or `:lua SeeWaifu("new-colorscheme")` to make your background transparent and see your waifu
 in the terminal :D
 * You can run add_nvimqt_to_context_menu_windows.reg to add Neovim Qt to
 context menu (only for Windows) (stolen from [here](https://github.com/neovim/neovim/issues/7222#issuecomment-927413185)) :D
