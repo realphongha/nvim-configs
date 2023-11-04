@@ -1,3 +1,6 @@
+" Include configs from lua/config.lua
+lua require('config')
+
 " Index
 "" => General
 "" => UI 

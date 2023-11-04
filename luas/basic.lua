@@ -236,12 +236,15 @@ vim.api.nvim_set_keymap("v", "K", [[:m '<-2<CR>gv=gv]],
 )
 
 -- using Ctrl+j, Ctrl+j for navigating in command mode
-vim.api.nvim_set_keymap("c", "<C-k>", "<Up>",
-    {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap("c", "<C-j>", "<Down>",
-    {noremap = true, silent = true}
-)
+-- vim.api.nvim_set_keymap("c", "<C-k>", "<up>",
+--     {noremap = true, silent = true}
+-- )
+-- vim.api.nvim_set_keymap("c", "<C-j>", "<down>",
+--     {noremap = true, silent = true}
+-- )
+-- lua doesn't work, I don't have a clue why
+vim.cmd([[:cnoremap <C-k> <Up>]])
+vim.cmd([[:cnoremap <C-j> <Down>]])
 
 -- Quickly toggle NvimTree
 vim.api.nvim_set_keymap("", "<leader>t", ":NvimTreeToggle<cr>",
