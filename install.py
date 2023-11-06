@@ -29,7 +29,6 @@ def main(opt):
     print("Writing init.vim...")
     vimrcs = ["vimrcs/basic.vim",]
     vimrcs.append("vimrcs/plugins.vim")
-    vimrcs.insert(0, "vimrcs/enable_lua.vim")
     if opt.extended_plugins:
         vimrcs.append("vimrcs/extended_plugins.vim")
     if os.path.isfile("vimrcs/my_configs.vim"):
