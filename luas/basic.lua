@@ -92,7 +92,7 @@ vim.cmd("set t_vb=")
 vim.opt.tm = 500
 
 -- Always show the status line
--- vim.opt.laststatus = 2
+vim.opt.laststatus = 2
 
 -- Returns true if paste mode is enabled
 -- function HasPaste()
