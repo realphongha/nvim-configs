@@ -31,6 +31,7 @@ Plugins can also be removed by `git rm <path/to/submodule>`.
 # Install LSP servers:
 Some LSP servers are already integrated in .lua configs but you need to install
 them first.
+## Use [mason.nvim](https://github.com/williamboman/mason.nvim) (already installed) or manually install (below).
 ## For pyright:
 `npm i -g pyright`  
 ## For tsserver
