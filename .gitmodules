@@ -90,3 +90,11 @@
 	path = nvim_plugins/nvim-web-devicons
 	url = https://github.com/nvim-tree/nvim-web-devicons.git
     branch = master
+[submodule "nvim_plugins/mason.nvim"]
+	path = nvim_plugins/mason.nvim
+	url = https://github.com/williamboman/mason.nvim.git
+    branch = main
+[submodule "plugins/vim-fugitive"]
+	path = plugins/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+    branch = master

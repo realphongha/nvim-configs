@@ -172,6 +172,19 @@ require'nvim-treesitter.configs'.setup {
 -- }}}
 
 ------------------------------------------------------------------------------
+-- {{{ mason.nvim
+require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
+-- }}}
+
+------------------------------------------------------------------------------
 -- {{{ nvim-lspconfig 
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
