@@ -76,6 +76,8 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc), [ThePr
 * [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 * [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
 * [nvim-web-icons](https://github.com/nvim-tree/nvim-web-devicons)
+* [mason.nvim](https://github.com/williamboman/mason.nvim)
+* [vim-fugitive](https://github.com/tpope/vim-fugitive.git)
 ## Colorschemes included:
 * [rose-pine](https://github.com/rose-pine/neovim.git)
 * [catppuccin](https://github.com/catppuccin/nvim)
