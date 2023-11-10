@@ -124,8 +124,7 @@ vim.keymap.set('n', '<leader>b', builtin.buffers, {})
 -- {{{ nvim-treesitter
 require'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all" (the listed parsers should always be installed)
-    ensure_installed = { "c", "lua", "vim", "vimdoc", "python",
-        "query", "javascript", "typescript", "rust", "cmake" },
+    ensure_installed = {"c", "lua", "vim", "vimdoc", "python", "cmake", "markdown"},
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -183,6 +182,12 @@ require("mason").setup({
     }
 })
 -- }}}
+
+--  {{{ mason-lspconfig
+require("mason-lspconfig").setup({
+    ensure_installed = {"lua_ls", "pyright", "marksman"}
+})
+--  }}}
 
 ------------------------------------------------------------------------------
 -- {{{ nvim-lspconfig 
@@ -270,6 +275,9 @@ lspconfig.lua_ls.setup {
     return true
   end
 }
+
+-- marksman
+lspconfig.marksman.setup{}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

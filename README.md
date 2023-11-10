@@ -58,10 +58,8 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc), [ThePr
 ## Plugins included:
 * [vim-commentary](https://github.com/tpope/vim-commentary)
 * [lightline.vim](https://github.com/itchyny/lightline.vim)
-* [nerdtree](https://github.com/preservim/nerdtree)
 * [vim-gitbranch](https://github.com/itchyny/vim-gitbranch)
 * [vim-yankstack](https://github.com/maxbrunsfeld/vim-yankstack)
-* [vim-markdown](https://github.com/preservim/vim-markdown)
 * [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 * [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 * [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
@@ -89,9 +87,9 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc), [ThePr
 ## Others
 * [the_silver_searcher](https://github.com/ggreer/the_silver_searcher) is 
 supported as 'grep' command (but you need to install it on your system first)
-* [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
 * [ripgrep](https://github.com/BurntSushi/ripgrep#installation) should be
 installed first if you want to use telescope livegrep
+* [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
 
 # Small notes
 * Use `:lua SeeWaifu()` or `:lua SeeWaifu("new-colorscheme")` to make your background transparent and see your waifu

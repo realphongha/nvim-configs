@@ -2,10 +2,6 @@
 	path = plugins/commentary
 	url = https://tpope.io/vim/commentary.git
 	branch = master
-[submodule "plugins/nerdtree"]
-	path = extended_plugins/nerdtree
-	url = https://github.com/preservim/nerdtree.git
-	branch = master
 [submodule "plugins/vim-yankstack"]
 	path = plugins/vim-yankstack
 	url = https://github.com/maxbrunsfeld/vim-yankstack.git
@@ -17,10 +13,6 @@
 [submodule "plugins/vim-gitbranch"]
 	path = plugins/vim-gitbranch
 	url = https://github.com/itchyny/vim-gitbranch.git
-	branch = master
-[submodule "language_plugins/vim-markdown"]
-	path = language_plugins/vim-markdown
-	url = https://github.com/preservim/vim-markdown.git
 	branch = master
 [submodule "nvim_plugins/cmp-buffer"]
 	path = nvim_plugins/cmp-buffer
@@ -98,3 +90,7 @@
 	path = plugins/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
     branch = master
+[submodule "nvim_plugins/mason-lspconfig.nvim"]
+	path = nvim_plugins/mason-lspconfig.nvim
+	url = https://github.com/williamboman/mason-lspconfig.nvim.git
+    branch = main

@@ -29,8 +29,6 @@ def main(opt):
     print("Writing init.vim...")
     vimrcs = ["vimrcs/basic.vim",]
     vimrcs.append("vimrcs/plugins.vim")
-    if opt.extended_plugins:
-        vimrcs.append("vimrcs/extended_plugins.vim")
     if os.path.isfile("vimrcs/my_configs.vim"):
         vimrcs.append("vimrcs/my_configs.vim")
     os.system("cat %s > %s" % (" ".join(vimrcs), os.path.join(CONFIG_PATH, "init.vim")))
@@ -40,8 +38,6 @@ def main(opt):
     LUA_CONFIG_PATH = os.path.join(CONFIG_PATH, "lua")
     os.makedirs(LUA_CONFIG_PATH, exist_ok=True)
     lua_files = "luas/basic.lua luas/plugins.lua"
-    if opt.extended_plugins:
-        lua_files = f"{lua_files} luas/extended_plugins.lua"
     if os.path.isfile("luas/my_configs.lua"):
         lua_files = f"{lua_files} luas/my_configs.lua"
     os.system("cat %s > %s" % (lua_files, os.path.join(LUA_CONFIG_PATH, "config.lua")))
@@ -70,15 +66,6 @@ def main(opt):
             continue
         shutil.copytree(path, os.path.join(PLUGINS_PATH, dn))
 
-    print("Copying language-wise plugins...")
-    LPLUGINS_PATH = os.path.join(PACK_PATH, "languages/start")
-    os.makedirs(LPLUGINS_PATH, exist_ok=True)
-    for dn in os.listdir("language_plugins"):
-        path = os.path.join("language_plugins", dn)
-        if not os.path.isdir(path):
-            continue
-        shutil.copytree(path, os.path.join(LPLUGINS_PATH, dn))
-
     print("Copying nvim plugins...")
     NVIM_PLUGINS_PATH = os.path.join(PACK_PATH, "nvim/start")
     os.makedirs(NVIM_PLUGINS_PATH, exist_ok=True)
@@ -97,15 +84,6 @@ def main(opt):
             continue
         shutil.copytree(path, os.path.join(MY_PLUGINS_PATH, dn))
 
-    if opt.extended_plugins:
-        print("Copying extended plugins...")
-        EX_PLUGINS_PATH = os.path.join(PACK_PATH, "ex/start")
-        os.makedirs(EX_PLUGINS_PATH, exist_ok=True)
-        for dn in os.listdir("extended_plugins"):
-            path = os.path.join("extended_plugins", dn)
-            if not os.path.isdir(path):
-                continue
-            shutil.copytree(path, os.path.join(EX_PLUGINS_PATH, dn))
     print("Done! Enjoy! :D")
 
 
@@ -122,12 +100,6 @@ if __name__ == "__main__":
         action="store_true",
         default=False,
         help="Delete config and data directory first"
-    )
-    parser.add_argument(
-        '--extended-plugins',
-        action="store_true",
-        default=False,
-        help="Install extended plugins"
     )
     opt = parser.parse_args()
     main(opt)
