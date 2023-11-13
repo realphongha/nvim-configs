@@ -10,10 +10,6 @@
 	path = plugins/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
 	branch = master
-[submodule "plugins/vim-gitbranch"]
-	path = plugins/vim-gitbranch
-	url = https://github.com/itchyny/vim-gitbranch.git
-	branch = master
 [submodule "nvim_plugins/cmp-buffer"]
 	path = nvim_plugins/cmp-buffer
 	url = https://github.com/hrsh7th/cmp-buffer.git
