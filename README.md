@@ -31,7 +31,7 @@ Plugins can also be removed by `git rm <path/to/submodule>`.
 # Install LSP servers:
 Some LSP servers are already integrated in .lua configs but you need to install
 them first.
-## Use [mason.nvim](https://github.com/williamboman/mason.nvim) (already installed) or manually install (below).
+## You can use [mason.nvim](https://github.com/williamboman/mason.nvim) (already installed) or manually install (below):
 ## For pyright:
 `npm i -g pyright`  
 ## For tsserver
@@ -53,15 +53,14 @@ Create vimrcs/my_configs.vim or luas/my_configs.lua and customize your own confi
 Then install it with the same commands above.
 
 # Acknowledgements
-This repo is directly inspired by [vimrc](https://github.com/amix/vimrc), [ThePrimeagen video](https://www.youtube.com/watch?v=w7i4amO_zaE) and 
+This repo is directly inspired by [vimrc](https://github.com/amix/vimrc), 
+[ThePrimeagen video](https://www.youtube.com/watch?v=w7i4amO_zaE) and 
 [Learn Vimscript the Hard Way](https://learnvimscriptthehardway.stevelosh.com/).  
 ## Plugins included:
 * [vim-commentary](https://github.com/tpope/vim-commentary)
 * [lightline.vim](https://github.com/itchyny/lightline.vim)
-* [nerdtree](https://github.com/preservim/nerdtree)
-* [vim-gitbranch](https://github.com/itchyny/vim-gitbranch)
+* [vim-fugitive](https://github.com/tpope/vim-fugitive.git)
 * [vim-yankstack](https://github.com/maxbrunsfeld/vim-yankstack)
-* [vim-markdown](https://github.com/preservim/vim-markdown)
 * [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 * [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 * [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
@@ -76,6 +75,7 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc), [ThePr
 * [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 * [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
 * [nvim-web-icons](https://github.com/nvim-tree/nvim-web-devicons)
+* [mason.nvim](https://github.com/williamboman/mason.nvim)
 ## Colorschemes included:
 * [rose-pine](https://github.com/rose-pine/neovim.git)
 * [catppuccin](https://github.com/catppuccin/nvim)
@@ -87,14 +87,14 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc), [ThePr
 ## Others
 * [the_silver_searcher](https://github.com/ggreer/the_silver_searcher) is 
 supported as 'grep' command (but you need to install it on your system first)
-* [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
 * [ripgrep](https://github.com/BurntSushi/ripgrep#installation) should be
 installed first if you want to use telescope livegrep
+* [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
 
 # Small notes
-* Use `:lua SeeWaifu()` or `:lua SeeWaifu("new-colorscheme")` to make your background transparent and see your waifu
+* Use `:lua SeeWaifu()` or `:lua SeeWaifu("colorscheme-name")` to make your background transparent and see your waifu
 in the terminal :D
-* You can run add_nvimqt_to_context_menu_windows.reg to add Neovim Qt to
+* You can run `misc/add_nvimqt_to_context_menu_windows.reg` to add Neovim Qt to
 context menu (only for Windows) (stolen from [here](https://github.com/neovim/neovim/issues/7222#issuecomment-927413185)) :D
 * Check out [my minimal configs for tmux](https://gist.github.com/realphongha/abbc89ad908d94afa054049b64eb7917) if you want to use it with nvim
 
