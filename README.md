@@ -19,6 +19,9 @@ extended_plugins and install them with --extended-plugins flag: `python3
 install.py --extended-plugins`  
 
 # How to add new own plugins?
+Plugins are managed merely as submodules in this repo. A third-party package 
+manager is not included in this project. I'm still using built-in Vim 
+package manager instead.  
 You can add new plugins as a submodule to install by:  
 `git submodule add <plugin_git_repo_url> my_plugins/<plugin_name>` and
 specify the branch name for the submodule in `.gitmodules` (so it can be
@@ -97,6 +100,3 @@ in the terminal :D
 * You can run `misc/add_nvimqt_to_context_menu_windows.reg` to add Neovim Qt to
 context menu (only for Windows) (stolen from [here](https://github.com/neovim/neovim/issues/7222#issuecomment-927413185)) :D
 * Check out [my minimal configs for tmux](https://gist.github.com/realphongha/abbc89ad908d94afa054049b64eb7917) if you want to use it with nvim
-
-# PS
-A third-party package manager is not included in this project. I'm still using built-in Vim package manager instead :). Feel free to customize them as you like.
