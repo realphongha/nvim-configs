@@ -189,33 +189,32 @@ vim.api.nvim_set_keymap("v", [[<leader>{]], [[xa{}<Esc>P]],
     {noremap = true, silent = true}
 )
 
----- We kept terminal settings in vimscript for more flexibility
 -- Quickly exit Terminal mode
--- vim.api.nvim_set_keymap("t", [[<Esc>]], [[<C-\><C-n>]],
---     {noremap = true, silent = true}
--- )
+vim.api.nvim_set_keymap("t", [[<Esc>]], [[<C-\><C-n>]],
+    {noremap = true, silent = true}
+)
 
 -- Map terminal opening settings
--- if vim.g.os == "Darwin" then
---     vim.cmd([[command Terminal split term://zsh]])
---     vim.cmd([[command TerminalTab tabe term://zsh]])
--- elseif vim.g.os == "Linux" then
---     vim.cmd([[command Terminal split term://bash]])
---     vim.cmd([[command TerminalTab tabe term://bash]])
--- end
+if vim.g.os == "Darwin" then
+    vim.cmd([[command Terminal split term://zsh]])
+    vim.cmd([[command TerminalTab tabe term://zsh]])
+elseif vim.g.os == "Linux" then
+    vim.cmd([[command Terminal split term://bash]])
+    vim.cmd([[command TerminalTab tabe term://bash]])
+end
 
 -- Quickly open terminal and resize terminal window
--- if vim.g.os == "Windows_NT" then
---     vim.api.nvim_set_keymap("n",
---         [[<leader>T]], [[:split<cr>:resize 10<cr>:term<cr>i]],
---         {noremap = true, silent = true}
---     )
--- else
---     vim.api.nvim_set_keymap("n",
---         [[<leader>T]], [[:Terminal<cr>:resize 10<cr>i]],
---         {noremap = true, silent = true}
---     )
--- end
+if vim.g.os == "Windows_NT" then
+    vim.api.nvim_set_keymap("n",
+        [[<leader>T]], [[:split<cr>:resize 10<cr>:term<cr>i]],
+        {noremap = true, silent = true}
+    )
+else
+    vim.api.nvim_set_keymap("n",
+        [[<leader>T]], [[:Terminal<cr>:resize 10<cr>i]],
+        {noremap = true, silent = true}
+    )
+end
 
 -- Quickly removes hightlight
 vim.api.nvim_set_keymap("", [[<leader><Esc>]], [[:noh<cr>]],
@@ -242,9 +241,11 @@ vim.api.nvim_set_keymap("v", "K", [[:m '<-2<CR>gv=gv]],
 -- vim.api.nvim_set_keymap("c", "<C-j>", "<down>",
 --     {noremap = true, silent = true}
 -- )
--- lua doesn't work, I don't have a clue why
+-- lua-style config doesn't work, I don't have a clue why
 vim.cmd([[:cnoremap <C-k> <Up>]])
 vim.cmd([[:cnoremap <C-j> <Down>]])
+vim.cmd([[:cnoremap <C-h> <Left>]])
+vim.cmd([[:cnoremap <C-l> <Right>]])
 
 -- Quickly toggle NvimTree
 vim.api.nvim_set_keymap("", "<leader>t", ":NvimTreeToggle<cr>",
