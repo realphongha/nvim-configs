@@ -90,3 +90,6 @@
 	path = nvim_plugins/mason-lspconfig.nvim
 	url = https://github.com/williamboman/mason-lspconfig.nvim.git
     branch = main
+[submodule "plugins/undotree"]
+	path = plugins/undotree
+	url = https://github.com/mbbill/undotree.git

@@ -69,5 +69,12 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 " }}}
 
+" => undotree {{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap <leader>u :UndotreeToggle<CR>
+
+" }}}
+
 "" Language-wise plugins 
 
