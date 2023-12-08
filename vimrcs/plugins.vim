@@ -45,6 +45,12 @@ hi! link netrwMarkFile Search
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Statusline contents
+if stridx(g:colors_name, "catppuccin") >= 0
+    let colorname = "catppuccin"
+else
+    let colorname = "default"
+endif
+
 let g:lightline = {
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
@@ -55,7 +61,8 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead'
       \ },
       \ 'separator': { 'left': ' ', 'right': ' ' },
-      \ 'subseparator': { 'left': ' ', 'right': ' ' }
+      \ 'subseparator': { 'left': ' ', 'right': ' ' },
+      \ 'colorscheme': colorname,
       \ }
 
 " }}}
