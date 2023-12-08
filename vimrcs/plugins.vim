@@ -46,9 +46,9 @@ hi! link netrwMarkFile Search
 
 " Statusline contents
 if stridx(g:colors_name, "catppuccin") >= 0
-    let colorname = "catppuccin"
+    let lightline_colorname = "catppuccin"
 else
-    let colorname = "default"
+    let lightline_colorname = "default"
 endif
 
 let g:lightline = {
@@ -62,7 +62,7 @@ let g:lightline = {
       \ },
       \ 'separator': { 'left': ' ', 'right': ' ' },
       \ 'subseparator': { 'left': ' ', 'right': ' ' },
-      \ 'colorscheme': colorname,
+      \ 'colorscheme': lightline_colorname,
       \ }
 
 " }}}
