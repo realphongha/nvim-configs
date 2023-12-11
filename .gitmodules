@@ -93,3 +93,6 @@
 [submodule "plugins/undotree"]
 	path = plugins/undotree
 	url = https://github.com/mbbill/undotree.git
+[submodule "plugins/vim-doge"]
+	path = plugins/vim-doge
+	url = https://github.com/kkoomen/vim-doge.git

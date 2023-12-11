@@ -62,6 +62,8 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc),
 ## Plugins included:
 * [vim-commentary](https://github.com/tpope/vim-commentary)
 * [lightline.vim](https://github.com/itchyny/lightline.vim)
+* [undotree](https://github.com/mbbill/undotree.git)
+* [vim-doge](https://github.com/kkoomen/vim-doge.git)
 * [vim-fugitive](https://github.com/tpope/vim-fugitive.git)
 * [vim-yankstack](https://github.com/maxbrunsfeld/vim-yankstack)
 * [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
@@ -93,6 +95,7 @@ supported as 'grep' command (but you need to install it on your system first)
 * [ripgrep](https://github.com/BurntSushi/ripgrep#installation) should be
 installed first if you want to use telescope livegrep
 * [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
+* For vim-doge, you need to run ":call doge#install()" once to install it
 
 # Small notes
 * Use `:lua SeeWaifu()` or `:lua SeeWaifu("colorscheme-name")` to make your background transparent and see your waifu

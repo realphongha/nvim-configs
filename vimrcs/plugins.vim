@@ -83,5 +83,19 @@ nnoremap <leader>u :UndotreeToggle<CR>
 
 " }}}
 
+" => vim-doge {{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Run ":call doge#install()" once to install vim-doge
+" Mappings
+" Generate comment for current line.
+nmap <silent> <Leader>d <Plug>(doge-generate)
+
+" Docstring standards
+let g:doge_doc_standard_python = 'google'
+let g:doge_doc_standard_c = 'doxygen_javadoc'
+let g:doge_doc_standard_cpp = 'doxygen_javadoc'
+
+" }}}
+
 "" Language-wise plugins 
 
