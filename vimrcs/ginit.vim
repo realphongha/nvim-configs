@@ -4,7 +4,7 @@ set mouse=a
 " Detect OS
 if !exists("g:os")
     if has("win64") || has("win32") || has("win16")
-        let g:os = "Windows"
+        let g:os = "Windows_NT"
     else
         let g:os = substitute(system('uname'), '\n', '', '')
     endif
@@ -13,7 +13,7 @@ endif
 " Set Editor Font
 if exists(':GuiFont')
     " Use GuiFont! to ignore font errors
-    if (g:os == "Windows")
+    if (g:os == "Windows_NT")
         GuiFont! JetBrainsMono Nerd Font:h10.5
     else
         GuiFont! JetBrainsMono Nerd Font:h14
@@ -44,6 +44,6 @@ snoremap <silent><RightMouse> <C-G>:call GuiShowContextMenu()<CR>gv
 " Exclusive colorscheme configs for Neovim Qt
 colorscheme catppuccin
 
-if (g:os != "Windows")
+if (g:os != "Windows_NT")
     NvimTreeClose
 endif
