@@ -336,11 +336,6 @@ vim.cmd([[:cnoremap <C-j> <Down>]])
 vim.cmd([[:cnoremap <C-h> <Left>]])
 vim.cmd([[:cnoremap <C-l> <Right>]])
 
--- Quickly toggle NvimTree
-vim.api.nvim_set_keymap("", "<leader>t", ":NvimTreeToggle<cr>",
-    {noremap = true, silent = true}
-)
-
 -- Quickly replace in all quickfixes
 function RP(search, replace)
     local command = ":cdo s/" .. search .. "/" .. replace .. "/g | update"

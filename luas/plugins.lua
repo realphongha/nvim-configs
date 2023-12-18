@@ -60,9 +60,24 @@ local function open_nvim_tree(data)
     require("nvim-tree.api").tree.open()
 end
 
-vim.api.nvim_create_autocmd({ "VimEnter" }, { 
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
     callback = open_nvim_tree
 })
+
+-- Reload current tree root (navigated by :cd <path>)
+function ReloadNvimTreeRoot()
+    require("nvim-tree.api").tree.change_root(vim.fn.getcwd())
+end
+
+vim.api.nvim_set_keymap("", "<leader>r", ":lua ReloadNvimTreeRoot()<CR>",
+    {noremap = true, silent = true}
+)
+
+-- Quickly toggle NvimTree
+vim.api.nvim_set_keymap("", "<leader>t", ":NvimTreeToggle<cr>",
+    {noremap = true, silent = true}
+)
+
 
 ------------------------------------------------------------------------------
 -- nvim-web-devicons 

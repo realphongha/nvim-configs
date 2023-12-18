@@ -1,10 +1,23 @@
 " Enable Mouse
 set mouse=a
 
+" Detect OS
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
 " Set Editor Font
 if exists(':GuiFont')
     " Use GuiFont! to ignore font errors
-    GuiFont! JetBrainsMono Nerd Font:h10.5
+    if (g:os == "Windows")
+        GuiFont! JetBrainsMono Nerd Font:h10.5
+    else
+        GuiFont! JetBrainsMono Nerd Font:h14
+    endif
 endif
 
 " Disable GUI Tabline
@@ -27,3 +40,10 @@ nnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>
 inoremap <silent><RightMouse> <Esc>:call GuiShowContextMenu()<CR>
 xnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>gv
 snoremap <silent><RightMouse> <C-G>:call GuiShowContextMenu()<CR>gv
+
+" Exclusive colorscheme configs for Neovim Qt
+colorscheme catppuccin
+
+if (g:os != "Windows")
+    NvimTreeClose
+endif

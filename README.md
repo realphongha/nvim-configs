@@ -100,6 +100,8 @@ installed first if you want to use telescope livegrep
 # Small notes
 * Use `:lua SeeWaifu()` or `:lua SeeWaifu("colorscheme-name")` to make your background transparent and see your waifu
 in the terminal :D
-* You can run `misc/add_nvimqt_to_context_menu_windows.reg` to add Neovim Qt to
+* Simple Neovim Qt configs is also supported. 
+[Neovim Qt](https://github.com/equalsraf/neovim-qt) must be installed first. 
+You can run `misc/add_nvimqt_to_context_menu_windows.reg` to add Neovim Qt to
 context menu (only for Windows) (stolen from [here](https://github.com/neovim/neovim/issues/7222#issuecomment-927413185)) :D
 * Check out [my minimal configs for tmux](https://gist.github.com/realphongha/abbc89ad908d94afa054049b64eb7917) if you want to use it with nvim
