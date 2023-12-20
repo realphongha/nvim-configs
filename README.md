@@ -13,10 +13,7 @@ then
 installing.  
 For reinstalling, ~/.config/nvim and ~/.local/share/nvim or ~/AppData/Local/nvim
 for Windows must be deleted first. You can also do that with --reinstall flag:  
-`python3 install.py --reinstall`  
-Extended plugins is not installed by default, you can clone repos into
-extended_plugins and install them with --extended-plugins flag: `python3
-install.py --extended-plugins`  
+`python3 install.py --reinstall`.
 
 # How to add new own plugins?
 Plugins are managed merely as submodules in this repo. A third-party package 
