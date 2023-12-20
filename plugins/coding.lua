@@ -42,31 +42,12 @@ return {
         ft = "lua,python,markdown",
         opts = {
             ensure_installed = {"lua_ls", "pyright", "marksman"}
-        }
-    },
-    --  }}}
-
-    --------------------------------------------------------------------------
-    -- {{{ nvim-lspconfig 
-    {
-        "neovim/nvim-lspconfig",
-        lazy = false,
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
         },
         config = function ()
-            local lspconfig = require('lspconfig')
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            local lsp_defaults = lspconfig.util.default_config
-
-            lsp_defaults.capabilities = vim.tbl_deep_extend(
-                'force',
-                lsp_defaults.capabilities,
-                capabilities
-            )
-
             -- pyright
             local python_path = vim.fn.trim(vim.fn.system("which python"))
+            local lspconfig = require('lspconfig')
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
             lspconfig.pyright.setup {
                 settings = {
                     python = {
@@ -142,6 +123,28 @@ return {
 
             -- marksman
             lspconfig.marksman.setup{}
+        end
+    },
+    --  }}}
+
+    --------------------------------------------------------------------------
+    -- {{{ nvim-lspconfig 
+    {
+        "neovim/nvim-lspconfig",
+        lazy = false,
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+        },
+        config = function ()
+            local lspconfig = require('lspconfig')
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            local lsp_defaults = lspconfig.util.default_config
+
+            lsp_defaults.capabilities = vim.tbl_deep_extend(
+                'force',
+                lsp_defaults.capabilities,
+                capabilities
+            )
 
             -- Global mappings.
             -- See `:help vim.diagnostic.*` for documentation on any of the below functions
