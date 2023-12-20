@@ -6,33 +6,17 @@ Tested with nvim 0.9.0, 0.9.1, 0.9.2, 0.9.3 on MacOS, Linux and Windows.
 First clone this repo  
 `git clone https://github.com/realphongha/nvim-configs.git`  
 `cd nvim-configs`  
-get all submodules by  
-`git submodule update --init --recursive`
 then  
-`python3 install.py` to install. See install.py for more options when
-installing.  
-For reinstalling, ~/.config/nvim and ~/.local/share/nvim or ~/AppData/Local/nvim
-for Windows must be deleted first. You can also do that with --reinstall flag:  
-`python3 install.py --reinstall`  
-Extended plugins is not installed by default, you can clone repos into
-extended_plugins and install them with --extended-plugins flag: `python3
-install.py --extended-plugins`  
+`python3 install.py` to install (or `python3 install.py --reinstall` to reset all neovim data first)
 
-# How to add new own plugins?
-Plugins are managed merely as submodules in this repo. A third-party package 
-manager is not included in this project. I'm still using built-in Vim 
-package manager instead.  
-You can add new plugins as a submodule to install by:  
-`git submodule add <plugin_git_repo_url> my_plugins/<plugin_name>` and
-specify the branch name for the submodule in `.gitmodules` (so it can be
-updated).  
-Plugins can also be removed by `git rm <path/to/submodule>`.
-
-# How to update?
-`git submodule update --remote`
+# Plugin manager
+[lazy.nvim](https://github.com/folke/lazy.nvim)
+## Lazy load:
+* `:Mason` to load mason.nvim
+* `:Git` to load vim-fugitive
 
 # Install LSP servers:
-Some LSP servers are already integrated in .lua configs but you need to install
+Some LSP servers are already integrated in configs but you need to install
 them first.
 ## You can use [mason.nvim](https://github.com/williamboman/mason.nvim) (already installed) or manually install (below):
 ## For pyright:
@@ -95,7 +79,6 @@ supported as 'grep' command (but you need to install it on your system first)
 * [ripgrep](https://github.com/BurntSushi/ripgrep#installation) should be
 installed first if you want to use telescope livegrep
 * [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
-* For vim-doge, you need to run ":call doge#install()" once to install it
 
 # Small notes
 * Use `:lua SeeWaifu()` or `:lua SeeWaifu("colorscheme-name")` to make your background transparent and see your waifu
