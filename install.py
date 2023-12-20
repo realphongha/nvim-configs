@@ -1,4 +1,5 @@
 import os
+import sys
 import argparse
 import platform
 import shutil
@@ -19,9 +20,19 @@ def main(opt):
 
     print("Deleting previous configs...")
     try:
+        ans = input(f"Your `{CONFIG_PATH}` directory will be deleted!"
+            "Continue? (y/n): ")
+        ans = ans.strip().lower()
+        if ans != "y":
+            sys.exit(0)
         shutil.rmtree(CONFIG_PATH)
         if opt.reinstall:
             print("Deleting neovim data...")
+            ans = input(f"Your `{DATA_PATH}` directory will be deleted!"
+                "Continue? (y/n): ")
+            ans = ans.strip().lower()
+            if ans != "y":
+                sys.exit(0)
             shutil.rmtree(DATA_PATH)
     except OSError as err:
         print(err)
