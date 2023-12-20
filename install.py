@@ -21,7 +21,7 @@ def main(opt):
     print("Deleting previous configs...")
     try:
         ans = input(f"Your `{CONFIG_PATH}` directory will be deleted!"
-            "Continue? (y/n): ")
+            " Continue? (y/n): ")
         ans = ans.strip().lower()
         if ans != "y":
             sys.exit(0)
@@ -29,7 +29,7 @@ def main(opt):
         if opt.reinstall:
             print("Deleting neovim data...")
             ans = input(f"Your `{DATA_PATH}` directory will be deleted!"
-                "Continue? (y/n): ")
+                " Continue? (y/n): ")
             ans = ans.strip().lower()
             if ans != "y":
                 sys.exit(0)
@@ -54,7 +54,7 @@ def main(opt):
             shutil.copy(os.path.join("plugins", fn), PLUGINS_PATH)
     for fn in os.listdir("my_plugins"):
         if fn.endswith(".lua"):
-            shutil.copy(os.path.join("plugins", fn), PLUGINS_PATH)
+            shutil.copy(os.path.join("my_plugins", fn), PLUGINS_PATH)
 
     print("Done! Enjoy! :D")
 
