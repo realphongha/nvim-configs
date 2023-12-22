@@ -35,8 +35,14 @@ them first.
 [Install](https://github.com/rust-lang/rust-analyzer)
 ## For lua-language-server
 [Install](https://luals.github.io/#neovim-install) 
-# Add customized configs
-Create vimrcs/my_configs.vim or luas/my_configs.lua and customize your own configs.
+## To add other LSP supports:
+* Install LSP servers (manually or using mason.nvim)
+* Add LSP configs for neovim in `plugins/coding.lua`, mason-lspconfig->config section.
+* Add lazy load condition to nvim-lspconfig->ft section in `plugins/codding.lua`
+
+# Add your personal configs and plugins
+Create `vimrcs/my_configs.lua` for your personal configs or 
+`my_plugins/<plugin_name>.lua` for your personal plugins.
 Then install it with the same commands above.
 
 # Acknowledgements

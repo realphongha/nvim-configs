@@ -39,7 +39,6 @@ return {
             "williamboman/mason.nvim",
             "neovim/nvim-lspconfig"
         },
-        ft = "lua,python,markdown",
         opts = {
             ensure_installed = {"lua_ls", "pyright", "marksman"}
         },
@@ -131,10 +130,12 @@ return {
     -- {{{ nvim-lspconfig 
     {
         "neovim/nvim-lspconfig",
-        lazy = false,
+        lazy = true,
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
+            "williamboman/mason-lspconfig.nvim",
         },
+        ft = "python,markdown,lua,c,cpp,cuda,rust,javascript,typesript,cmake",
         config = function ()
             local lspconfig = require('lspconfig')
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -195,7 +196,7 @@ return {
         lazy = true,
         event = {"InsertEnter", "CmdlineEnter"},
         dependencies = {
-            "neovim/nvim-lspconfig",
+            -- "neovim/nvim-lspconfig",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-cmdline",
