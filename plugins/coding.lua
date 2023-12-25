@@ -14,7 +14,9 @@ return {
     {
         "williamboman/mason.nvim",
         lazy = true,
-        cmd = "Mason",
+        dependencies = {
+            "neovim/nvim-lspconfig"
+        },
         config = function ()
             require("mason").setup({
                 ui = {
@@ -39,10 +41,10 @@ return {
             "williamboman/mason.nvim",
             "neovim/nvim-lspconfig"
         },
-        opts = {
-            ensure_installed = {"lua_ls", "pyright", "marksman"}
-        },
         config = function ()
+            require("mason-lspconfig").setup {
+                ensure_installed = { "pyright", "lua_ls" },
+            }
             -- pyright
             local python_path = vim.fn.trim(vim.fn.system("which python"))
             local lspconfig = require('lspconfig')
@@ -133,6 +135,7 @@ return {
         lazy = true,
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
+            "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
         },
         ft = "python,markdown,lua,c,cpp,cuda,rust,javascript,typesript,cmake",
