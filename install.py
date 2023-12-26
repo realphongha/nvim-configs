@@ -8,81 +8,53 @@ import shutil
 def main(opt):
     HOME_PATH = os.path.expanduser("~")
     platf = platform.system()
+    print(f"Platform detected: {platf if platf != 'Darwin' else 'MacOS'}!")
     if platf in ("Darwin", "Linux"):
         CONFIG_PATH = os.path.join(HOME_PATH, ".config/nvim")
-        PACK_PATH = os.path.join(HOME_PATH, ".local/share/nvim/site/pack")
+        DATA_PATH = os.path.join(HOME_PATH, ".local/share/nvim/")
     elif platf == "Windows":
         CONFIG_PATH = os.path.join(HOME_PATH, "AppData/Local/nvim")
-        PACK_PATH = os.path.join(HOME_PATH, "AppData/Local/nvim-data/site/pack")
+        DATA_PATH = os.path.join(HOME_PATH, "AppData/Local/nvim-data/")
     else:
         raise NotImplementedError(f"Platform {platf} is not supported!")
-    if opt.reinstall and not opt.only_configs:
-        print("Deleting previous nvim data...")
-        try:
-            shutil.rmtree(CONFIG_PATH)
-            shutil.rmtree(PACK_PATH)
-        except OSError as err:
-            print(err)
-    print(f"Platform detected: {platf if platf != 'Darwin' else 'MacOS'}!")
+
+    print("Deleting previous configs...")
+    try:
+        ans = input(f"Your `{CONFIG_PATH}` directory will be deleted!"
+            " Continue? (y/n): ")
+        ans = ans.strip().lower()
+        if ans != "y":
+            sys.exit(0)
+        shutil.rmtree(CONFIG_PATH)
+        if opt.reinstall:
+            print("Deleting neovim data...")
+            ans = input(f"Your `{DATA_PATH}` directory will be deleted!"
+                " Continue? (y/n): ")
+            ans = ans.strip().lower()
+            if ans != "y":
+                sys.exit(0)
+            shutil.rmtree(DATA_PATH)
+    except OSError as err:
+        print(err)
     os.makedirs(CONFIG_PATH, exist_ok=True)
-
-    print("Writing init.vim...")
-    vimrcs = ["vimrcs/basic.vim",]
-    vimrcs.append("vimrcs/plugins.vim")
-    if os.path.isfile("vimrcs/my_configs.vim"):
-        vimrcs.append("vimrcs/my_configs.vim")
-    os.system("cat %s > %s" % (" ".join(vimrcs), os.path.join(CONFIG_PATH, "init.vim")))
-    shutil.copy("vimrcs/ginit.vim", CONFIG_PATH)
-
-    print("Writing .lua files...")
-    LUA_CONFIG_PATH = os.path.join(CONFIG_PATH, "lua")
-    os.makedirs(LUA_CONFIG_PATH, exist_ok=True)
-    lua_files = "luas/basic.lua luas/plugins.lua"
-    if os.path.isfile("luas/my_configs.lua"):
-        lua_files = f"{lua_files} luas/my_configs.lua"
-    os.system("cat %s > %s" % (lua_files, os.path.join(LUA_CONFIG_PATH, "config.lua")))
-
-    print("Copying colorschemes...")
-    COLOR_PATH = os.path.join(CONFIG_PATH, "colors")
-    os.makedirs(COLOR_PATH, exist_ok=True)
-    COLOR_PACK_PATH = os.path.join(PACK_PATH, "colorschemes/start")
-    os.makedirs(COLOR_PACK_PATH, exist_ok=True)
-    for name in os.listdir("colorschemes"):
-        path = os.path.join("colorschemes", name)
-        if os.path.isfile(path) and path.endswith(".vim"):
-            shutil.copy(path, COLOR_PATH)
-        elif os.path.isdir(path) and not opt.only_configs:
-            shutil.copytree(path, os.path.join(COLOR_PACK_PATH, name))
-    if opt.only_configs:
-        print("Done! Enjoy! :D")
-        sys.exit()
-
-    print("Copying plugins...")
-    PLUGINS_PATH = os.path.join(PACK_PATH, "basic/start")
+    PLUGINS_PATH = os.path.join(CONFIG_PATH, "lua", "plugins")
     os.makedirs(PLUGINS_PATH, exist_ok=True)
-    for dn in os.listdir("plugins"):
-        path = os.path.join("plugins", dn)
-        if not os.path.isdir(path):
-            continue
-        shutil.copytree(path, os.path.join(PLUGINS_PATH, dn))
 
-    print("Copying nvim plugins...")
-    NVIM_PLUGINS_PATH = os.path.join(PACK_PATH, "nvim/start")
-    os.makedirs(NVIM_PLUGINS_PATH, exist_ok=True)
-    for dn in os.listdir("nvim_plugins"):
-        path = os.path.join("nvim_plugins", dn)
-        if not os.path.isdir(path):
-            continue
-        shutil.copytree(path, os.path.join(NVIM_PLUGINS_PATH, dn))
-
-    print("Copying your own plugins...")
-    MY_PLUGINS_PATH = os.path.join(PACK_PATH, "my_plugins/start")
-    os.makedirs(MY_PLUGINS_PATH, exist_ok=True)
-    for dn in os.listdir("my_plugins"):
-        path = os.path.join("my_plugins", dn)
-        if not os.path.isdir(path):
-            continue
-        shutil.copytree(path, os.path.join(MY_PLUGINS_PATH, dn))
+    print("Writing new configs...")
+    print("init.lua")
+    lua_files = "vimrcs/init.lua"
+    if os.path.isfile("vimrcs/my_configs.lua"):
+        lua_files += " vimrcs/my_configs.lua"
+    os.system("cat %s > %s" % (lua_files, os.path.join(CONFIG_PATH, "init.lua")))
+    print("ginit.vim")
+    shutil.copy("vimrcs/ginit.vim", CONFIG_PATH)
+    print("Plugins...")
+    for fn in os.listdir("plugins"):
+        if fn.endswith(".lua"):
+            shutil.copy(os.path.join("plugins", fn), PLUGINS_PATH)
+    for fn in os.listdir("my_plugins"):
+        if fn.endswith(".lua"):
+            shutil.copy(os.path.join("my_plugins", fn), PLUGINS_PATH)
 
     print("Done! Enjoy! :D")
 
@@ -90,16 +62,10 @@ def main(opt):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '--only-configs',
-        action="store_true",
-        default=False,
-        help="Only install configs"
-    )
-    parser.add_argument(
         '--reinstall',
         action="store_true",
         default=False,
-        help="Delete config and data directory first"
+        help="Reset all neovim data first"
     )
     opt = parser.parse_args()
     main(opt)
