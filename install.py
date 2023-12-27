@@ -20,20 +20,22 @@ def main(opt):
 
     print("Deleting previous configs...")
     try:
-        ans = input(f"Your `{CONFIG_PATH}` directory will be deleted!"
-            " Continue? (y/n): ")
-        ans = ans.strip().lower()
-        if ans != "y":
-            sys.exit(0)
-        shutil.rmtree(CONFIG_PATH)
-        if opt.reinstall:
-            print("Deleting neovim data...")
-            ans = input(f"Your `{DATA_PATH}` directory will be deleted!"
+        if not opt.y:
+            ans = input(f"Your `{CONFIG_PATH}` directory will be deleted!"
                 " Continue? (y/n): ")
             ans = ans.strip().lower()
             if ans != "y":
                 sys.exit(0)
-            shutil.rmtree(DATA_PATH)
+        shutil.rmtree(CONFIG_PATH, ignore_errors=True)
+        if opt.reinstall:
+            print("Deleting neovim data...")
+            if not opt.y:
+                ans = input(f"Your `{DATA_PATH}` directory will be deleted!"
+                    " Continue? (y/n): ")
+                ans = ans.strip().lower()
+                if ans != "y":
+                    sys.exit(0)
+            shutil.rmtree(DATA_PATH, ignore_errors=True)
     except OSError as err:
         print(err)
     os.makedirs(CONFIG_PATH, exist_ok=True)
@@ -66,6 +68,12 @@ if __name__ == "__main__":
         action="store_true",
         default=False,
         help="Reset all neovim data first"
+    )
+    parser.add_argument(
+        '-y',
+        action="store_true",
+        default=False,
+        help="Ignore confirmation"
     )
     opt = parser.parse_args()
     main(opt)
