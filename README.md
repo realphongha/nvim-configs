@@ -12,7 +12,7 @@ then
 # Plugin manager
 [lazy.nvim](https://github.com/folke/lazy.nvim)
 ## Lazy load:
-* `:Mason` to load mason.nvim (pls load it once after installing this config to initialize LSP servers)
+* `:LspStart` to load nvim-lspconfig (pls run it once after installing this config to initialize LSP servers)
 * `:Git` to load vim-fugitive
 
 # Install LSP servers:

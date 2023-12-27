@@ -36,7 +36,6 @@ return {
     {
         "williamboman/mason-lspconfig.nvim",
         lazy = true,
-        cmd = "Mason",
         dependencies = {
             "williamboman/mason.nvim",
             "neovim/nvim-lspconfig"
@@ -133,6 +132,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         lazy = true,
+        cmd = "LspStart",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "williamboman/mason.nvim",
