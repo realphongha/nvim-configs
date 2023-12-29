@@ -54,6 +54,9 @@ vim.opt.swapfile = false
 -- Use system clipboard
 vim.opt.clipboard:append {"unnamed", "unnamedplus"}
 
+-- Disable mouse supporting for faster copying on ssh servers
+vim.opt.mouse = ""
+
 -- Tab and indent
 vim.opt.expandtab = true
 vim.opt.smarttab = true
