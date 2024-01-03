@@ -51,6 +51,7 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc),
 [Learn Vimscript the Hard Way](https://learnvimscriptthehardway.stevelosh.com/).  
 ## Plugins included:
 * [vim-commentary](https://github.com/tpope/vim-commentary)
+* [vim-sleuth](https://github.com/tpope/vim-sleuth)
 * [lightline.vim](https://github.com/itchyny/lightline.vim)
 * [undotree](https://github.com/mbbill/undotree.git)
 * [vim-doge](https://github.com/kkoomen/vim-doge.git)
