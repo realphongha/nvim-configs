@@ -1,6 +1,6 @@
 # nvim-configs
 My neovim configs and auto-install script.  
-Tested with nvim 0.9.0, 0.9.1, 0.9.2, 0.9.3 on MacOS, Linux and Windows.
+Tested with nvim 0.9.x on MacOS, Linux and Windows.
 
 # How to install?
 First clone this repo  
@@ -90,7 +90,7 @@ installed first if you want to use telescope livegrep
 # Small notes
 * Use `:lua SeeWaifu()` or `:lua SeeWaifu("colorscheme-name")` to make your background transparent and see your waifu
 in the terminal :D
-* Simple Neovim Qt configs is also supported. 
+* Simple Neovim Qt configs is also supported (in `vimrcs/ginit.vim`). 
 [Neovim Qt](https://github.com/equalsraf/neovim-qt) must be installed first. 
 You can run `misc/add_nvimqt_to_context_menu_windows.reg` to add Neovim Qt to
 context menu (only for Windows) (stolen from [here](https://github.com/neovim/neovim/issues/7222#issuecomment-927413185)) :D
