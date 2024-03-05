@@ -107,6 +107,15 @@ return {
             vim.api.nvim_set_keymap("", "<leader>t", ":NvimTreeToggle<cr>",
                 {noremap = true, silent = true}
             )
+
+            -- Removes the annoying undercurl for executable files
+            vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+                callback = function ()
+                    vim.cmd([[
+                        :hi link NvimTreeExecFile NvimTreeNormal
+                    ]])
+                end
+            })
         end,
     },
     -- }}}
