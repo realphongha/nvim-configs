@@ -341,4 +341,35 @@ return {
         end
     },
     -- }}}
+
+    --------------------------------------------------------------------------
+    -- {{{ codeium.vim
+    {
+    'Exafunction/codeium.vim',
+    cmd = "Codeium",
+    keys = {
+        { "<C-c>", mode = { "i" } },
+        { "<C-f>", mode = { "i" } },
+        { "<C-g>", mode = { "i" } }
+    },
+    config = function()
+        vim.g.codeium_disable_bindings = 1
+        vim.keymap.set('i', '<C-c>',
+            function() return vim.fn['codeium#Accept']() end,
+            { expr = true, silent = true, noremap = true })
+        vim.keymap.set('i', '<C-f>',
+            function() return vim.fn['codeium#CycleCompletions'](1) end,
+            { expr = true, silent = true, noremap = true })
+        vim.keymap.set('i', '<C-g>',
+            function() return vim.fn['codeium#CycleCompletions'](-1) end,
+            { expr = true, silent = true, noremap = true })
+        -- vim.keymap.set('i', '<C-x>',
+        --     function() return vim.fn['codeium#Clear']() end,
+        --     { expr = true, silent = true, noremap = true })
+        -- vim.keymap.set('i', '<C-]>',
+        --     function() return vim.fn['codeium#Complete']() end,
+        --     { expr = true, silent = true, noremap = true })
+    end
+},
+    -- }}}
 }
