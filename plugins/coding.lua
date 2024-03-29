@@ -42,19 +42,25 @@ return {
         },
         config = function ()
             require("mason-lspconfig").setup {
-                ensure_installed = { "pyright", "lua_ls" },
+                ensure_installed = { "jedi_language_server", "lua_ls" },
             }
-            -- pyright
-            local python_path = vim.fn.trim(vim.fn.system("which python"))
             local lspconfig = require('lspconfig')
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            lspconfig.pyright.setup {
-                settings = {
-                    python = {
-                        pythonPath = python_path,
-                    }
-                },
-                capabilities = capabilities
+
+            -- pyright
+            -- local python_path = vim.fn.trim(vim.fn.system("which python"))
+            -- lspconfig.pyright.setup {
+            --     settings = {
+            --         python = {
+            --             pythonPath = python_path,
+            --         }
+            --     },
+            --     capabilities = capabilities
+            -- }
+            lspconfig.jedi_language_server.setup {
+                cmd = {"jedi-language-server"},
+                filetypes = {"python"},
+                single_file_support = true,
             }
 
             -- tsserver
