@@ -22,7 +22,7 @@ def main(opt):
     try:
         if not opt.y:
             ans = input(f"Your `{CONFIG_PATH}` directory will be deleted!"
-                " Continue? (y/n): ")
+                        " Continue? (y/n): ")
             ans = ans.strip().lower()
             if ans != "y":
                 sys.exit(0)
@@ -31,7 +31,7 @@ def main(opt):
             print("Deleting neovim data...")
             if not opt.y:
                 ans = input(f"Your `{DATA_PATH}` directory will be deleted!"
-                    " Continue? (y/n): ")
+                            " Continue? (y/n): ")
                 ans = ans.strip().lower()
                 if ans != "y":
                     sys.exit(0)
@@ -47,7 +47,8 @@ def main(opt):
     lua_files = "vimrcs/init.lua"
     if os.path.isfile("vimrcs/my_configs.lua"):
         lua_files += " vimrcs/my_configs.lua"
-    os.system("cat %s > %s" % (lua_files, os.path.join(CONFIG_PATH, "init.lua")))
+    os.system("cat %s > %s" %
+              (lua_files, os.path.join(CONFIG_PATH, "init.lua")))
     print("ginit.vim")
     shutil.copy("vimrcs/ginit.vim", CONFIG_PATH)
     print("Plugins...")
@@ -77,4 +78,3 @@ if __name__ == "__main__":
     )
     opt = parser.parse_args()
     main(opt)
-

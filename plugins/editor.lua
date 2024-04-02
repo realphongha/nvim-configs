@@ -42,7 +42,7 @@ return {
         "kkoomen/vim-doge",
         lazy = false,
         keys = {
-            {"<Leader>d", mode = "n"}
+            {"<leader>d", mode = "n"}
         },
         build = ":call doge#install()",
         config = function ()

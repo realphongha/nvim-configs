@@ -1,6 +1,6 @@
 return {
     --------------------------------------------------------------------------
-    -- {{{ nvim-autopairs 
+    -- {{{ nvim-autopairs
     {
         'windwp/nvim-autopairs',
         lazy = true,
@@ -15,9 +15,9 @@ return {
         "williamboman/mason.nvim",
         lazy = true,
         dependencies = {
-            "neovim/nvim-lspconfig"
+            "neovim/nvim-lspconfig",
         },
-        config = function ()
+        config = function()
             require("mason").setup({
                 ui = {
                     icons = {
@@ -40,7 +40,7 @@ return {
             "williamboman/mason.nvim",
             "neovim/nvim-lspconfig"
         },
-        config = function ()
+        config = function()
             require("mason-lspconfig").setup {
                 ensure_installed = { "jedi_language_server", "lua_ls" },
             }
@@ -58,8 +58,8 @@ return {
             --     capabilities = capabilities
             -- }
             lspconfig.jedi_language_server.setup {
-                cmd = {"jedi-language-server"},
-                filetypes = {"python"},
+                cmd = { "jedi-language-server" },
+                filetypes = { "python" },
                 single_file_support = true,
             }
 
@@ -74,7 +74,7 @@ return {
                 settings = {
                     ['rust-analyzer'] = {
                         diagnostic = {
-                            enable = false;
+                            enable = false,
                         }
                     },
                 },
@@ -82,24 +82,24 @@ return {
             }
 
             -- ccls
-            -- lspconfig.ccls.setup {  
+            -- lspconfig.ccls.setup {
             --     capabilities = capabilities
             -- }
 
             -- clangd.
             lspconfig.clangd.setup {
-                capabilities = capabilities;
-                support_single_file = true;
+                capabilities = capabilities,
+                support_single_file = true,
             }
 
             --cmake
-            lspconfig.cmake.setup{}
+            lspconfig.cmake.setup {}
 
             --lua for nvim
             lspconfig.lua_ls.setup {
                 on_init = function(client)
                     local path = client.workspace_folders[1].name
-                    if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
+                    if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
                         client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
                             Lua = {
                                 runtime = {
@@ -128,13 +128,13 @@ return {
             }
 
             -- marksman
-            lspconfig.marksman.setup{}
+            lspconfig.marksman.setup {}
         end
     },
     --  }}}
 
     --------------------------------------------------------------------------
-    -- {{{ nvim-lspconfig 
+    -- {{{ nvim-lspconfig
     {
         "neovim/nvim-lspconfig",
         lazy = true,
@@ -145,7 +145,7 @@ return {
             "williamboman/mason-lspconfig.nvim",
         },
         ft = "python,markdown,lua,c,cpp,cuda,rust,javascript,typesript,cmake",
-        config = function ()
+        config = function()
             local lspconfig = require('lspconfig')
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
             local lsp_defaults = lspconfig.util.default_config
@@ -203,7 +203,7 @@ return {
     {
         "hrsh7th/nvim-cmp",
         lazy = true,
-        event = {"InsertEnter", "CmdlineEnter"},
+        event = { "InsertEnter", "CmdlineEnter" },
         dependencies = {
             -- "neovim/nvim-lspconfig",
             "hrsh7th/cmp-nvim-lsp",
@@ -214,9 +214,9 @@ return {
             "hrsh7th/vim-vsnip",
             'windwp/nvim-autopairs',
         },
-        config = function ()
+        config = function()
             -- Set up nvim-cmp.
-            local cmp = require'cmp'
+            local cmp = require 'cmp'
 
             cmp.setup({
                 -- to remove LSP priority to select completion
@@ -243,9 +243,9 @@ return {
                 }),
                 sources = cmp.config.sources({
                     { name = 'nvim_lsp', priority = 1000 },
-                    { name = 'vsnip', priority = 900 },
-                    { name = 'buffer', priority = 800 },
-                    { name = 'path', priority = 700 },
+                    { name = 'vsnip',    priority = 900 },
+                    { name = 'buffer',   priority = 800 },
+                    { name = 'path',     priority = 700 },
                 })
             })
 
@@ -254,8 +254,8 @@ return {
                 sources = cmp.config.sources({
                     { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
                 }, {
-                        { name = 'buffer' },
-                    })
+                    { name = 'buffer' },
+                })
             })
 
             -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
@@ -272,8 +272,8 @@ return {
                 sources = cmp.config.sources({
                     { name = 'path' }
                 }, {
-                        { name = 'cmdline' }
-                    })
+                    { name = 'cmdline' }
+                })
             })
 
             cmp.setup({
@@ -349,33 +349,60 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
+    -- {{{ none-ls.vim
+    {
+        'nvimtools/none-ls.nvim',
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvimtools/none-ls-extras.nvim",
+        },
+        ft = "python,lua,c,cpp,rust,javascript,typesript,cmake",
+        -- doesn't work, don't know why:
+        -- keys = {
+        --     { "<leader>f", mode = "n" }
+        -- },
+        config = function()
+            local null_ls = require("null-ls")
+            null_ls.setup({
+                sources = {
+                    null_ls.builtins.completion.spell,
+                    null_ls.builtins.formatting.black,
+                    require("none-ls.diagnostics.flake8"),
+                    null_ls.builtins.formatting.clang_format,
+                },
+            });
+        end
+    },
+    -- }}}
+
+    --------------------------------------------------------------------------
     -- {{{ codeium.vim
     {
-    'Exafunction/codeium.vim',
-    cmd = "Codeium",
-    keys = {
-        { "<C-c>", mode = { "i" } },
-        { "<C-f>", mode = { "i" } },
-        { "<C-g>", mode = { "i" } }
+        'Exafunction/codeium.vim',
+        cmd = "Codeium",
+        keys = {
+            { "<C-c>", mode = { "i" } },
+            { "<C-f>", mode = { "i" } },
+            { "<C-g>", mode = { "i" } }
+        },
+        config = function()
+            vim.g.codeium_disable_bindings = 1
+            vim.keymap.set('i', '<C-c>',
+                function() return vim.fn['codeium#Accept']() end,
+                { expr = true, silent = true, noremap = true })
+            vim.keymap.set('i', '<C-f>',
+                function() return vim.fn['codeium#CycleCompletions'](1) end,
+                { expr = true, silent = true, noremap = true })
+            vim.keymap.set('i', '<C-g>',
+                function() return vim.fn['codeium#CycleCompletions'](-1) end,
+                { expr = true, silent = true, noremap = true })
+            -- vim.keymap.set('i', '<C-x>',
+            --     function() return vim.fn['codeium#Clear']() end,
+            --     { expr = true, silent = true, noremap = true })
+            -- vim.keymap.set('i', '<C-]>',
+            --     function() return vim.fn['codeium#Complete']() end,
+            --     { expr = true, silent = true, noremap = true })
+        end
     },
-    config = function()
-        vim.g.codeium_disable_bindings = 1
-        vim.keymap.set('i', '<C-c>',
-            function() return vim.fn['codeium#Accept']() end,
-            { expr = true, silent = true, noremap = true })
-        vim.keymap.set('i', '<C-f>',
-            function() return vim.fn['codeium#CycleCompletions'](1) end,
-            { expr = true, silent = true, noremap = true })
-        vim.keymap.set('i', '<C-g>',
-            function() return vim.fn['codeium#CycleCompletions'](-1) end,
-            { expr = true, silent = true, noremap = true })
-        -- vim.keymap.set('i', '<C-x>',
-        --     function() return vim.fn['codeium#Clear']() end,
-        --     { expr = true, silent = true, noremap = true })
-        -- vim.keymap.set('i', '<C-]>',
-        --     function() return vim.fn['codeium#Complete']() end,
-        --     { expr = true, silent = true, noremap = true })
-    end
-},
     -- }}}
 }
