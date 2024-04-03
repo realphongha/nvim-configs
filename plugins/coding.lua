@@ -365,9 +365,19 @@ return {
             local null_ls = require("null-ls")
             null_ls.setup({
                 sources = {
+                    -- spell
                     null_ls.builtins.completion.spell,
-                    null_ls.builtins.formatting.black,
+
+                    -- lua
+                    null_ls.builtins.formatting.stylua,
+
+                    -- python
+                    null_ls.builtins.formatting.black.with({
+                        command = {"black"},
+                    }),
                     require("none-ls.diagnostics.flake8"),
+
+                    -- c++
                     null_ls.builtins.formatting.clang_format,
                 },
             });
