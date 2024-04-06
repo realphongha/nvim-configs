@@ -158,10 +158,30 @@ return {
 
             -- Global mappings.
             -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-            vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-            vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-            vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-            vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+            require("which-key").register({
+                ["<leader>"] = {
+                    e = {
+                        vim.diagnostic.open_float,
+                        "Open diagnostic float window",
+                        mode = "n",
+                    },
+                    q = {
+                        vim.diagnostic.setloclist,
+                        "Add buffer diagnostics to the location list",
+                        mode = "n",
+                    },
+                },
+                ["[d"] = {
+                    vim.diagnostic.goto_prev,
+                    "Go to next diagnostic",
+                    mode = "n",
+                },
+                ["]d"] = {
+                    vim.diagnostic.goto_next,
+                    "Go to previous diagnostic",
+                    mode = "n",
+                },
+            })
 
             -- Use LspAttach autocommand to only map the following keys
             -- after the language server attaches to the current buffer
@@ -173,24 +193,95 @@ return {
 
                     -- Buffer local mappings.
                     -- See `:help vim.lsp.*` for documentation on any of the below functions
-                    local opts = { buffer = ev.buf }
-                    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-                    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-                    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-                    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-                    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-                    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-                    vim.keymap.set('n', '<space>wl', function()
-                        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-                    end, opts)
-                    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-                    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-                    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-                    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-                    vim.keymap.set('n', '<space>f', function()
-                        vim.lsp.buf.format { async = true }
-                    end, opts)
+                    require("which-key").register({
+                        ["gD"] = {
+                            vim.lsp.buf.declaration,
+                            "Go to declaration",
+                            mode = "n",
+                            buffer = ev.buf,
+                        },
+                        ["gd"] = {
+                            vim.lsp.buf.definition,
+                            "Go to definition",
+                            mode = "n",
+                            buffer = ev.buf,
+                        },
+                        ["K"] = {
+                            vim.lsp.buf.hover,
+                            "Display hover information",
+                            mode = "n",
+                            buffer = ev.buf,
+                        },
+                        ["gi"] = {
+                            vim.lsp.buf.implementation,
+                            "Go to implementation",
+                            mode = "n",
+                            buffer = ev.buf,
+                        },
+                        ["gr"] = {
+                            vim.lsp.buf.references,
+                            "Go to references",
+                            mode = "n",
+                            buffer = ev.buf,
+                        },
+                        ["<C-k>"] = {
+                            vim.lsp.buf.signature_help,
+                            "Display hover signature",
+                            mode = "n",
+                            buffer = ev.buf,
+                        },
+                        ["<Leader>"] = {
+                            w = {
+                                name = "[LSP] Workspace",
+                                a = {
+                                    vim.lsp.buf.add_workspace_folder,
+                                    "Add workspace folder",
+                                    mode = "n",
+                                    buffer = ev.buf,
+                                },
+                                r = {
+                                    vim.lsp.buf.remove_workspace_folder,
+                                    "Remove workspace folder",
+                                    mode = "n",
+                                    buffer = ev.buf,
+                                },
+                                l = {
+                                    function()
+                                        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                                    end,
+                                    "List workspace folders",
+                                    mode = "n",
+                                    buffer = ev.buf,
+                                },
+                            },
+                            D = {
+                                vim.lsp.buf.type_definition,
+                                "Type definition",
+                                mode = "n",
+                                buffer = ev.buf,
+                            },
+                            rn = {
+                                vim.lsp.buf.rename,
+                                "Rename all references to the symbol",
+                                mode = "n",
+                                buffer = ev.buf,
+                            },
+                            ca = {
+                                vim.lsp.buf.code_action,
+                                "Code action",
+                                mode = {"n", "v"},
+                                buffer = ev.buf,
+                            },
+                            f = {
+                                function()
+                                    vim.lsp.buf.format { async = true }
+                                end,
+                                "Format code",
+                                mode = "n",
+                                buffer = ev.buf,
+                            },
+                        },
+                    })
                 end,
             })
         end
@@ -373,7 +464,7 @@ return {
 
                     -- python
                     null_ls.builtins.formatting.black.with({
-                        command = {"black"},
+                        command = { "black" },
                     }),
                     require("none-ls.diagnostics.flake8"),
 

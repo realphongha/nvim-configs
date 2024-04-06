@@ -230,37 +230,110 @@ elseif vim.g.os == "Linux" then
 end
 
 -- Quickly open terminal and resize terminal window
-if vim.g.os == "Windows_NT" then
-    vim.api.nvim_set_keymap("n",
-        [[<leader>T]], [[:split<cr>:resize 10<cr>:term<cr>i]],
-        {noremap = true, silent = true}
-    )
-else
-    vim.api.nvim_set_keymap("n",
-        [[<leader>T]], [[:Terminal<cr>:resize 10<cr>i]],
-        {noremap = true, silent = true}
-    )
-end
+require("which-key").register({
+    ["<leader>"] = {
+        T = {
+            function ()
+                if vim.g.os == "Windows_NT" then
+                    vim.cmd([[:split<cr>:resize 10<cr>:term<cr>i]])
+                else
+                    vim.cmd([[:Terminal<cr>:resize 10<cr>i]])
+                end
+            end,
+            "Open integrated terminal",
+            mode = "n",
+            noremap = true,
+            silent = true,
+        },
+        p = {
+            [["_dp]],
+            "Paste and preserve current yanked",
+            mode = "v",
+            noremap = true,
+            silent = true,
+        },
+        J = {
+            [[:m '>+1<CR>gv=gv]],
+            "Move selected block down 1 line",
+            mode = "v",
+            noremap = true,
+            silent = true,
+        },
+        K = {
+            [[:m '<-2<CR>gv=gv]],
+            "Move selected block up 1 line",
+            mode = "v",
+            noremap = true,
+            silent = true,
+        },
+    },
+    ["<leader><Esc>"] = {
+        [[:noh<cr>]],
+        "Clear all highlights",
+        mode = "",
+        noremap = true,
+        silent = true,
+    },
+    ["<C-k>"] = {
+        "<Up>",
+        "Move up in command mode",
+        mode = "c",
+        noremap = true,
+        silent = true,
+    },
+    ["<C-j>"] = {
+        "<Down>",
+        "Move down in command mode",
+        mode = "c",
+        noremap = true,
+        silent = true,
+    },
+    ["<C-h>"] = {
+        "<Left>",
+        "Move left in command mode",
+        mode = "c",
+        noremap = true,
+        silent = true,
+    },
+    ["<C-l>"] = {
+        "<Right>",
+        "Move right in command mode",
+        mode = "c",
+        noremap = true,
+        silent = true,
+    },
+})
+-- if vim.g.os == "Windows_NT" then
+--     vim.api.nvim_set_keymap("n",
+--         [[<leader>T]], [[:split<cr>:resize 10<cr>:term<cr>i]],
+--         {noremap = true, silent = true}
+--     )
+-- else
+--     vim.api.nvim_set_keymap("n",
+--         [[<leader>T]], [[:Terminal<cr>:resize 10<cr>i]],
+--         {noremap = true, silent = true}
+--     )
+-- end
 
--- Quickly removes hightlight
-vim.api.nvim_set_keymap("", [[<leader><Esc>]], [[:noh<cr>]],
-    {noremap = true, silent = true}
-)
+-- -- Quickly removes hightlight
+-- vim.api.nvim_set_keymap("", [[<leader><Esc>]], [[:noh<cr>]],
+--     {noremap = true, silent = true}
+-- )
 
--- Preserves current yanked after paste
-vim.api.nvim_set_keymap("v", [[<leader>p]], [["_dp]],
-    {noremap = true, silent = true}
-)
+-- -- Preserves current yanked after paste
+-- vim.api.nvim_set_keymap("v", [[<leader>p]], [["_dp]],
+--     {noremap = true, silent = true}
+-- )
 
--- Quickly moves block up and down
-vim.api.nvim_set_keymap("v", "J", [[:m '>+1<CR>gv=gv]],
-    {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap("v", "K", [[:m '<-2<CR>gv=gv]],
-    {noremap = true, silent = true}
-)
+-- -- Quickly moves block up and down
+-- vim.api.nvim_set_keymap("v", "J", [[:m '>+1<CR>gv=gv]],
+--     {noremap = true, silent = true}
+-- )
+-- vim.api.nvim_set_keymap("v", "K", [[:m '<-2<CR>gv=gv]],
+--     {noremap = true, silent = true}
+-- )
 
--- using Ctrl+j, Ctrl+j for navigating in command mode
+-- using Ctrl+j, Ctrl+k for navigating in command mode
 -- vim.api.nvim_set_keymap("c", "<C-k>", "<up>",
 --     {noremap = true, silent = true}
 -- )
@@ -268,10 +341,10 @@ vim.api.nvim_set_keymap("v", "K", [[:m '<-2<CR>gv=gv]],
 --     {noremap = true, silent = true}
 -- )
 -- lua-style config doesn't work, I don't have a clue why
-vim.cmd([[:cnoremap <C-k> <Up>]])
-vim.cmd([[:cnoremap <C-j> <Down>]])
-vim.cmd([[:cnoremap <C-h> <Left>]])
-vim.cmd([[:cnoremap <C-l> <Right>]])
+-- vim.cmd([[:cnoremap <C-k> <Up>]])
+-- vim.cmd([[:cnoremap <C-j> <Down>]])
+-- vim.cmd([[:cnoremap <C-h> <Left>]])
+-- vim.cmd([[:cnoremap <C-l> <Right>]])
 
 -- Quickly replace in all quickfixes
 function RP(search, replace)
