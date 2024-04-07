@@ -1,32 +1,5 @@
 return {
     --------------------------------------------------------------------------
-    -- {{{ vim-yankstack
-    {
-        "maxbrunsfeld/vim-yankstack",
-        lazy = false,
-        config = function()
-            -- Map cycle yank history keybindings to <Leader> key
-            require("which-key").register({
-                ["<leader>"] = {
-                    p = {
-                        "<Plug>yankstack_substitute_older_paste",
-                        "Paste older record in yankstack",
-                        mode = "n",
-                        noremap = true,
-                    },
-                    P = {
-                        "<Plug>yankstack_substitute_newer_paste",
-                        "Paste newer record in yankstack",
-                        mode = "n",
-                        noremap = true,
-                    }
-                },
-            })
-        end
-    },
-    -- }}}
-
-    --------------------------------------------------------------------------
     -- {{{ undotree
     {
         "mbbill/undotree",
@@ -68,14 +41,14 @@ return {
                 },
                 ["<TAB>"] = {
                     "<Plug>(doge-comment-jump-forward)",
-                    "[vim-doge]Jump forward",
-                    mode = {"n", 'i', 's'},
+                    "[vim-doge] Jump forward",
+                    mode = { "n", 'i', 's' },
                     silent = true,
                 },
                 ["<S-TAB>"] = {
                     "<Plug>(doge-comment-jump-backward)",
-                    "[vim-doge]Jump backward",
-                    mode = {"n", 'i', 's'},
+                    "[vim-doge] Jump backward",
+                    mode = { "n", 'i', 's' },
                     silent = true,
                 },
             })
@@ -205,7 +178,7 @@ return {
                 buftypes = {},
                 filetypes = {},
             },
-        }
+        },
     }
     -- }}}
 }

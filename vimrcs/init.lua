@@ -191,34 +191,62 @@ vim.cmd.colorscheme("catppuccin-macchiato")
 ------------------------------------------------------------------------------
 -- {{{ => Mapping
 
--- Quickly edit vimrc file in the left window pane
-vim.api.nvim_set_keymap("n", "<leader>ev", "<c-w>l:e $MYVIMRC<cr>",
-    {noremap = true}
-)
+local wk = require("which-key")
 
--- Quickly source vimrc file
-vim.api.nvim_set_keymap("n", "<leader>sv", ":source $MYVIMRC<cr>",
-    {noremap = true}
-)
-
--- Quickly surround selected text in punctuation marks
-vim.api.nvim_set_keymap("v", [[<leader>"]], [[xa""<Esc>P]],
-    {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap("v", [[<leader>']], [[xa''<Esc>P]],
-    {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap("v", [[<leader>(]], [[xa()<Esc>P]],
-    {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap("v", [[<leader>{]], [[xa{}<Esc>P]],
-    {noremap = true, silent = true}
-)
-
--- Quickly exit Terminal mode
-vim.api.nvim_set_keymap("t", [[<Esc>]], [[<C-\><C-n>]],
-    {noremap = true, silent = true}
-)
+wk.register({
+    ["<leader>"] = {
+        v = {
+            name = ".vimrc",
+            e = {
+                "<c-w>l:e $MYVIMRC<cr>",
+                "Edit .vimrc",
+                mode = "n",
+                noremap = true,
+            },
+            s = {
+                "<c-w>l:e $MYVIMRC<cr>",
+                "Source .vimrc",
+                mode = "n",
+                noremap = true,
+            },
+        },
+    },
+    ["<leader>\""] = {
+        [[xa""<Esc>P]],
+        [[Surround in ""]],
+        mode = "v",
+        noremap = true,
+        silent = true,
+    },
+    ["<leader>'"] = {
+        [[xa''<Esc>P]],
+        [[Surround in '']],
+        mode = "v",
+        noremap = true,
+        silent = true,
+    },
+    ["<leader>("] = {
+        [[xa()<Esc>P]],
+        [[Surround in ()]],
+        mode = "v",
+        noremap = true,
+        silent = true,
+    },
+    ["<leader>{"] = {
+        [[xa()<Esc>P]],
+        [[Surround in {}]],
+        mode = "v",
+        noremap = true,
+        silent = true,
+    },
+    ["<leader>["] = {
+        [[xa[]<Esc>P]],
+        "Surround in []",
+        mode = "v",
+        noremap = true,
+        silent = true,
+    },
+})
 
 -- Map terminal opening settings
 if vim.g.os == "Darwin" then
@@ -230,7 +258,14 @@ elseif vim.g.os == "Linux" then
 end
 
 -- Quickly open terminal and resize terminal window
-require("which-key").register({
+wk.register({
+    ["<Esc>"] = {
+        [[<C-\><C-n>]],
+        "Exit terminal mode",
+        mode = "t",
+        noremap = true,
+        silent = true,
+    },
     ["<leader>"] = {
         T = {
             function ()
@@ -246,9 +281,9 @@ require("which-key").register({
             silent = true,
         },
         p = {
-            [["_dp]],
-            "Paste and preserve current yanked",
-            mode = "v",
+            [["0p]],
+            "Put current yanked register",
+            mode = {"n", "v"},
             noremap = true,
             silent = true,
         },
@@ -274,77 +309,13 @@ require("which-key").register({
         noremap = true,
         silent = true,
     },
-    ["<C-k>"] = {
-        "<Up>",
-        "Move up in command mode",
-        mode = "c",
-        noremap = true,
-        silent = true,
-    },
-    ["<C-j>"] = {
-        "<Down>",
-        "Move down in command mode",
-        mode = "c",
-        noremap = true,
-        silent = true,
-    },
-    ["<C-h>"] = {
-        "<Left>",
-        "Move left in command mode",
-        mode = "c",
-        noremap = true,
-        silent = true,
-    },
-    ["<C-l>"] = {
-        "<Right>",
-        "Move right in command mode",
-        mode = "c",
-        noremap = true,
-        silent = true,
-    },
 })
--- if vim.g.os == "Windows_NT" then
---     vim.api.nvim_set_keymap("n",
---         [[<leader>T]], [[:split<cr>:resize 10<cr>:term<cr>i]],
---         {noremap = true, silent = true}
---     )
--- else
---     vim.api.nvim_set_keymap("n",
---         [[<leader>T]], [[:Terminal<cr>:resize 10<cr>i]],
---         {noremap = true, silent = true}
---     )
--- end
 
--- -- Quickly removes hightlight
--- vim.api.nvim_set_keymap("", [[<leader><Esc>]], [[:noh<cr>]],
---     {noremap = true, silent = true}
--- )
-
--- -- Preserves current yanked after paste
--- vim.api.nvim_set_keymap("v", [[<leader>p]], [["_dp]],
---     {noremap = true, silent = true}
--- )
-
--- -- Quickly moves block up and down
--- vim.api.nvim_set_keymap("v", "J", [[:m '>+1<CR>gv=gv]],
---     {noremap = true, silent = true}
--- )
--- vim.api.nvim_set_keymap("v", "K", [[:m '<-2<CR>gv=gv]],
---     {noremap = true, silent = true}
--- )
-
--- using Ctrl+j, Ctrl+k for navigating in command mode
--- vim.api.nvim_set_keymap("c", "<C-k>", "<up>",
---     {noremap = true, silent = true}
--- )
--- vim.api.nvim_set_keymap("c", "<C-j>", "<down>",
---     {noremap = true, silent = true}
--- )
--- lua-style config doesn't work, I don't have a clue why
--- vim.cmd([[:cnoremap <C-k> <Up>]])
--- vim.cmd([[:cnoremap <C-j> <Down>]])
--- vim.cmd([[:cnoremap <C-h> <Left>]])
--- vim.cmd([[:cnoremap <C-l> <Right>]])
+-- lua-style mapping configs doesn't work, don't ask why
+vim.cmd([[:cnoremap <C-k> <Up>]])
+vim.cmd([[:cnoremap <C-j> <Down>]])
+vim.cmd([[:cnoremap <C-h> <Left>]])
+vim.cmd([[:cnoremap <C-l> <Right>]])
 
 -- Quickly replace in all quickfixes
 function RP(search, replace)
