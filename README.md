@@ -14,11 +14,14 @@ then
 ## Lazy load:
 * `:LspStart` to load nvim-lspconfig (pls run it once after installing this config to initialize LSP servers)
 * `:Git` to load vim-fugitive
+* `:Codeium` to load codeium.vim (and `:Codeium Auth` to enter your token)
 
 # Install LSP servers:
 Some LSP servers are already integrated in configs but you need to install
 them first.
 ## You can use [mason.nvim](https://github.com/williamboman/mason.nvim) (already installed) or manually install (below):
+## For jedi
+`pip install jedi-language-server`
 ## For pyright:
 `npm i -g pyright`  
 ## For tsserver
@@ -56,7 +59,6 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc),
 * [undotree](https://github.com/mbbill/undotree.git)
 * [vim-doge](https://github.com/kkoomen/vim-doge.git)
 * [vim-fugitive](https://github.com/tpope/vim-fugitive.git)
-* [vim-yankstack](https://github.com/maxbrunsfeld/vim-yankstack)
 * [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 * [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 * [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
@@ -72,6 +74,8 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc),
 * [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
 * [nvim-web-icons](https://github.com/nvim-tree/nvim-web-devicons)
 * [mason.nvim](https://github.com/williamboman/mason.nvim)
+* [which-key.nvim](https://github.com/folke/which-key.nvim)
+* [codeium.vim](https://github.com/Exafunction/codeium.vim)
 ## Colorschemes included:
 * [rose-pine](https://github.com/rose-pine/neovim.git)
 * [catppuccin](https://github.com/catppuccin/nvim)
