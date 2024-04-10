@@ -4,7 +4,7 @@ return {
     {
         "itchyny/lightline.vim",
         lazy = false,
-        config = function ()
+        config = function()
             vim.cmd([[
             " Statusline contents
             " let colorscheme = 'catppuccin'
@@ -23,20 +23,20 @@ return {
             \ }
 
             function! s:lightline_update()
-              if !exists('g:loaded_lightline')
-                return
-              endif
-              try
-                if stridx(g:colors_name, "catppuccin") >= 0
-                  let g:lightline.colorscheme = "catppuccin"
-                else
-                  let g:lightline.colorscheme = "default" 
+                if !exists('g:loaded_lightline')
+                   return
                 endif
-                call lightline#init()
-                call lightline#colorscheme()
-                call lightline#update()
-              catch
-              endtry
+                try
+                    if stridx(g:colors_name, "catppuccin") >= 0
+                        let g:lightline.colorscheme = "catppuccin"
+                    else
+                        let g:lightline.colorscheme = "default"
+                    endif
+                    call lightline#init()
+                    call lightline#colorscheme()
+                    call lightline#update()
+                catch
+                endtry
             endfunction
 
             augroup LightlineColorscheme
