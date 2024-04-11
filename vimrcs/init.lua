@@ -270,9 +270,12 @@ wk.register({
         T = {
             function ()
                 if vim.g.os == "Windows_NT" then
-                    vim.cmd([[:split<cr>:resize 10<cr>:term<cr>i]])
+                    vim.cmd([[:split]])
+                    vim.cmd([[:resize 10]])
+                    vim.cmd([[:term]])
                 else
-                    vim.cmd([[:Terminal<cr>:resize 10<cr>i]])
+                    vim.cmd([[:Terminal]])
+                    vim.cmd([[:resize 10]])
                 end
             end,
             "Open integrated terminal",
