@@ -308,7 +308,7 @@ wk.register({
     ["<leader><Esc>"] = {
         [[:noh<cr>]],
         "Clear all highlights",
-        mode = "",
+        mode = {'n', 'v', 'o'},
         noremap = true,
         silent = true,
     },

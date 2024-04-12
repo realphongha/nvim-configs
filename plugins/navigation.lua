@@ -124,14 +124,14 @@ return {
                     r = {
                         ":lua ReloadNvimTreeRoot()<CR>",
                         "Reload nvim-tree root",
-                        mode = "",
+                        mode = {'n', 'v', 'o'},
                         noremap = true,
                         silent = true,
                     },
                     t = {
                         ":NvimTreeToggle<cr>",
                         "Toggle nvim-tree",
-                        mode = "",
+                        mode = {'n', 'v', 'o'},
                         noremap = true,
                         silent = true,
                     }
