@@ -163,24 +163,33 @@ end
 vim.opt.ffs = "unix,dos,mac"
 
 -- Make background transparent to see your waifu on the terminal
+
 function SeeWaifu(color)
+    -- local hi_groups = {
+    --     'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
+    --     'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
+    --     'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+    --     'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
+    --     'EndOfBuffer', "NvimTreeNormal", "TelescopeNormal"
+    --     'Pmenu', 'NormalFloat', 'FloatShadow', "NvimTreePopup"
+    -- }
+    local hi_groups = {
+        'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
+        'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
+        'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+        'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
+        'EndOfBuffer',
+        "NvimTreeNormal", "NvimTreeNormalNC", -- nvim-tree
+        "TelescopeNormal" -- telescope.nvim
+    }
     if color then
         vim.cmd.colorscheme(color)
     end
 
     -- general
-    vim.api.nvim_set_hl(0, "Normal", {bg = "none"})
-    vim.api.nvim_set_hl(0, "NormalNC", {bg = "none"})
-    -- vim.api.nvim_set_hl(0, "Pmenu", {bg = "none"})
-    -- vim.api.nvim_set_hl(0, "NormalFloat", {bg = "none"})
-    -- vim.api.nvim_set_hl(0, "FloatShadow", {bg = "none"})
-
-    -- nvim-tree
-    vim.api.nvim_set_hl(0, "NvimTreeNormal", {bg = "none"})
-    -- vim.api.nvim_set_hl(0, "NvimTreePopup", {bg = "none"})
-
-    -- For telescope.nvim
-    vim.api.nvim_set_hl(0, "TelescopeNormal", {bg = "none"})
+    for _, hi_group in pairs(hi_groups) do
+        vim.api.nvim_set_hl(0, hi_group, {bg = "none"})
+    end
 end
 
 -- Set colorscheme
