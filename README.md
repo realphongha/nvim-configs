@@ -14,7 +14,7 @@ rm -rf ~/.config/nvim
 # rm -rf ~/.local/share/nvim
 git clone https://github.com/realphongha/nvim-configs.git ~/.config/nvim
 ```
-## For Windows
+## For Windows (on Powershell)
 ```powershell
 # removes all your previous nvim configs first!
 Remove-Item -Path "~/AppData/Local/nvim" -Recurse -Force
