@@ -34,8 +34,8 @@ Done!
 * `:Codeium` to load codeium.vim (and `:Codeium Auth` to enter your token)
 
 # Add your personal configs and plugins
-Create `lua/my_configs.lua` for your personal configs or 
-`lua/my_plugins/<plugin_name>.lua` for your personal plugins (in lazy.nvim format).
+Create `lua/my_configs.lua` for your personal configs or  
+`lua/my_plugins.lua` for your personal plugins (in lazy.nvim format).
 
 # Install LSP servers:
 Some LSP servers are already integrated in configs but you need to install

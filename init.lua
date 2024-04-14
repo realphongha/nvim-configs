@@ -27,9 +27,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- import all plugins from "plugins/" directory
+-- import all plugins from "plugins/"
 require("lazy").setup("plugins")
-require("lazy").setup("my_plugins")
 -- }}}
 
 ------------------------------------------------------------------------------
@@ -456,6 +455,6 @@ endif
 -- }}}
 
 ------------------------------------------------------------------------------
--- {{{ => Include your own configs 
-pcall(require, "my_plugins")
+-- {{{ => Include your own configs and plugins
+pcall(require, "my_configs")
 -- }}}
