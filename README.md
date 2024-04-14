@@ -20,7 +20,8 @@ git clone https://github.com/realphongha/nvim-configs.git ~/.config/nvim
 Remove-Item -Path "~/AppData/Local/nvim" -Recurse -Force
 # removes all your previous nvim data 
 # Remove-Item -Path "~/AppData/Local/nvim-data" -Recurse -Force
-git clone https://github.com/realphongha/nvim-configs.git ~/AppData/Local/nvim
+cd ~/AppData/Local/
+git clone https://github.com/realphongha/nvim-configs.git nvim
 ```
 
 Done!
