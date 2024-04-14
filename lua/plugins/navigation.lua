@@ -119,8 +119,23 @@ return {
                 require("nvim-tree.api").tree.change_root(vim.fn.getcwd())
             end
 
+            -- Navigate to nvim configs directory and reload current tree root
+            function GoToNvimConfigs()
+                vim.cmd([[:cd ]] .. vim.fn.stdpath("config"))
+                ReloadNvimTreeRoot()
+            end
+
             require("which-key").register({
                 ["<leader>"] = {
+                    v = {
+                        name = ".vimrc",
+                        c = {
+                            ":lua GoToNvimConfigs()<CR>",
+                            "Go to nvim configs directory",
+                            mode = "n",
+                            noremap = true,
+                        },
+                    },
                     r = {
                         ":lua ReloadNvimTreeRoot()<CR>",
                         "Reload nvim-tree root",
