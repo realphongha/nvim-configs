@@ -27,7 +27,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- import all plugins from "plugins/" directory
+-- import all plugins from "plugins/"
 require("lazy").setup("plugins")
 -- }}}
 
@@ -170,15 +170,13 @@ function SeeWaifu(color)
     --     'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
     --     'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
     --     'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
-    --     'EndOfBuffer', "NvimTreeNormal", "TelescopeNormal"
-    --     'Pmenu', 'NormalFloat', 'FloatShadow', "NvimTreePopup"
+    --     'EndOfBuffer',
+    --     "NvimTreeNormal", "NvimTreeNormalNC", "NvimTreePopup", -- nvim-tree
+    --     "TelescopeNormal", -- telescope.nvim
+    --     'Pmenu', 'NormalFloat', 'FloatShadow', 
     -- }
     local hi_groups = {
-        'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
-        'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
-        'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
-        'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
-        'EndOfBuffer',
+        'Normal', 'NormalNC',
         "NvimTreeNormal", "NvimTreeNormalNC", -- nvim-tree
         "TelescopeNormal" -- telescope.nvim
     }
@@ -452,4 +450,9 @@ if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 ]])
+-- }}}
+
+------------------------------------------------------------------------------
+-- {{{ => Include your own configs and plugins
+pcall(require, "my_configs")
 -- }}}
