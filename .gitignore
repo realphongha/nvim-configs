@@ -1,4 +1,4 @@
-vimrcs/my_configs.lua
+lua/my_configs.lua
 
 __pycache__/
 *.py[cod]

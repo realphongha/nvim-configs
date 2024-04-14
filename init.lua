@@ -29,6 +29,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- import all plugins from "plugins/" directory
 require("lazy").setup("plugins")
+require("lazy").setup("my_plugins")
 -- }}}
 
 ------------------------------------------------------------------------------
@@ -452,4 +453,9 @@ if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 ]])
+-- }}}
+
+------------------------------------------------------------------------------
+-- {{{ => Include your own configs 
+pcall(require, "my_plugins")
 -- }}}

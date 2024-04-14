@@ -1,13 +1,29 @@
 # nvim-configs
-My neovim configs and auto-install script.  
+My neovim configs.  
 Tested with nvim 0.9.x on MacOS, Linux and Windows.
 
 # How to install?
-First clone this repo  
-`git clone https://github.com/realphongha/nvim-configs.git`  
-`cd nvim-configs`  
-then  
-`python3 install.py` to install (or `python3 install.py --reinstall` to reset all neovim data first)
+Install [Neovim](https://github.com/neovim/neovim/releases/tag/stable) first.  
+Then simply clone this repo directly into your Neovim configs directory:
+
+## For Linux/Mac OS
+```bash
+# removes all your previous nvim configs first!
+rm -rf ~/.config/nvim
+# removes all your previous nvim data
+# rm -rf ~/.local/share/nvim
+git clone https://github.com/realphongha/nvim-configs.git ~/.config/nvim
+```
+## For Windows
+```powershell
+# removes all your previous nvim configs first!
+Remove-Item -Path "~/AppData/Local/nvim" -Recurse -Force
+# removes all your previous nvim data 
+# Remove-Item -Path "~/AppData/Local/nvim-data" -Recurse -Force
+git clone https://github.com/realphongha/nvim-configs.git ~/AppData/Local/nvim
+```
+
+Done!
 
 # Plugin manager
 [lazy.nvim](https://github.com/folke/lazy.nvim)
@@ -15,6 +31,10 @@ then
 * `:LspStart` to load nvim-lspconfig (pls run it once after installing this config to initialize LSP servers)
 * `:Git` to load vim-fugitive
 * `:Codeium` to load codeium.vim (and `:Codeium Auth` to enter your token)
+
+# Add your personal configs and plugins
+Create `lua/my_configs.lua` for your personal configs or 
+`lua/my_plugins/<plugin_name>.lua` for your personal plugins (in lazy.nvim format).
 
 # Install LSP servers:
 Some LSP servers are already integrated in configs but you need to install
@@ -40,13 +60,8 @@ them first.
 [Install](https://luals.github.io/#neovim-install) 
 ## To add other LSP supports:
 * Install LSP servers (manually or using mason.nvim)
-* Add LSP configs for neovim in `plugins/coding.lua`, mason-lspconfig->config section.
-* Add lazy load condition to nvim-lspconfig->ft section in `plugins/codding.lua`
-
-# Add your personal configs and plugins
-Create `vimrcs/my_configs.lua` for your personal configs or 
-`my_plugins/<plugin_name>.lua` for your personal plugins.
-Then install it with the same commands above.
+* Add LSP configs for neovim in `lua/plugins/coding.lua`, mason-lspconfig->config section.
+* Add lazy load condition to nvim-lspconfig->ft section in `lua/plugins/coding.lua`
 
 # Acknowledgements
 This repo is directly inspired by [vimrc](https://github.com/amix/vimrc), 
@@ -94,7 +109,7 @@ installed first if you want to use telescope livegrep
 # Small notes
 * Use `:lua SeeWaifu()` or `:lua SeeWaifu("colorscheme-name")` to make your background transparent and see your waifu
 in the terminal :D
-* Simple Neovim Qt configs is also supported (in `vimrcs/ginit.vim`). 
+* Simple Neovim Qt configs is also supported (in `ginit.vim`). 
 [Neovim Qt](https://github.com/equalsraf/neovim-qt) must be installed first. 
 You can run `misc/add_nvimqt_to_context_menu_windows.reg` to add Neovim Qt to
 context menu (only for Windows) (stolen from [here](https://github.com/neovim/neovim/issues/7222#issuecomment-927413185)) :D
