@@ -466,7 +466,7 @@ return {
                     null_ls.builtins.formatting.black.with({
                         command = { "black" },
                     }),
-                    require("none-ls.diagnostics.flake8"),
+                    -- require("none-ls.diagnostics.flake8"),
 
                     -- c++
                     null_ls.builtins.formatting.clang_format,
