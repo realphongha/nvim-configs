@@ -5,6 +5,7 @@ return {
         'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
         lazy = true,
+        cmd = "Telescope",
         keys = {
             { "<leader>a", mode = "n" },
             { "<C-p>",     mode = "n" },
