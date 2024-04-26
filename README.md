@@ -96,6 +96,7 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc),
 * [rose-pine](https://github.com/rose-pine/neovim.git)
 * [catppuccin](https://github.com/catppuccin/nvim)
 * [tokyonight](https://github.com/folke/tokyonight.nvim)
+* [kanagawa](https://github.com/rebelot/kanagawa.nvim.git)
 * [gruvbox](https://github.com/morhetz/gruvbox)
 * [monokai](https://github.com/sickill/vim-monokai)
 * [peaksea](https://github.com/vim-scripts/peaksea)

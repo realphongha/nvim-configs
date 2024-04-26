@@ -2,16 +2,18 @@ return {
     --------------------------------------------------------------------------
     -- {{{ telescope.nvim
     {
-        'nvim-telescope/telescope.nvim', branch = '0.1.x',
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
         lazy = true,
+        cmd = "Telescope",
         keys = {
-            {"<leader>a", mode = "n"},
-            {"<C-p>", mode = "n"},
-            {"<leader>g", mode = "n"},
-            {"<leader>b", mode = "n"},
+            { "<leader>a", mode = "n" },
+            { "<C-p>",     mode = "n" },
+            { "<leader>g", mode = "n" },
+            { "<leader>b", mode = "n" },
         },
         dependencies = { 'nvim-lua/plenary.nvim' },
-        config = function ()
+        config = function()
             local builtin = require('telescope.builtin')
             require("which-key").register({
                 ["<leader>"] = {
@@ -50,7 +52,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ nvim-tree.lua 
+    -- {{{ nvim-tree.lua
     {
         "nvim-tree/nvim-tree.lua",
         lazy = false,
@@ -139,14 +141,14 @@ return {
                     r = {
                         ":lua ReloadNvimTreeRoot()<CR>",
                         "Reload nvim-tree root",
-                        mode = {'n', 'v', 'o'},
+                        mode = { 'n', 'v', 'o' },
                         noremap = true,
                         silent = true,
                     },
                     t = {
                         ":NvimTreeToggle<cr>",
                         "Toggle nvim-tree",
-                        mode = {'n', 'v', 'o'},
+                        mode = { 'n', 'v', 'o' },
                         noremap = true,
                         silent = true,
                     }
@@ -155,7 +157,7 @@ return {
 
             -- Removes the annoying undercurl for executable files
             vim.api.nvim_create_autocmd({ "ColorScheme" }, {
-                callback = function ()
+                callback = function()
                     vim.cmd([[
                         :hi link NvimTreeExecFile NvimTreeNormal
                     ]])
@@ -166,7 +168,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ nvim-web-devicons 
+    -- {{{ nvim-web-devicons
     {
         "nvim-tree/nvim-web-devicons",
         lazy = true,
@@ -181,18 +183,18 @@ return {
                     cterm_color = "65",
                     name = "Zsh"
                 }
-            };
+            },
             -- globally enable different highlight colors per icon (default to true)
             -- if set to false all icons will have the default icon's color
-            color_icons = true;
+            color_icons = true,
             -- globally enable default icons (default to false)
             -- will get overriden by `get_icons` option
-            default = true;
+            default = true,
             -- globally enable "strict" selection of icons - icon will be looked up in
             -- different tables, first by filename, and if not found by extension; this
             -- prevents cases when file doesn't have any extension but still gets some icon
             -- because its name happened to match some extension (default to false)
-            strict = true;
+            strict = true,
             -- same as `override` but specifically for overrides by filename
             -- takes effect when `strict` is true
             override_by_filename = {
@@ -201,7 +203,7 @@ return {
                     color = "#f1502f",
                     name = "Gitignore"
                 }
-            };
+            },
             -- same as `override` but specifically for overrides by extension
             -- takes effect when `strict` is true
             override_by_extension = {
@@ -210,7 +212,7 @@ return {
                     color = "#81e043",
                     name = "Log"
                 }
-            };
+            },
         }
     },
     -- }}}

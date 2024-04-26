@@ -4,6 +4,7 @@ return {
     {
         "catppuccin/nvim", name = "catppuccin",
         lazy = true,
+        build = ":CatppuccinCompile",
         opts = {
             flavour = "mocha", -- latte, frappe, macchiato, mocha
             background = { -- :h background
@@ -93,7 +94,7 @@ return {
                 -- By default each group adds to the existing config.
                 -- If you only want to set what is written in this config exactly,
                 -- you can set the inherit option:
-                Search = { bg = 'gold', inherit = false },
+                -- Search = { bg = 'gold', inherit = false },
             }
         }
     },
@@ -138,6 +139,39 @@ return {
             ---@param highlights Highlights
             ---@param colors ColorScheme
             on_highlights = function(highlights, colors) end,
+        }
+    },
+    -- }}}
+
+    --------------------------------------------------------------------------
+    -- {{{ kanagawa.nvim
+    {
+        "rebelot/kanagawa.nvim", name = "kanagawa",
+        lazy = true,
+        build = ":KanagawaCompile",
+        opts = {
+            compile = true,              -- enable compiling the colorscheme
+            undercurl = true,            -- enable undercurls
+            commentStyle = { italic = true },
+            functionStyle = {},
+            keywordStyle = { italic = true},
+            statementStyle = { bold = true },
+            typeStyle = {},
+            transparent = false,         -- do not set background color
+            dimInactive = false,         -- dim inactive window `:h hl-NormalNC`
+            terminalColors = true,       -- define vim.g.terminal_color_{0,17}
+            colors = {                   -- add/modify theme and palette colors
+                palette = {},
+                theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+            },
+            overrides = function(colors) -- add/modify highlights
+                return {}
+            end,
+            theme = "wave",              -- Load "wave" theme when 'background' option is not set
+            background = {               -- map the value of 'background' option to a theme
+                dark = "wave",           -- try "dragon" !
+                light = "lotus"
+            },
         }
     },
     -- }}}
