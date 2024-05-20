@@ -321,6 +321,31 @@ wk.register({
     },
 })
 
+-- Quickly toggle all other splits and line numbers, useful for copying on
+-- remote machines
+OnCopyMode = false
+function ToggleCopyMode()
+    if OnCopyMode then
+        vim.cmd(":set number")
+        vim.cmd(":set relativenumber")
+    else
+        vim.cmd(":only")
+        vim.cmd(":set nonumber")
+        vim.cmd(":set norelativenumber")
+    end
+    OnCopyMode = not OnCopyMode
+end
+
+wk.register({
+    ["<leader>cp"] = {
+        ToggleCopyMode,
+        [[Toggle copy mode for remote]],
+        mode = {'n', 'v', 'o'},
+        noremap = true,
+        silent = true,
+    },
+})
+
 -- lua-style mapping configs doesn't work, don't ask why
 vim.cmd([[:cnoremap <C-k> <Up>]])
 vim.cmd([[:cnoremap <C-j> <Down>]])
