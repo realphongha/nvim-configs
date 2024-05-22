@@ -28,20 +28,20 @@ return {
         lazy = false,
     },
     -- }}}
-    --
+
     --------------------------------------------------------------------------
-    -- {{{ glow.nvim 
+    -- {{{ glow.nvim
     {
         "ellisonleao/glow.nvim",
         cmd = "Glow",
         ft = "markdown",
-        config = function ()
+        config = function()
             require('glow').setup({
                 {
-                    glow_path = "", -- will be filled automatically with your glow bin in $PATH, if any
+                    glow_path = "",                -- will be filled automatically with your glow bin in $PATH, if any
                     install_path = "~/.local/bin", -- default path for installing glow binary
-                    border = "shadow", -- floating window border config
-                    style = "dark|light", -- filled automatically with your current editor background, you can override using glow json style
+                    border = "shadow",             -- floating window border config
+                    style = "dark|light",          -- filled automatically with your current editor background, you can override using glow json style
                     pager = false,
                     width = 80,
                     height = 100,
@@ -150,6 +150,58 @@ return {
                 filetypes = {},
             },
         },
-    }
+    },
+    -- }}}
+
+    --------------------------------------------------------------------------
+    -- {{{ bigfile.nvim
+    {
+        "LunarVim/bigfile.nvim",
+        lazy = false,
+        config = function()
+            local nvim_cmp = {
+                name = "nvim_cmp", -- name
+                opts = {
+                    defer = true, -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
+                },
+                disable = function() -- called to disable the feature
+                    vim.g.enable_nvim_cmp = false
+                end,
+                enable = function() -- called to disable the feature
+                    vim.g.enable_nvim_cmp = true
+                end,
+            }
+
+            local codeium = {
+                name = "codeium", -- name
+                opts = {
+                    defer = false, -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
+                },
+                disable = function() -- called to disable the feature
+                    vim.cmd([[CodeiumDisable]])
+                end,
+                enable = function() -- called to disable the feature
+                    vim.cmd([[CodeiumEnable]])
+                end,
+            }
+
+            require("bigfile").setup {
+                filesize = 2, -- size of the file in MiB, the plugin round file sizes to the closest MiB
+                pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
+                features = {  -- features to disable
+                    "indent_blankline",
+                    "illuminate",
+                    "lsp",
+                    "treesitter",
+                    "syntax",
+                    "matchparen",
+                    "vimopts",
+                    "filetype",
+                    nvim_cmp,
+                    codeium
+                },
+            }
+        end
+    },
     -- }}}
 }
