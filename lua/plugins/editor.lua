@@ -159,6 +159,21 @@ return {
         "LunarVim/bigfile.nvim",
         lazy = false,
         config = function()
+            local toggle_big_file = {
+                name = "toggle_big_file", -- name
+                opts = {
+                    defer = true, -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
+                },
+                disable = function() -- called to disable the feature
+                    vim.g.opening_big_file = true
+                    vim.b.opening_big_file = true
+                end,
+                enable = function() -- called to enable the feature
+                    vim.g.opening_big_file = false
+                    vim.b.opening_big_file = false
+                end,
+            }
+
             local nvim_cmp = {
                 name = "nvim_cmp", -- name
                 opts = {
@@ -167,7 +182,7 @@ return {
                 disable = function() -- called to disable the feature
                     vim.g.enable_nvim_cmp = false
                 end,
-                enable = function() -- called to disable the feature
+                enable = function() -- called to enable the feature
                     vim.g.enable_nvim_cmp = true
                 end,
             }
@@ -180,7 +195,7 @@ return {
                 disable = function() -- called to disable the feature
                     vim.cmd([[CodeiumDisable]])
                 end,
-                enable = function() -- called to disable the feature
+                enable = function() -- called to enable the feature
                     vim.cmd([[CodeiumEnable]])
                 end,
             }
@@ -198,7 +213,8 @@ return {
                     "vimopts",
                     "filetype",
                     nvim_cmp,
-                    codeium
+                    codeium,
+                    toggle_big_file
                 },
             }
         end
