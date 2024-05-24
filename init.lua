@@ -112,6 +112,13 @@ vim.opt.incsearch = true
 -- Show current position
 vim.opt.ruler = true
 
+-- Highlight current line number
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+
+-- Minimum lines to keep above and below the cursor
+vim.opt.scrolloff = 10
+
 -- No annoying error sound
 vim.opt.errorbells = false
 vim.opt.visualbell = false
