@@ -310,6 +310,12 @@ return {
             local cmp = require 'cmp'
 
             cmp.setup({
+                enabled = function ()
+                    if vim.g.enable_nvim_cmp == nil then
+                        vim.g.enable_nvim_cmp = true
+                    end
+                    return vim.g.enable_nvim_cmp
+                end,
                 -- to remove LSP priority to select completion
                 preselect = cmp.PreselectMode.None,
                 snippet = {
