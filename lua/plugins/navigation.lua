@@ -15,6 +15,7 @@ return {
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             local builtin = require('telescope.builtin')
+
             require("which-key").register({
                 ["<leader>"] = {
                     a = {
