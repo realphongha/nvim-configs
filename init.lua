@@ -117,7 +117,7 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 
 -- Minimum lines to keep above and below the cursor
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 5
 
 -- No annoying error sound
 vim.opt.errorbells = false
