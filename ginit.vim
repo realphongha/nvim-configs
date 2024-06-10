@@ -1,5 +1,5 @@
 " Enable Mouse
-set mouse=a
+set mouse=nvi
 
 " Detect OS
 if !exists("g:os")
@@ -36,12 +36,14 @@ if exists(':GuiScrollBar')
 endif
 
 " Right Click Context Menu (Copy-Cut-Paste)
-nnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>
-inoremap <silent><RightMouse> <Esc>:call GuiShowContextMenu()<CR>
-xnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>gv
-snoremap <silent><RightMouse> <C-G>:call GuiShowContextMenu()<CR>gv
+if exists(':GuiShowContextMenu')
+    nnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>
+    inoremap <silent><RightMouse> <Esc>:call GuiShowContextMenu()<CR>
+    xnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>gv
+    snoremap <silent><RightMouse> <C-G>:call GuiShowContextMenu()<CR>gv
+endif
 
-" Exclusive colorscheme configs for Neovim Qt
+" Exclusive colorscheme configs for GUI Neovim
 colorscheme catppuccin
 
 if (g:os != "Windows_NT")
