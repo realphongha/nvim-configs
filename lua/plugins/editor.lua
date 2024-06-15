@@ -162,7 +162,7 @@ return {
             local toggle_big_file = {
                 name = "toggle_big_file", -- name
                 opts = {
-                    defer = true, -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
+                    defer = false, -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
                 },
                 disable = function() -- called to disable the feature
                     vim.g.opening_big_file = true
@@ -187,16 +187,29 @@ return {
                 end,
             }
 
+            local nvim_autopairs = {
+                name = "nvim_autopairs", -- name
+                opts = {
+                    defer = false, -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
+                },
+                disable = function() -- called to disable the feature
+                    require("nvim-autopairs").disable()
+                end,
+                enable = function() -- called to enable the feature
+                    require("nvim-autopairs").enable()
+                end,
+            }
+
             local codeium = {
                 name = "codeium", -- name
                 opts = {
                     defer = false, -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
                 },
                 disable = function() -- called to disable the feature
-                    vim.cmd([[CodeiumDisable]])
+                    vim.cmd([[Codeium Disable]])
                 end,
                 enable = function() -- called to enable the feature
-                    vim.cmd([[CodeiumEnable]])
+                    vim.cmd([[Codeium Enable]])
                 end,
             }
 
@@ -213,6 +226,7 @@ return {
                     "vimopts",
                     "filetype",
                     nvim_cmp,
+                    nvim_autopairs,
                     codeium,
                     toggle_big_file
                 },
