@@ -138,6 +138,12 @@ return {
                             mode = "n",
                             noremap = true,
                         },
+                        v = {
+                            require("nvim-tree.api").node.open.vertical,
+                            "Open nvim-tree node in vertical split (if C-v cannot be used)",
+                            mode = "n",
+                            noremap = true,
+                        },
                     },
                     r = {
                         ":lua ReloadNvimTreeRoot()<CR>",
