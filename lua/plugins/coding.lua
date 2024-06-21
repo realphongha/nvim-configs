@@ -41,8 +41,12 @@ return {
             "neovim/nvim-lspconfig"
         },
         config = function()
+            local ensure_installed = {"lua_ls", "marksman"}
+            if vim.fn.executable("jedi-language-server") == 0 then
+                table.insert(ensure_installed, "jedi_language_server")
+            end
             require("mason-lspconfig").setup {
-                ensure_installed = { "jedi_language_server", "lua_ls", "marksman" },
+                ensure_installed = ensure_installed,
             }
             local lspconfig = require('lspconfig')
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
