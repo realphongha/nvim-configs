@@ -468,7 +468,7 @@ return {
             null_ls.setup({
                 sources = {
                     -- spell
-                    null_ls.builtins.completion.spell,
+                    -- null_ls.builtins.completion.spell,
 
                     -- lua
                     null_ls.builtins.formatting.stylua,
