@@ -1,6 +1,6 @@
 # nvim-configs
 My neovim configs.  
-Tested with nvim 0.9.x, 0.10.0 on MacOS, Linux and Windows.
+Support nvim >= 0.10.0 on MacOS, Linux and Windows.
 
 # How to install?
 Install [Neovim](https://github.com/neovim/neovim/releases/tag/stable) first.  
