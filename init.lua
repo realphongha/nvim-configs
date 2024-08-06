@@ -198,7 +198,7 @@ function SeeWaifu(color)
 end
 
 -- Set colorscheme
-vim.cmd.colorscheme("catppuccin-macchiato")
+SeeWaifu("tokyonight")
 
 -- }}}
 

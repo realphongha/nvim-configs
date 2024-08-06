@@ -28,10 +28,6 @@ Done!
 
 # Plugin manager
 [lazy.nvim](https://github.com/folke/lazy.nvim)
-## Lazy load:
-* `:LspStart` to load nvim-lspconfig (pls run it once after installing this config to initialize LSP servers)
-* `:Git` to load vim-fugitive
-* `:Codeium` to load codeium.vim (and `:Codeium Auth` to enter your token)
 
 # Add your personal configs and plugins
 Create `lua/my_configs.lua` for your personal configs or  
@@ -74,8 +70,9 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc),
 * [lightline.vim](https://github.com/itchyny/lightline.vim)
 * [undotree](https://github.com/mbbill/undotree.git)
 * [vim-doge](https://github.com/kkoomen/vim-doge.git)
-* [vim-fugitive](https://github.com/tpope/vim-fugitive.git)
+* [vim-fugitive](https://github.com/tpope/vim-fugitive.git) (Lazy load: `:Git`)
 * [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+(Lazy load: `:LspStart`, pls run it once after installing this config to initialize LSP servers)
 * [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 * [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
 * [cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
@@ -91,7 +88,9 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc),
 * [nvim-web-icons](https://github.com/nvim-tree/nvim-web-devicons)
 * [mason.nvim](https://github.com/williamboman/mason.nvim)
 * [which-key.nvim](https://github.com/folke/which-key.nvim)
-* [codeium.vim](https://github.com/Exafunction/codeium.vim)
+* [codeium.vim](https://github.com/Exafunction/codeium.vim) (Lazy load: `:Codeium`)
+* [leetcode.nvim](https://github.com/kawre/leetcode.nvim) 
+(To load: run the command `nvim leetcode.nvim` to open leetcode.nvim interface)
 ## Colorschemes included:
 * [rose-pine](https://github.com/rose-pine/neovim.git)
 * [catppuccin](https://github.com/catppuccin/nvim)
