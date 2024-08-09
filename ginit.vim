@@ -1,6 +1,21 @@
 " Enable Mouse
 set mouse=nvi
 
+if exists("g:neovide")
+    set guifont=JetBrainsMono\ Nerd\ Font:h12
+    set linespace=0
+    let g:neovide_scale_factor = 1.0
+    let g:neovide_padding_top = 5
+    let g:neovide_padding_bottom = 5
+    let g:neovide_padding_right = 5
+    let g:neovide_padding_left = 5
+    "let g:neovide_window_blurred = v:true
+    "let g:neovide_floating_blur_amount_x = 2.0
+    "let g:neovide_floating_blur_amount_y = 2.0
+    "let g:neovide_transparency = 0.8
+    let g:neovide_show_border = v:true
+endif
+
 " Detect OS
 if !exists("g:os")
     if has("win64") || has("win32") || has("win16")
@@ -10,6 +25,7 @@ if !exists("g:os")
     endif
 endif
 
+" For NeovimQT
 " Set Editor Font
 if exists(':GuiFont')
     " Use GuiFont! to ignore font errors
@@ -43,9 +59,11 @@ if exists(':GuiShowContextMenu')
     snoremap <silent><RightMouse> <C-G>:call GuiShowContextMenu()<CR>gv
 endif
 
-" Exclusive colorscheme configs for GUI Neovim
-colorscheme catppuccin
+if !exists("g:neovide") " Neovide configs is loaded first somehow
+    " Exclusive colorscheme configs for GUI Neovim
+    colorscheme catppuccin
 
-if (g:os != "Windows_NT")
-    NvimTreeClose
+    if (g:os != "Windows_NT")
+        NvimTreeClose
+    endif
 endif
