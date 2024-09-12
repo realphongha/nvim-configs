@@ -108,10 +108,11 @@ installed first if you want to use telescope livegrep
 * [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
 
 # Small notes
+* Check out [my minimal configs for tmux](https://gist.github.com/realphongha/abbc89ad908d94afa054049b64eb7917). 
+It works seemlessly with nvim.
 * Use `:lua SeeWaifu()` or `:lua SeeWaifu("colorscheme-name")` to make your background transparent and see your waifu
 in the terminal :D
-* Simple Neovim Qt configs is also supported (in `ginit.vim`). 
-[Neovim Qt](https://github.com/equalsraf/neovim-qt) must be installed first. 
-You can run `misc/add_nvimqt_to_context_menu_windows.reg` to add Neovim Qt to
+* A simple configs for Neovim GUI (i.e., `ginit.vim`) is also supported. 
+Should work with Neovide, VimR and NeovimQt.
+* For Neovim Qt, you can run `misc/add_nvimqt_to_context_menu_windows.reg` to add Neovim Qt to
 context menu (only for Windows) (stolen from [here](https://github.com/neovim/neovim/issues/7222#issuecomment-927413185)) :D
-* Check out [my minimal configs for tmux](https://gist.github.com/realphongha/abbc89ad908d94afa054049b64eb7917) if you want to use it with nvim
