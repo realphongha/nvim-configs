@@ -21,7 +21,7 @@ return {
         arg = leet_arg,
 
         ---@type lc.lang
-        lang = "cpp",
+        lang = "python3",  -- cpp, python3
 
         cn = { -- leetcode.cn
             enabled = false, ---@type boolean
@@ -61,6 +61,18 @@ return {
                     "#include <set>",
                     "",
                     "using namespace std;",
+                }
+            },
+            ["python3"] = {
+                before = {
+                    "from collections import *",
+                    "from itertools import *",
+                    "from bisect import *",
+                    "from array import *",
+                    "from sortedcontainers import *",
+                    "from heapq import *",
+                    "from math import *",
+                    "",
                 }
             }
         }, ---@type table<lc.lang, lc.inject>
