@@ -1,7 +1,6 @@
+# Project
 lua/my_configs.lua
 lua/plugins/my_plugins.lua
 
-__pycache__/
-*.py[cod]
-*$py.class
+# MacOS
 .DS_Store
