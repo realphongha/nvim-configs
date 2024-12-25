@@ -7,6 +7,7 @@
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp-vsnip": { "branch": "main", "commit": "989a8a73c44e926199bfd05fa7a516d51f2d2752" },
   "codeium.vim": { "branch": "main", "commit": "9406f13cf3eaa08318b76746bd105a04506cab27" },
+  "flow": { "branch": "main", "commit": "e1791cf20969e07e52e44d1f3e40bcfda2521e6a" },
   "glow.nvim": { "branch": "main", "commit": "238070a686c1da3bccccf1079700eb4b5e19aea4" },
   "gruvbox": { "branch": "master", "commit": "f1ecde848f0cdba877acb0c740320568252cc482" },
   "kanagawa": { "branch": "master", "commit": "860e4f80df71221d18bf2cd9ef1deb4d364274d2" },

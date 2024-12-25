@@ -201,6 +201,19 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
+    -- {{{ flow.nvim
+    {
+        "0xstepit/flow.nvim",
+        name = "flow",
+        lazy = true,
+        tag = "vX.0.0",
+        opts = {
+            -- Your configuration options here.
+        },
+    },
+    -- }}}
+
+    --------------------------------------------------------------------------
     -- {{{ gruvbox
     {
         "morhetz/gruvbox",
