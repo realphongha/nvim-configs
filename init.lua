@@ -405,10 +405,14 @@ vim.api.nvim_create_autocmd("FocusLost", {
 })
 
 -- Auto format JSON files
-vim.api.nvim_create_autocmd("BufWritePre", {
-    group = "common", pattern = "*.json",
-    command = [[:execute '%!python -m json.tool' | w]]
-})
+function JsonFormat()
+    vim.cmd([[:execute '%!python -m json.tool']])
+end
+
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--     group = "common", pattern = "*.json",
+--     callback = JsonFormat
+-- })
 
 -- Delete trailing white space on save, useful for some filetypes ;)
 function CleanExtraSpaces()
