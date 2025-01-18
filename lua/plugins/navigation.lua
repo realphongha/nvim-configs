@@ -16,29 +16,11 @@ return {
         config = function()
             local builtin = require('telescope.builtin')
 
-            require("which-key").register({
-                ["<leader>"] = {
-                    a = {
-                        builtin.find_files,
-                        "Find files by name",
-                        mode = "n",
-                    },
-                    g = {
-                        builtin.live_grep,
-                        "Live grep",
-                        mode = "n",
-                    },
-                    b = {
-                        builtin.buffers,
-                        "Find buffers",
-                        mode = "n",
-                    }
-                },
-                ["<C-p>"] = {
-                    builtin.git_files,
-                    "Find files by name (in this git repo)",
-                    mode = "n",
-                }
+            require("which-key").add({
+                { "<C-p>",     builtin.git_files,  desc = "Find files by name (in this git repo)" },
+                { "<leader>a", builtin.find_files, desc = "Find files by name" },
+                { "<leader>b", builtin.buffers,    desc = "Find buffers" },
+                { "<leader>g", builtin.live_grep,  desc = "Live grep" },
             })
         end
     },
@@ -128,39 +110,14 @@ return {
                 ReloadNvimTreeRoot()
             end
 
-            require("which-key").register({
-                ["<leader>"] = {
-                    v = {
-                        name = ".vimrc",
-                        c = {
-                            ":lua GoToNvimConfigs()<CR>",
-                            "Go to nvim configs directory",
-                            mode = "n",
-                            noremap = true,
-                        },
-                        -- v = {
-                        --     require("nvim-tree.api").node.open.vertical,
-                        --     "Open nvim-tree node in vertical split (if C-v cannot be used)",
-                        --     mode = "n",
-                        --     noremap = true,
-                        -- },
-                    },
-                    r = {
-                        ":lua ReloadNvimTreeRoot()<CR>",
-                        "Reload nvim-tree root",
-                        mode = { 'n', 'v', 'o' },
-                        noremap = true,
-                        silent = true,
-                    },
-                    t = {
-                        ":NvimTreeToggle<cr>",
-                        "Toggle nvim-tree",
-                        mode = { 'n', 'v', 'o' },
-                        noremap = true,
-                        silent = true,
-                    }
-                },
-            })
+            require("which-key").add(
+                {
+                    { "<leader>r",  ":lua ReloadNvimTreeRoot()<CR>", desc = "Reload nvim-tree root",        mode = { "n", "o", "v" }, remap = false },
+                    { "<leader>t",  ":NvimTreeToggle<cr>",           desc = "Toggle nvim-tree",             mode = { "n", "o", "v" }, remap = false },
+                    { "<leader>v",  group = ".vimrc" },
+                    { "<leader>vc", ":lua GoToNvimConfigs()<CR>",    desc = "Go to nvim configs directory", remap = false },
+                }
+            )
 
             -- Removes the annoying undercurl for executable files
             vim.api.nvim_create_autocmd({ "ColorScheme" }, {

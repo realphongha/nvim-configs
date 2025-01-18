@@ -38,13 +38,13 @@ vim.opt.history = 500
 
 -- Automatically read file changes
 vim.opt.autoread = true
-vim.api.nvim_create_autocmd({"FocusGained", "BufEnter"}, {
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
     pattern = { "*" },
     command = "silent! checktime",
 })
 
 -- Unicode
-vim.opt.encoding="utf-8"
+vim.opt.encoding = "utf-8"
 
 -- No backup
 vim.opt.backup = false
@@ -52,7 +52,7 @@ vim.opt.wb = false
 vim.opt.swapfile = false
 
 -- Use system clipboard
-vim.opt.clipboard:append {"unnamed", "unnamedplus"}
+vim.opt.clipboard:append { "unnamed", "unnamedplus" }
 
 -- Disable mouse supporting for faster copying on ssh servers
 vim.opt.mouse = ""
@@ -62,9 +62,9 @@ vim.opt.expandtab = true
 vim.opt.smarttab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
-vim.opt.ai = true  -- Auto indent
-vim.opt.si = true  -- Smart indent
-vim.opt.wrap = true  -- Wrap lines
+vim.opt.ai = true   -- Auto indent
+vim.opt.si = true   -- Smart indent
+vim.opt.wrap = true -- Wrap lines
 
 -- Set relative number
 vim.opt.relativenumber = true
@@ -149,7 +149,7 @@ vim.opt.laststatus = 2
 --     [[set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ PATH:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c]]
 -- )
 
--- }}} 
+-- }}}
 
 ------------------------------------------------------------------------------
 -- {{{ => Apperance
@@ -180,12 +180,12 @@ function SeeWaifu(color)
     --     'EndOfBuffer',
     --     "NvimTreeNormal", "NvimTreeNormalNC", "NvimTreePopup", -- nvim-tree
     --     "TelescopeNormal", -- telescope.nvim
-    --     'Pmenu', 'NormalFloat', 'FloatShadow', 
+    --     'Pmenu', 'NormalFloat', 'FloatShadow',
     -- }
     local hi_groups = {
         'Normal', 'NormalNC',
         "NvimTreeNormal", "NvimTreeNormalNC", -- nvim-tree
-        "TelescopeNormal" -- telescope.nvim
+        "TelescopeNormal"                     -- telescope.nvim
     }
     if color then
         vim.cmd.colorscheme(color)
@@ -193,7 +193,7 @@ function SeeWaifu(color)
 
     -- general
     for _, hi_group in pairs(hi_groups) do
-        vim.api.nvim_set_hl(0, hi_group, {bg = "none"})
+        vim.api.nvim_set_hl(0, hi_group, { bg = "none" })
     end
 end
 
@@ -207,59 +207,18 @@ SeeWaifu("tokyonight")
 
 local wk = require("which-key")
 
-wk.register({
-    ["<leader>"] = {
-        v = {
-            name = ".vimrc",
-            e = {
-                "<c-w>l:e $MYVIMRC<cr>",
-                "Edit .vimrc",
-                mode = "n",
-                noremap = true,
-            },
-            s = {
-                "<c-w>l:e $MYVIMRC<cr>",
-                "Source .vimrc",
-                mode = "n",
-                noremap = true,
-            },
-        },
+wk.add({
+    {
+        mode = { "v" },
+        { '<leader>"', 'xa""<Esc>P', desc = 'Surround in ""', remap = false },
+        { "<leader>'", "xa''<Esc>P", desc = "Surround in ''", remap = false },
+        { "<leader>(", "xa()<Esc>P", desc = "Surround in ()", remap = false },
+        { "<leader>[", "xa[]<Esc>P", desc = "Surround in []", remap = false },
+        { "<leader>{", "xa()<Esc>P", desc = "Surround in {}", remap = false },
     },
-    ["<leader>\""] = {
-        [[xa""<Esc>P]],
-        [[Surround in ""]],
-        mode = "v",
-        noremap = true,
-        silent = true,
-    },
-    ["<leader>'"] = {
-        [[xa''<Esc>P]],
-        [[Surround in '']],
-        mode = "v",
-        noremap = true,
-        silent = true,
-    },
-    ["<leader>("] = {
-        [[xa()<Esc>P]],
-        [[Surround in ()]],
-        mode = "v",
-        noremap = true,
-        silent = true,
-    },
-    ["<leader>{"] = {
-        [[xa()<Esc>P]],
-        [[Surround in {}]],
-        mode = "v",
-        noremap = true,
-        silent = true,
-    },
-    ["<leader>["] = {
-        [[xa[]<Esc>P]],
-        "Surround in []",
-        mode = "v",
-        noremap = true,
-        silent = true,
-    },
+    { "<leader>v",  group = ".vimrc" },
+    { "<leader>ve", "<c-w>l:e $MYVIMRC<cr>", desc = "Edit .vimrc",   remap = false },
+    { "<leader>vs", "<c-w>l:e $MYVIMRC<cr>", desc = "Source .vimrc", remap = false },
 })
 
 -- Map terminal opening settings
@@ -272,17 +231,11 @@ elseif vim.g.os == "Linux" then
 end
 
 -- Quickly open terminal and resize terminal window
-wk.register({
-    ["<Esc>"] = {
-        [[<C-\><C-n>]],
-        "Exit terminal mode",
-        mode = "t",
-        noremap = true,
-        silent = true,
-    },
-    ["<leader>"] = {
-        T = {
-            function ()
+wk.add(
+    {
+        {
+            "<leader>T",
+            function()
                 if vim.g.os == "Windows_NT" then
                     vim.cmd([[:split]])
                     vim.cmd([[:resize 10]])
@@ -292,41 +245,16 @@ wk.register({
                     vim.cmd([[:resize 10]])
                 end
             end,
-            "Open integrated terminal",
-            mode = "n",
-            noremap = true,
-            silent = true,
+            desc = "Open integrated terminal",
+            remap = false
         },
-        p = {
-            [["0p]],
-            "Put current yanked register",
-            mode = {"n", "v"},
-            noremap = true,
-            silent = true,
-        },
-        J = {
-            [[:m '>+1<CR>gv=gv]],
-            "Move selected block down 1 line",
-            mode = "v",
-            noremap = true,
-            silent = true,
-        },
-        K = {
-            [[:m '<-2<CR>gv=gv]],
-            "Move selected block up 1 line",
-            mode = "v",
-            noremap = true,
-            silent = true,
-        },
-    },
-    ["<leader><Esc>"] = {
-        [[:noh<cr>]],
-        "Clear all highlights",
-        mode = {'n', 'v', 'o'},
-        noremap = true,
-        silent = true,
-    },
-})
+        { "<Esc>",         "<C-\\><C-n>",      desc = "Exit terminal mode",              mode = "t",               remap = false },
+        { "<leader><Esc>", ":noh<cr>",         desc = "Clear all highlights",            mode = { "n", "o", "v" }, remap = false },
+        { "<leader>p",     '"0p',              desc = "Put current yanked register",     mode = { "n", "v" },      remap = false },
+        { "<leader>J",     ":m '>+1<CR>gv=gv", desc = "Move selected block down 1 line", mode = "v",               remap = false },
+        { "<leader>K",     ":m '<-2<CR>gv=gv", desc = "Move selected block up 1 line",   mode = "v",               remap = false },
+    }
+)
 
 -- Quickly toggle all other splits and line numbers, useful for copying on
 -- remote machines
@@ -343,14 +271,8 @@ function ToggleCopyMode()
     OnCopyMode = not OnCopyMode
 end
 
-wk.register({
-    ["<leader>cp"] = {
-        ToggleCopyMode,
-        [[Toggle copy mode for remote]],
-        mode = {'n', 'v', 'o'},
-        noremap = true,
-        silent = true,
-    },
+wk.add({
+    { "<leader>cp", ToggleCopyMode, desc = "Toggle copy mode for remote", mode = { "n", "o", "v" }, remap = false },
 })
 
 -- lua-style mapping configs doesn't work, don't ask why
@@ -390,17 +312,20 @@ end
 
 ------------------------------------------------------------------------------
 -- {{{ => Autocmd
-vim.api.nvim_create_augroup("common", {clear = true})
+vim.api.nvim_create_augroup("common", { clear = true })
 
 -- Cute cat welcomes you each time enter Vim
 vim.api.nvim_create_autocmd("VimEnter", {
-    group = "common", pattern = "*",
+    group = "common",
+    pattern = "*",
     command = [[echo "Hi >^.^<"]]
 })
 
 -- Auto save when losing focus
 vim.api.nvim_create_autocmd("FocusLost", {
-    group = "common", pattern = "*", nested = true,
+    group = "common",
+    pattern = "*",
+    nested = true,
     command = [[silent! wall]]
 })
 
@@ -423,22 +348,24 @@ function CleanExtraSpaces()
     -- vim.fn.setreg("/", old_query)
 end
 
-
 -- Auto delete trailing spaces
 vim.api.nvim_create_autocmd("BufWritePre", {
-    group = "common", pattern = "*.txt,*.js,*.py,*.wiki,*.sh,*.coffee",
+    group = "common",
+    pattern = "*.txt,*.js,*.py,*.wiki,*.sh,*.coffee",
     callback = CleanExtraSpaces
 })
 
 -- Folding vimscript by marker
 vim.api.nvim_create_autocmd("FileType", {
-    group = "common", pattern = "vim",
+    group = "common",
+    pattern = "vim",
     command = [[setlocal foldmethod=marker]]
 })
 
 -- Folding lua by marker
 vim.api.nvim_create_autocmd("FileType", {
-    group = "common", pattern = "lua",
+    group = "common",
+    pattern = "lua",
     command = [[setlocal foldmethod=marker]]
 })
 

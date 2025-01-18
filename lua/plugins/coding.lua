@@ -41,8 +41,11 @@ return {
             "neovim/nvim-lspconfig"
         },
         config = function()
-            local ensure_installed = {"lua_ls", "marksman"}
+            local ensure_installed = { "lua_ls", "marksman" }
             if vim.fn.executable("jedi-language-server") == 0 then
+                table.insert(ensure_installed, "jedi_language_server")
+            end
+            if vim.fn.executable("typescript-language-server") == 0 then
                 table.insert(ensure_installed, "jedi_language_server")
             end
             require("mason-lspconfig").setup {
@@ -67,8 +70,8 @@ return {
                 single_file_support = true,
             }
 
-            -- tsserver
-            lspconfig.tsserver.setup {
+            -- ts_ls
+            lspconfig.ts_ls.setup {
                 capabilities = capabilities
             }
 
@@ -163,29 +166,11 @@ return {
 
             -- Global mappings.
             -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-            require("which-key").register({
-                ["<leader>"] = {
-                    e = {
-                        vim.diagnostic.open_float,
-                        "Open diagnostic float window",
-                        mode = "n",
-                    },
-                    q = {
-                        vim.diagnostic.setloclist,
-                        "Add buffer diagnostics to the location list",
-                        mode = "n",
-                    },
-                },
-                ["[d"] = {
-                    vim.diagnostic.goto_prev,
-                    "Go to next diagnostic",
-                    mode = "n",
-                },
-                ["]d"] = {
-                    vim.diagnostic.goto_next,
-                    "Go to previous diagnostic",
-                    mode = "n",
-                },
+            require("which-key").add({
+                { "<leader>e", vim.diagnostic.open_float, desc = "Open diagnostic float window" },
+                { "<leader>q", vim.diagnostic.setloclist, desc = "Add buffer diagnostics to the location list" },
+                { "[d",        vim.diagnostic.goto_next,  desc = "Go to next diagnostic" },
+                { "]d",        vim.diagnostic.goto_prev,  desc = "Go to previous diagnostic" },
             })
 
             -- Use LspAttach autocommand to only map the following keys
@@ -198,94 +183,35 @@ return {
 
                     -- Buffer local mappings.
                     -- See `:help vim.lsp.*` for documentation on any of the below functions
-                    require("which-key").register({
-                        ["gD"] = {
-                            vim.lsp.buf.declaration,
-                            "Go to declaration",
-                            mode = "n",
-                            buffer = ev.buf,
+                    require("which-key").add({
+                        { "<C-k>",     vim.lsp.buf.signature_help,  buffer = 1, desc = "Display hover signature" },
+                        { "<Leader>D", vim.lsp.buf.type_definition, buffer = 1, desc = "Type definition" },
+                        {
+                            "<Leader>f",
+                            function()
+                                vim.lsp.buf.format { async = true }
+                            end,
+                            buffer = 1,
+                            desc = "Format code"
                         },
-                        ["gd"] = {
-                            vim.lsp.buf.definition,
-                            "Go to definition",
-                            mode = "n",
-                            buffer = ev.buf,
+                        { "<Leader>rn", vim.lsp.buf.rename,               buffer = 1, desc = "Rename all references to the symbol" },
+                        { "<Leader>w",  group = "[LSP] Workspace" },
+                        { "<Leader>wa", vim.lsp.buf.add_workspace_folder, buffer = 1, desc = "Add workspace folder" },
+                        {
+                            "<Leader>wl",
+                            function()
+                                print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                            end,
+                            buffer = 1,
+                            desc = "List workspace folders"
                         },
-                        ["K"] = {
-                            vim.lsp.buf.hover,
-                            "Display hover information",
-                            mode = "n",
-                            buffer = ev.buf,
-                        },
-                        ["gi"] = {
-                            vim.lsp.buf.implementation,
-                            "Go to implementation",
-                            mode = "n",
-                            buffer = ev.buf,
-                        },
-                        ["gr"] = {
-                            vim.lsp.buf.references,
-                            "Go to references",
-                            mode = "n",
-                            buffer = ev.buf,
-                        },
-                        ["<C-k>"] = {
-                            vim.lsp.buf.signature_help,
-                            "Display hover signature",
-                            mode = "n",
-                            buffer = ev.buf,
-                        },
-                        ["<Leader>"] = {
-                            w = {
-                                name = "[LSP] Workspace",
-                                a = {
-                                    vim.lsp.buf.add_workspace_folder,
-                                    "Add workspace folder",
-                                    mode = "n",
-                                    buffer = ev.buf,
-                                },
-                                r = {
-                                    vim.lsp.buf.remove_workspace_folder,
-                                    "Remove workspace folder",
-                                    mode = "n",
-                                    buffer = ev.buf,
-                                },
-                                l = {
-                                    function()
-                                        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-                                    end,
-                                    "List workspace folders",
-                                    mode = "n",
-                                    buffer = ev.buf,
-                                },
-                            },
-                            D = {
-                                vim.lsp.buf.type_definition,
-                                "Type definition",
-                                mode = "n",
-                                buffer = ev.buf,
-                            },
-                            rn = {
-                                vim.lsp.buf.rename,
-                                "Rename all references to the symbol",
-                                mode = "n",
-                                buffer = ev.buf,
-                            },
-                            ca = {
-                                vim.lsp.buf.code_action,
-                                "Code action",
-                                mode = { "n", "v" },
-                                buffer = ev.buf,
-                            },
-                            f = {
-                                function()
-                                    vim.lsp.buf.format { async = true }
-                                end,
-                                "Format code",
-                                mode = "n",
-                                buffer = ev.buf,
-                            },
-                        },
+                        { "<Leader>wr", vim.lsp.buf.remove_workspace_folder, buffer = 1, desc = "Remove workspace folder" },
+                        { "K",          vim.lsp.buf.hover,                   buffer = 1, desc = "Display hover information" },
+                        { "gD",         vim.lsp.buf.declaration,             buffer = 1, desc = "Go to declaration" },
+                        { "gd",         vim.lsp.buf.definition,              buffer = 1, desc = "Go to definition" },
+                        { "gi",         vim.lsp.buf.implementation,          buffer = 1, desc = "Go to implementation" },
+                        { "gr",         vim.lsp.buf.references,              buffer = 1, desc = "Go to references" },
+                        { "<Leader>ca", vim.lsp.buf.code_action,             buffer = 1, desc = "Code action",              mode = { "n", "v" } },
                     })
                 end,
             })
@@ -529,26 +455,14 @@ return {
         build = ":call doge#install()",
         config = function()
             -- Mappings
-            require("which-key").register({
-                ["<leader>d"] = {
-                    "<Plug>(doge-generate)",
-                    "Generate docstring",
-                    mode = "n",
-                    silent = true,
-                },
-                ["<TAB>"] = {
-                    "<Plug>(doge-comment-jump-forward)",
-                    "[vim-doge] Jump forward",
-                    mode = { "n", 'i', 's' },
-                    silent = true,
-                },
-                ["<S-TAB>"] = {
-                    "<Plug>(doge-comment-jump-backward)",
-                    "[vim-doge] Jump backward",
-                    mode = { "n", 'i', 's' },
-                    silent = true,
-                },
-            })
+            require("which-key").add(
+                {
+                    { "<S-TAB>",   "<Plug>(doge-comment-jump-backward)", desc = "[vim-doge] Jump backward", mode = { "i", "n", "s" } },
+                    { "<TAB>",     "<Plug>(doge-comment-jump-forward)",  desc = "[vim-doge] Jump forward",  mode = { "i", "n", "s" } },
+                    { "<leader>d", "<Plug>(doge-generate)",              desc = "Generate docstring" },
+                }
+            )
+
             -- Docstring standards
             vim.cmd([[
             let g:doge_doc_standard_python = 'google'
