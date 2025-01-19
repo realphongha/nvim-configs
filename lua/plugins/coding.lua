@@ -10,6 +10,80 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
+    -- {{{ nvim-dap
+    {
+        "mfussenegger/nvim-dap",
+        lazy = true,
+        keys = {
+            { "<leader>zb", mode = { "n" } },
+        },
+        config = function()
+            local dap = require('dap')
+            local widgets = require('dap.ui.widgets')
+            require("which-key").add({
+                { "<leader>z", group = "Nvim-DAP" },
+                { "<leader>zb", dap.toggle_breakpoint, desc = "Toggle breakpoint" },
+                { "<leader>zc", dap.continue, desc = "Continue" },
+                { "<leader>zo", dap.step_over, desc = "Step over" },
+                { "<leader>zi", dap.step_into, desc = "Step into" },
+                { "<leader>zr", dap.repl.open, desc = "Open REPL" },
+                { "<leader>zs", function ()
+                    widgets.centered_float(widgets.scopes)
+                end, desc = "Open current scopes in a floating window" },
+                { "<leader>zf", function ()
+                    widgets.centered_float(widgets.frames)
+                end, desc = "Open current frames in a floating window" },
+                { "<leader>zv", function ()
+                    widgets.hover()
+                end, desc = "View the value of the expression in a floating window" },
+            })
+
+            -- Python
+            dap.adapters.python = function(cb, config)
+                if config.request == 'attach' then
+                    ---@diagnostic disable-next-line: undefined-field
+                    local port = (config.connect or config).port
+                    ---@diagnostic disable-next-line: undefined-field
+                    local host = (config.connect or config).host or '127.0.0.1'
+                    cb({
+                        type = 'server',
+                        port = assert(port, '`connect.port` is required for a python `attach` configuration'),
+                        host = host,
+                        options = {
+                            source_filetype = 'python',
+                        },
+                    })
+                else
+                    cb({
+                        type = 'executable',
+                        command = 'python',
+                        args = { '-m', 'debugpy.adapter' },
+                        options = {
+                            source_filetype = 'python',
+                        },
+                    })
+                end
+            end
+            dap.configurations.python = {
+              {
+                -- The first three options are required by nvim-dap
+                type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
+                request = 'launch';
+                name = "Launch file";
+
+                -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+
+                program = "${file}"; -- This configuration will launch the current file if used.
+                pythonPath = function()
+                    return "python"
+                end;
+              },
+            }
+            end
+    },
+    -- }}}
+
+    --------------------------------------------------------------------------
     -- {{{ mason.nvim
     {
         "williamboman/mason.nvim",
@@ -46,7 +120,10 @@ return {
                 table.insert(ensure_installed, "jedi_language_server")
             end
             if vim.fn.executable("typescript-language-server") == 0 then
-                table.insert(ensure_installed, "jedi_language_server")
+                table.insert(ensure_installed, "ts_ls")
+            end
+            if vim.fn.executable("debugpy") == 0 then
+                table.insert(ensure_installed, "debugpy")
             end
             require("mason-lspconfig").setup {
                 ensure_installed = ensure_installed,
