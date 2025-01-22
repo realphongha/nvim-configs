@@ -369,6 +369,14 @@ vim.api.nvim_create_autocmd("FileType", {
     command = [[setlocal foldmethod=marker]]
 })
 
+-- New filetypes
+vim.api.nvim_create_autocmd("BufRead", {
+    group = "common",
+    pattern = "*.jpg,*.jpeg,*.png",
+    command = [[setfiletype image]]
+})
+
+
 -- }}}
 
 ------------------------------------------------------------------------------

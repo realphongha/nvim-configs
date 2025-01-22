@@ -88,6 +88,7 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc),
 * [nvim-web-icons](https://github.com/nvim-tree/nvim-web-devicons)
 * [mason.nvim](https://github.com/williamboman/mason.nvim)
 * [which-key.nvim](https://github.com/folke/which-key.nvim)
+* [nvim-dap](https://github.com/mfussenegger/nvim-dap)
 * [codeium.vim](https://github.com/Exafunction/codeium.vim) (Lazy load: `:Codeium`)
 * [leetcode.nvim](https://github.com/kawre/leetcode.nvim) 
 (To load: run the command `nvim leetcode.nvim` to open leetcode.nvim interface)
@@ -100,6 +101,7 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc),
 * [monokai](https://github.com/sickill/vim-monokai)
 * [peaksea](https://github.com/vim-scripts/peaksea)
 * [solarized](https://github.com/altercation/vim-colors-solarized)
+* [no-clown-fiesta](https://github.com/aktersnurra/no-clown-fiesta.nvim)
 ## Others
 * [the_silver_searcher](https://github.com/ggreer/the_silver_searcher) is 
 supported as 'grep' command (but you need to install it on your system first)

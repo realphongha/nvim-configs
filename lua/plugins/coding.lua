@@ -122,9 +122,9 @@ return {
             if vim.fn.executable("typescript-language-server") == 0 then
                 table.insert(ensure_installed, "ts_ls")
             end
-            if vim.fn.executable("debugpy") == 0 then
-                table.insert(ensure_installed, "debugpy")
-            end
+            -- if vim.fn.executable("debugpy") == 0 then
+            --     table.insert(ensure_installed, "debugpy")
+            -- end
             require("mason-lspconfig").setup {
                 ensure_installed = ensure_installed,
             }
