@@ -64,6 +64,7 @@ them first.
 This repo is directly inspired by [vimrc](https://github.com/amix/vimrc), 
 [ThePrimeagen video](https://www.youtube.com/watch?v=w7i4amO_zaE) and 
 [Learn Vimscript the Hard Way](https://learnvimscriptthehardway.stevelosh.com/).  
+
 ## Plugins included:
 * [vim-commentary](https://github.com/tpope/vim-commentary)
 * [vim-sleuth](https://github.com/tpope/vim-sleuth)
@@ -89,9 +90,12 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc),
 * [mason.nvim](https://github.com/williamboman/mason.nvim)
 * [which-key.nvim](https://github.com/folke/which-key.nvim)
 * [nvim-dap](https://github.com/mfussenegger/nvim-dap)
+* [ts-comments](https://github.com/folke/ts-comments.nvim)
+* [multicursor.nvim](https://github.com/jake-stewart/multicursor.nvim)
 * [codeium.vim](https://github.com/Exafunction/codeium.vim) (Lazy load: `:Codeium`)
 * [leetcode.nvim](https://github.com/kawre/leetcode.nvim) 
 (To load: run the command `nvim leetcode.nvim` to open leetcode.nvim interface)
+
 ## Colorschemes included:
 * [rose-pine](https://github.com/rose-pine/neovim.git)
 * [catppuccin](https://github.com/catppuccin/nvim)
@@ -102,6 +106,8 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc),
 * [peaksea](https://github.com/vim-scripts/peaksea)
 * [solarized](https://github.com/altercation/vim-colors-solarized)
 * [no-clown-fiesta](https://github.com/aktersnurra/no-clown-fiesta.nvim)
+* [flow.nvim](https://github.com/0xstepit/flow.nvim)
+
 ## Others
 * [the_silver_searcher](https://github.com/ggreer/the_silver_searcher) is 
 supported as 'grep' command (but you need to install it on your system first)
