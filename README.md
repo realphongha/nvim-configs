@@ -92,6 +92,7 @@ This repo is directly inspired by [vimrc](https://github.com/amix/vimrc),
 * [nvim-dap](https://github.com/mfussenegger/nvim-dap)
 * [ts-comments](https://github.com/folke/ts-comments.nvim)
 * [multicursor.nvim](https://github.com/jake-stewart/multicursor.nvim)
+* [snacks.nvim](https://github.com/folke/snacks.nvim)
 * [codeium.vim](https://github.com/Exafunction/codeium.vim) (Lazy load: `:Codeium`)
 * [leetcode.nvim](https://github.com/kawre/leetcode.nvim) 
 (To load: run the command `nvim leetcode.nvim` to open leetcode.nvim interface)
@@ -114,6 +115,8 @@ supported as 'grep' command (but you need to install it on your system first)
 * [ripgrep](https://github.com/BurntSushi/ripgrep#installation) should be
 installed first if you want to use telescope livegrep
 * [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
+* [ImageMagic](https://imagemagick.org/script/download.php) for image preview 
+with snacks.nvim
 
 # Small notes
 * Check out [my minimal configs for tmux](https://gist.github.com/realphongha/abbc89ad908d94afa054049b64eb7917). 

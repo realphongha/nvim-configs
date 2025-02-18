@@ -349,83 +349,83 @@ return {
 
     --------------------------------------------------------------------------
     -- {{{ bigfile.nvim
-    {
-        "LunarVim/bigfile.nvim",
-        lazy = false,
-        config = function()
-            local toggle_big_file = {
-                name = "toggle_big_file", -- name
-                opts = {
-                    defer = false,        -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
-                },
-                disable = function()      -- called to disable the feature
-                    vim.g.opening_big_file = true
-                    vim.b.opening_big_file = true
-                end,
-                enable = function() -- called to enable the feature
-                    vim.g.opening_big_file = false
-                    vim.b.opening_big_file = false
-                end,
-            }
-
-            local nvim_cmp = {
-                name = "nvim_cmp",   -- name
-                opts = {
-                    defer = true,    -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
-                },
-                disable = function() -- called to disable the feature
-                    vim.g.enable_nvim_cmp = false
-                end,
-                enable = function() -- called to enable the feature
-                    vim.g.enable_nvim_cmp = true
-                end,
-            }
-
-            local nvim_autopairs = {
-                name = "nvim_autopairs", -- name
-                opts = {
-                    defer = false,       -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
-                },
-                disable = function()     -- called to disable the feature
-                    require("nvim-autopairs").disable()
-                end,
-                enable = function() -- called to enable the feature
-                    require("nvim-autopairs").enable()
-                end,
-            }
-
-            local codeium = {
-                name = "codeium",    -- name
-                opts = {
-                    defer = false,   -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
-                },
-                disable = function() -- called to disable the feature
-                    vim.cmd([[Codeium Disable]])
-                end,
-                enable = function() -- called to enable the feature
-                    vim.cmd([[Codeium Enable]])
-                end,
-            }
-
-            require("bigfile").setup {
-                filesize = 2,      -- size of the file in MiB, the plugin round file sizes to the closest MiB
-                pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
-                features = {       -- features to disable
-                    "indent_blankline",
-                    "illuminate",
-                    "lsp",
-                    "treesitter",
-                    "syntax",
-                    "matchparen",
-                    "vimopts",
-                    "filetype",
-                    nvim_cmp,
-                    nvim_autopairs,
-                    codeium,
-                    toggle_big_file
-                },
-            }
-        end
-    },
+    -- {
+    --     "LunarVim/bigfile.nvim",
+    --     lazy = false,
+    --     config = function()
+    --         local toggle_big_file = {
+    --             name = "toggle_big_file", -- name
+    --             opts = {
+    --                 defer = false,        -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
+    --             },
+    --             disable = function()      -- called to disable the feature
+    --                 vim.g.opening_big_file = true
+    --                 vim.b.opening_big_file = true
+    --             end,
+    --             enable = function() -- called to enable the feature
+    --                 vim.g.opening_big_file = false
+    --                 vim.b.opening_big_file = false
+    --             end,
+    --         }
+    --
+    --         local nvim_cmp = {
+    --             name = "nvim_cmp",   -- name
+    --             opts = {
+    --                 defer = true,    -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
+    --             },
+    --             disable = function() -- called to disable the feature
+    --                 vim.g.enable_nvim_cmp = false
+    --             end,
+    --             enable = function() -- called to enable the feature
+    --                 vim.g.enable_nvim_cmp = true
+    --             end,
+    --         }
+    --
+    --         local nvim_autopairs = {
+    --             name = "nvim_autopairs", -- name
+    --             opts = {
+    --                 defer = false,       -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
+    --             },
+    --             disable = function()     -- called to disable the feature
+    --                 require("nvim-autopairs").disable()
+    --             end,
+    --             enable = function() -- called to enable the feature
+    --                 require("nvim-autopairs").enable()
+    --             end,
+    --         }
+    --
+    --         local codeium = {
+    --             name = "codeium",    -- name
+    --             opts = {
+    --                 defer = false,   -- set to true if `disable` should be called on `BufReadPost` and not `BufReadPre`
+    --             },
+    --             disable = function() -- called to disable the feature
+    --                 vim.cmd([[Codeium Disable]])
+    --             end,
+    --             enable = function() -- called to enable the feature
+    --                 vim.cmd([[Codeium Enable]])
+    --             end,
+    --         }
+    --
+    --         require("bigfile").setup {
+    --             filesize = 2,      -- size of the file in MiB, the plugin round file sizes to the closest MiB
+    --             pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
+    --             features = {       -- features to disable
+    --                 "indent_blankline",
+    --                 "illuminate",
+    --                 "lsp",
+    --                 "treesitter",
+    --                 "syntax",
+    --                 "matchparen",
+    --                 "vimopts",
+    --                 "filetype",
+    --                 nvim_cmp,
+    --                 nvim_autopairs,
+    --                 codeium,
+    --                 toggle_big_file
+    --             },
+    --         }
+    --     end
+    -- },
     -- }}}
 }
