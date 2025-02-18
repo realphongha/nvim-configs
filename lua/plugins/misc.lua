@@ -20,6 +20,7 @@ return {
             gitbrowse = { enabled = false },
             image = {
                 enabled = true,
+                force = true,
                 doc = {
                     enabled = true,
                     inline = true,
