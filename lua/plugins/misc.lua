@@ -1,6 +1,58 @@
 local leet_arg = "leetcode.nvim"
 
 return {
+    --------------------------------------------------------------------------
+    -- {{{ snacks.nvim
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        ---@type snacks.Config
+        opts = {
+            animate = { enabled = true },
+            bigfile = { enabled = true },
+            bufdelete = { enabled = true },
+            dashboard = { enabled = false },
+            debug = { enabled = false },
+            dim = { enabled = true },
+            explorer = { enabled = false },
+            git = { enabled = false },
+            gitbrowse = { enabled = false },
+            image = {
+                enabled = true,
+                doc = {
+                    enabled = true,
+                    inline = true,
+                    float = true,
+                    max_width = 80,
+                    max_height = 40,
+                },
+            },
+            indent = { enabled = true },
+            input = { enabled = true },
+            layout = { enabled = true },
+            lazygit = { enabled = false },
+            notifier = { enabled = true },
+            notify = { enabled = true },
+            picker = { enabled = false },
+            profiler = { enabled = false },
+            quickfile = { enabled = false },
+            rename = { enabled = false },
+            scope = { enabled = true },
+            scratch = { enabled = false },
+            scroll = { enabled = true },
+            statuscolumn = { enabled = false },
+            terminal = { enabled = false },
+            toggle = { enabled = true },
+            util = { enabled = true },
+            win = { enabled = true },
+            words = { enabled = true },
+            zero = { enabled = false },
+        },
+    },
+    -- }}}
+
+    {
     --- {{{ leetcode.nvim
     "kawre/leetcode.nvim",
     commit = "05d4153787fab5c6163150d2a0acf29cd1ef297f",
@@ -138,4 +190,5 @@ return {
     --     vim.cmd("colorscheme catppuccin")
     -- end
     --}}}
+}
 }
