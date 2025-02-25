@@ -1,6 +1,6 @@
 # nvim-configs
 My neovim configs.  
-Support nvim >= 0.10.0 on MacOS, Linux and Windows.
+Support nvim>=0.10.0 on MacOS, Linux and Windows.
 
 # How to install?
 Install [Neovim](https://github.com/neovim/neovim/releases/tag/stable) first.  
@@ -23,107 +23,60 @@ Remove-Item -Path "~/AppData/Local/nvim" -Recurse -Force
 cd ~/AppData/Local/
 git clone https://github.com/realphongha/nvim-configs.git nvim
 ```
-
 Done!
 
+## Optional requirements:
+* [ripgrep](https://github.com/BurntSushi/ripgrep#installation) should be
+installed first if you want to use Telescope livegrep
+* We need a [patched font](https://www.nerdfonts.com/) for better looking UI!
+* Install [ImageMagick](https://imagemagick.org/script/download.php) for image preview 
+with snacks.nvim
+* [the_silver_searcher](https://github.com/ggreer/the_silver_searcher) is 
+needed for 'grep' command support (Telescope livegrep is enough for me tho)
+
 # Plugin manager
-[lazy.nvim](https://github.com/folke/lazy.nvim)
+We use [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
 
-# Add your personal configs and plugins
-Create `lua/my_configs.lua` for your personal configs or  
-`lua/my_plugins.lua` for your personal plugins (in lazy.nvim format).
+## Plugins included:
+See `lua/plugins/*.lua`
 
-# Install LSP servers:
+## Colorschemes included:
+* See `lua/plugins/colorscheme.lua`
+
+## LSP support:
 Some LSP servers are already integrated in configs but you need to install
-them first.
-## You can use [mason.nvim](https://github.com/williamboman/mason.nvim) (already installed) or manually install (below):
-## For jedi
-`pip install jedi-language-server`
-## For pyright:
-`npm i -g pyright`  
-## For tsserver
-`npm install -g typescript typescript-language-server`
-## For rust-analyzer
-[Install](https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary)
-## For ccls
-[Install](https://github.com/MaskRay/ccls/wiki)
-## For clangd
-[Install](https://clangd.llvm.org/installation.html)
-## For cmake-language-server
-[Install](https://github.com/regen100/cmake-language-server)
-## For rust-analyzer
-[Install](https://github.com/rust-lang/rust-analyzer)
-## For lua-language-server
-[Install](https://luals.github.io/#neovim-install) 
-## To add other LSP supports:
+them first, you can use [mason.nvim](https://github.com/williamboman/mason.nvim)
+(already installed) or manually install them:
+* jedi: `pip install jedi-language-server`
+* pyright: `npm i -g pyright`  
+* tsserver: `npm install -g typescript typescript-language-server`
+* rust-analyzer: [Install](https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary)
+* ccls: [Install](https://github.com/MaskRay/ccls/wiki)
+* clangd: [Install](https://clangd.llvm.org/installation.html)
+* cmake-language-server: [Install](https://github.com/regen100/cmake-language-server)
+* rust-analyzer: [Install](https://github.com/rust-lang/rust-analyzer)
+* lua-language-server: [Install](https://luals.github.io/#neovim-install) 
+
+### To add other LSP supports:
 * Install LSP servers (manually or using mason.nvim)
 * Add LSP configs for neovim in `lua/plugins/coding.lua`, mason-lspconfig->config section.
 * Add lazy load condition to nvim-lspconfig->ft section in `lua/plugins/coding.lua`
 
-# Acknowledgements
-This repo is directly inspired by [vimrc](https://github.com/amix/vimrc), 
-[ThePrimeagen video](https://www.youtube.com/watch?v=w7i4amO_zaE) and 
-[Learn Vimscript the Hard Way](https://learnvimscriptthehardway.stevelosh.com/).  
+# To add your personal configs and plugins
+Create `lua/my_configs.lua` for your personal configs or 
+`lua/my_plugins.lua` for your personal plugins (in `lazy.nvim` format).
 
-## Plugins included:
-* [vim-commentary](https://github.com/tpope/vim-commentary)
-* [vim-sleuth](https://github.com/tpope/vim-sleuth)
-* [lightline.vim](https://github.com/itchyny/lightline.vim)
-* [undotree](https://github.com/mbbill/undotree.git)
-* [vim-doge](https://github.com/kkoomen/vim-doge.git)
-* [vim-fugitive](https://github.com/tpope/vim-fugitive.git) (Lazy load: `:Git`)
-* [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-(Lazy load: `:LspStart`, pls run it once after installing this config to initialize LSP servers)
-* [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
-* [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
-* [cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
-* [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
-* [cmp-path](https://github.com/hrsh7th/cmp-path)
-* [cmp-vsnip](https://github.com/hrsh7th/cmp-vsnip)
-* [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-* [vim-vsnip](https://github.com/hrsh7th/vim-vsnip)
-* [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-* [plenary.nvim](https://github.com/nvim-lua/plenary.nvim.git)
-* [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-* [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
-* [nvim-web-icons](https://github.com/nvim-tree/nvim-web-devicons)
-* [mason.nvim](https://github.com/williamboman/mason.nvim)
-* [which-key.nvim](https://github.com/folke/which-key.nvim)
-* [nvim-dap](https://github.com/mfussenegger/nvim-dap)
-* [ts-comments](https://github.com/folke/ts-comments.nvim)
-* [multicursor.nvim](https://github.com/jake-stewart/multicursor.nvim)
-* [snacks.nvim](https://github.com/folke/snacks.nvim)
-* [codeium.vim](https://github.com/Exafunction/codeium.vim) (Lazy load: `:Codeium`)
-* [leetcode.nvim](https://github.com/kawre/leetcode.nvim) 
-(To load: run the command `nvim leetcode.nvim` to open leetcode.nvim interface)
-
-## Colorschemes included:
-* [rose-pine](https://github.com/rose-pine/neovim.git)
-* [catppuccin](https://github.com/catppuccin/nvim)
-* [tokyonight](https://github.com/folke/tokyonight.nvim)
-* [kanagawa](https://github.com/rebelot/kanagawa.nvim.git)
-* [gruvbox](https://github.com/morhetz/gruvbox)
-* [monokai](https://github.com/sickill/vim-monokai)
-* [peaksea](https://github.com/vim-scripts/peaksea)
-* [solarized](https://github.com/altercation/vim-colors-solarized)
-* [no-clown-fiesta](https://github.com/aktersnurra/no-clown-fiesta.nvim)
-* [flow.nvim](https://github.com/0xstepit/flow.nvim)
-
-## Others
-* [the_silver_searcher](https://github.com/ggreer/the_silver_searcher) is 
-supported as 'grep' command (but you need to install it on your system first)
-* [ripgrep](https://github.com/BurntSushi/ripgrep#installation) should be
-installed first if you want to use telescope livegrep
-* [Patched fonts](https://www.nerdfonts.com/) should be installed for nvim-tree
-* [ImageMagic](https://imagemagick.org/script/download.php) for image preview 
-with snacks.nvim
-
-# Small notes
-* Check out [my minimal configs for tmux](https://gist.github.com/realphongha/abbc89ad908d94afa054049b64eb7917). 
-It works seemlessly with nvim.
+# Misc
+* Check out [my configs for tmux](https://github.com/realphongha/dotfiles/blob/master/.tmux.conf).
+It works seemlessly with nvim (vi mode, image support and all)
 * Use `:lua SeeWaifu()` or `:lua SeeWaifu("colorscheme-name")` to make your background transparent and see your waifu
 in the terminal :D
-* A simple configs for Neovim GUI (i.e., `ginit.vim`) is also supported. 
-Should work with Neovide, VimR and NeovimQt.
-* For Neovim Qt, you can run `misc/add_nvimqt_to_context_menu_windows.reg` to add Neovim Qt to
+* A simple configs for Neovim GUI (i.e., `ginit.vim`) is also supported.
+Should work with Neovide, VimR and NeovimQt
+* For NeovimQt, you can run `misc/add_nvimqt_to_context_menu_windows.reg` to add NeovimQt to
 context menu (only for Windows) (stolen from [here](https://github.com/neovim/neovim/issues/7222#issuecomment-927413185)) :D
+
+# Acknowledgements
+This repo is directly inspired by [LazyVim](https://github.com/LazyVim/LazyVim), 
+[vimrc](https://github.com/amix/vimrc), 
+[ThePrimeagen video](https://www.youtube.com/watch?v=w7i4amO_zaE) and 
