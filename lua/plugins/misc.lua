@@ -29,7 +29,7 @@ return {
                     max_height = 40,
                 },
             },
-            indent = { enabled = true },
+            indent = { enabled = false },
             input = { enabled = true },
             layout = { enabled = true },
             lazygit = { enabled = false },
