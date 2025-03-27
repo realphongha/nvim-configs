@@ -21,21 +21,33 @@ return {
             local dap = require('dap')
             local widgets = require('dap.ui.widgets')
             require("which-key").add({
-                { "<leader>z", group = "Nvim-DAP" },
+                { "<leader>z",  group = "Nvim-DAP" },
                 { "<leader>zb", dap.toggle_breakpoint, desc = "Toggle breakpoint" },
-                { "<leader>zc", dap.continue, desc = "Continue" },
-                { "<leader>zo", dap.step_over, desc = "Step over" },
-                { "<leader>zi", dap.step_into, desc = "Step into" },
-                { "<leader>zr", dap.repl.open, desc = "Open REPL" },
-                { "<leader>zs", function ()
-                    widgets.centered_float(widgets.scopes)
-                end, desc = "Open current scopes in a floating window" },
-                { "<leader>zf", function ()
-                    widgets.centered_float(widgets.frames)
-                end, desc = "Open current frames in a floating window" },
-                { "<leader>zv", function ()
-                    widgets.hover()
-                end, desc = "View the value of the expression in a floating window" },
+                { "<leader>zc", dap.continue,          desc = "Continue" },
+                { "<leader>zo", dap.step_over,         desc = "Step over" },
+                { "<leader>zi", dap.step_into,         desc = "Step into" },
+                { "<leader>zr", dap.repl.open,         desc = "Open REPL" },
+                {
+                    "<leader>zs",
+                    function()
+                        widgets.centered_float(widgets.scopes)
+                    end,
+                    desc = "Open current scopes in a floating window"
+                },
+                {
+                    "<leader>zf",
+                    function()
+                        widgets.centered_float(widgets.frames)
+                    end,
+                    desc = "Open current frames in a floating window"
+                },
+                {
+                    "<leader>zv",
+                    function()
+                        widgets.hover()
+                    end,
+                    desc = "View the value of the expression in a floating window"
+                },
             })
 
             -- Python
@@ -65,21 +77,21 @@ return {
                 end
             end
             dap.configurations.python = {
-              {
-                -- The first three options are required by nvim-dap
-                type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
-                request = 'launch';
-                name = "Launch file";
+                {
+                    -- The first three options are required by nvim-dap
+                    type = 'python', -- the type here established the link to the adapter definition: `dap.adapters.python`
+                    request = 'launch',
+                    name = "Launch file",
 
-                -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+                    -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
 
-                program = "${file}"; -- This configuration will launch the current file if used.
-                pythonPath = function()
-                    return "python"
-                end;
-              },
+                    program = "${file}", -- This configuration will launch the current file if used.
+                    pythonPath = function()
+                        return "python"
+                    end,
+                },
             }
-            end
+        end
     },
     -- }}}
 
@@ -261,34 +273,34 @@ return {
                     -- Buffer local mappings.
                     -- See `:help vim.lsp.*` for documentation on any of the below functions
                     require("which-key").add({
-                        { "<C-k>",     vim.lsp.buf.signature_help,  buffer = 1, desc = "Display hover signature" },
-                        { "<Leader>D", vim.lsp.buf.type_definition, buffer = 1, desc = "Type definition" },
+                        {"<C-k>", vim.lsp.buf.signature_help,buffer = ev.buf, desc = "Display hover signature" },
+                        {"<Leader>D", vim.lsp.buf.type_definition, buffer = ev.buf, desc = "Type definition" },
                         {
                             "<Leader>f",
                             function()
                                 vim.lsp.buf.format { async = true }
                             end,
-                            buffer = 1,
+                            buffer = ev.buf,
                             desc = "Format code"
                         },
-                        { "<Leader>rn", vim.lsp.buf.rename,               buffer = 1, desc = "Rename all references to the symbol" },
-                        { "<Leader>w",  group = "[LSP] Workspace" },
-                        { "<Leader>wa", vim.lsp.buf.add_workspace_folder, buffer = 1, desc = "Add workspace folder" },
+                        {"<Leader>rn", vim.lsp.buf.rename, buffer = ev.buf, desc = "Rename all references to the symbol" },
+                        {"<Leader>w", group = "[LSP] Workspace" },
+                        {"<Leader>wa", vim.lsp.buf.add_workspace_folder, buffer = ev.buf, desc = "Add workspace folder" },
                         {
                             "<Leader>wl",
                             function()
                                 print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
                             end,
-                            buffer = 1,
+                            buffer = ev.buf,
                             desc = "List workspace folders"
                         },
-                        { "<Leader>wr", vim.lsp.buf.remove_workspace_folder, buffer = 1, desc = "Remove workspace folder" },
-                        { "K",          vim.lsp.buf.hover,                   buffer = 1, desc = "Display hover information" },
-                        { "gD",         vim.lsp.buf.declaration,             buffer = 1, desc = "Go to declaration" },
-                        { "gd",         vim.lsp.buf.definition,              buffer = 1, desc = "Go to definition" },
-                        { "gi",         vim.lsp.buf.implementation,          buffer = 1, desc = "Go to implementation" },
-                        { "gr",         vim.lsp.buf.references,              buffer = 1, desc = "Go to references" },
-                        { "<Leader>ca", vim.lsp.buf.code_action,             buffer = 1, desc = "Code action",              mode = { "n", "v" } },
+                        {"<Leader>wr", vim.lsp.buf.remove_workspace_folder, buffer = ev.buf, desc = "Remove workspace folder" },
+                        {"K", vim.lsp.buf.hover, buffer = ev.buf, desc = "Display hover information" },
+                        {"gD", vim.lsp.buf.declaration, buffer = ev.buf, desc = "Go to declaration" },
+                        {"gd", vim.lsp.buf.definition, buffer = ev.buf, desc = "Go to definition" },
+                        {"gi", vim.lsp.buf.implementation, buffer = ev.buf, desc = "Go to implementation" },
+                        {"gr", vim.lsp.buf.references, buffer = ev.buf, desc = "Go to references" },
+                        {"<Leader>ca", vim.lsp.buf.code_action, buffer = ev.buf, desc = "Code action", mode = { "n", "v" } },
                     })
                 end,
             })
@@ -347,10 +359,10 @@ return {
                     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
                 }),
                 sources = cmp.config.sources({
-                    { name = 'nvim_lsp',      priority = 1000 },
-                    { name = 'vsnip',         priority = 900 },
-                    { name = 'buffer',        priority = 800 },
-                    { name = 'path',          priority = 700 },
+                    { name = 'nvim_lsp', priority = 1000 },
+                    { name = 'vsnip',    priority = 900 },
+                    { name = 'buffer',   priority = 800 },
+                    { name = 'path',     priority = 700 },
                 })
             })
 
