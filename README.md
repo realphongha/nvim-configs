@@ -33,6 +33,8 @@ installed first if you want to use Telescope livegrep
 with snacks.nvim
 * [the_silver_searcher](https://github.com/ggreer/the_silver_searcher) is 
 needed for 'grep' command support (Telescope livegrep is enough for me tho)
+* For nvim-dap C/C++ support, you need gdb >= 14.1 built with python support, 
+it can be check by `gdb -i dap`
 
 # Plugin manager
 We use [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
