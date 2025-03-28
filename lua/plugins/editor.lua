@@ -23,8 +23,8 @@ return {
         lazy = false,
     },
     -- }}}
-    --
 
+    --------------------------------------------------------------------------
     -- {{{ ts-comments
     {
         "folke/ts-comments.nvim",
@@ -33,8 +33,8 @@ return {
         enabled = vim.fn.has("nvim-0.10.0") == 1,
     },
     -- }}}
-    --
 
+    --------------------------------------------------------------------------
     -- {{{ multicursor.nvim
     {
         "jake-stewart/multicursor.nvim",
