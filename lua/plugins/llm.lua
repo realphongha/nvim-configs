@@ -26,7 +26,7 @@ return {
         "CopilotC-Nvim/CopilotChat.nvim",
         lazy = true,
         keys = {
-            { "<leader>cc", mode = { "n", "v" } },
+            { "<leader>cg", mode = { "n", "v" } },
         },
         cmd = "CopilotChat",
         dependencies = {
@@ -39,7 +39,7 @@ return {
                 model = "claude-3.5-sonnet",
             })
             require("which-key").add({
-                { "<leader>cc", ":CopilotChat<CR>", desc = "Open Copilot Chat" },
+                { "<leader>cg", ":CopilotChat<CR>", desc = "Open Github Copilot Chat" },
             })
         end
     },
@@ -77,6 +77,9 @@ return {
         "olimorris/codecompanion.nvim",
         -- set lazy to true if we cannot connect to the url
         lazy = true,
+        keys = {
+            { "<leader>cc", mode = { "n", "v" } },
+        },
         cmd = "CodeCompanionChat",
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -86,17 +89,32 @@ return {
             require("codecompanion").setup({
                 strategies = {
                     chat = {
-                        adapter = "ollama_qwq",
+                        adapter = "gemini",
+                        -- adapter = "ollama_qwq",
                         -- adapter = "ollama_deepseek_r1",
                         -- adapter = "copilot",
                     },
                     inline = {
-                        adapter = "ollama_qwq",
+                        adapter = "gemini",
+                        -- adapter = "ollama_qwq",
                         -- adapter = "ollama_deepseek_r1",
                         -- adapter = "copilot",
                     },
                 },
                 adapters = {
+                    gemini = function()
+                        return require("codecompanion.adapters").extend("gemini", {
+                            env = {
+                                api_key = vim.g.gemini_api_key,
+                            },
+                            schema = {
+                                model = {
+                                    default = "gemini-2.5-pro-exp-03-25",
+                                    -- default = "gemini-2.0-flash"
+                                },
+                            }
+                        })
+                    end,
                     ollama_deepseek_r1 = function()
                         return require("codecompanion.adapters").extend("ollama", {
                             env = {
@@ -106,9 +124,6 @@ return {
                                 model = {
                                     default = "deepseek-r1:14b"
                                 },
-                                temperature = {
-                                    default = 0.0
-                                }
                             }
                         })
                     end,
@@ -121,9 +136,6 @@ return {
                                 model = {
                                     default = "qwq:32b"
                                 },
-                                temperature = {
-                                    default = 0.0
-                                }
                             }
                         })
                     end,
@@ -144,16 +156,21 @@ return {
         cmd = "Minuet",
         config = function()
             require('minuet').setup {
-                provider = 'openai_fim_compatible',
-                n_completions = 1, -- recommend for local model for resource saving
-                -- I recommend beginning with a small context window size and incrementally
-                -- expanding it, depending on your local computing power. A context window
-                -- of 512, serves as an good starting point to estimate your computing
-                -- power. Once you have a reliable estimate of your local computing power,
-                -- you should adjust the context window to a larger value.
+                provider = 'gemini',
+                n_completions = 3,
                 context_window = 1024,
                 after_cursor_filter_length = 20,
                 provider_options = {
+                    gemini = {
+                        model = 'gemini-2.0-flash',
+                        stream = true,
+                        api_key = function () return vim.g.gemini_api_key end,
+                        optional = {
+                            generationConfig = {
+                                maxOutputTokens = 256,
+                            },
+                        },
+                    },
                     openai_fim_compatible = {
                         api_key = 'TERM',
                         name = 'Ollama',
