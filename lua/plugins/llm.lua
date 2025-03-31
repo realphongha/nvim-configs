@@ -29,7 +29,7 @@ return {
     -- {{{ CopilotChat.nvim
     {
         "CopilotC-Nvim/CopilotChat.nvim",
-        lazy = false,
+        lazy = true,
         keys = {
             { "<leader>cc", mode = { "n", "v" } },
         },
