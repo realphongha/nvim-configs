@@ -83,44 +83,56 @@ return {
             "nvim-treesitter/nvim-treesitter",
         },
         config = function()
-            require('minuet').setup {
-                n_completions = 1,
-                context_window = 1024,
-                after_cursor_filter_length = 20,
-                provider = 'openai_fim_compatible',
-                provider_options = {
-                    openai_fim_compatible = {
-                        api_key = 'TERM',
-                        name = 'Ollama',
-                        end_point = 'http://127.0.0.1:11434/v1/completions',
-                        model = 'qwen2.5-coder:3b',
-                        stream = true,
-                        optional = {
-                            max_tokens = 256,
-                            top_p = 0.9
-                        },
+            require("codecompanion").setup({
+                strategies = {
+                    chat = {
+                        adapter = "ollama_qwq",
+                        -- adapter = "ollama_deepseek_r1",
+                        -- adapter = "copilot",
+                    },
+                    inline = {
+                        adapter = "ollama_qwq",
+                        -- adapter = "ollama_deepseek_r1",
+                        -- adapter = "copilot",
                     },
                 },
-                virtualtext = {
-                    auto_trigger_ft = { "*", },
-                    keymap = {
-                        -- accept whole completion
-                        accept = '<C-c>',
-                        -- accept one line
-                        -- accept_line = '<A-a>',
-                        -- accept n lines (prompts for number)
-                        -- e.g. "A-z 2 CR" will accept 2 lines
-                        -- accept_n_lines = '<A-z>',
-                        -- Cycle to prev completion item, or manually invoke completion
-                        prev = '<C-f>',
-                        -- Cycle to next completion item, or manually invoke completion
-                        next = '<C-g>',
-                        -- dismiss = '<A-e>',
-                    },
-                },
-
-            }
-        end,
+                adapters = {
+                    ollama_deepseek_r1 = function()
+                        return require("codecompanion.adapters").extend("ollama", {
+                            env = {
+                                url = "http://127.0.0.1:11434",
+                            },
+                            schema = {
+                                model = {
+                                    default = "deepseek-r1:14b"
+                                },
+                                temperature = {
+                                    default = 0.0
+                                }
+                            }
+                        })
+                    end,
+                    ollama_qwq = function()
+                        return require("codecompanion.adapters").extend("ollama", {
+                            env = {
+                                url = "http://127.0.0.1:11434",
+                            },
+                            schema = {
+                                model = {
+                                    default = "qwq:32b"
+                                },
+                                temperature = {
+                                    default = 0.0
+                                }
+                            }
+                        })
+                    end,
+                }
+            })
+            require("which-key").add({
+                { "<leader>cc", ":CodeCompanionChat<CR>", desc = "Open CodeCompanion Chat" },
+            })
+        end
     },
     -- }}}
 
@@ -133,21 +145,22 @@ return {
         config = function()
             require('minuet').setup {
                 provider = 'openai_fim_compatible',
-                n_completions = 3, -- recommend for local model for resource saving
+                n_completions = 1, -- recommend for local model for resource saving
                 -- I recommend beginning with a small context window size and incrementally
                 -- expanding it, depending on your local computing power. A context window
                 -- of 512, serves as an good starting point to estimate your computing
                 -- power. Once you have a reliable estimate of your local computing power,
                 -- you should adjust the context window to a larger value.
-                context_window = 512,
+                context_window = 1024,
+                after_cursor_filter_length = 20,
                 provider_options = {
                     openai_fim_compatible = {
                         api_key = 'TERM',
                         name = 'Ollama',
                         end_point = 'http://127.0.0.1:11434/v1/completions',
-                        model = 'qwen2.5-coder:7b',
+                        model = 'qwen2.5-coder:3b',
                         optional = {
-                            max_tokens = 56,
+                            max_tokens = 256,
                             top_p = 0.9,
                         },
                     },
