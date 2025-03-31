@@ -5,11 +5,6 @@ return {
         "github/copilot.vim",
         lazy = true,
         cmd = "Copilot",
-        keys = {
-            { "<C-c>", mode = { "i" } },
-            { "<C-f>", mode = { "i" } },
-            { "<C-g>", mode = { "i" } }
-        },
         config = function()
             vim.keymap.set('i', '<C-c>',
                 'copilot#Accept("\\<CR>")',
@@ -35,8 +30,8 @@ return {
         },
         cmd = "CopilotChat",
         dependencies = {
-            { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-            { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+            { "github/copilot.vim" },                               -- or zbirenbaum/copilot.lua
+            { "nvim-lua/plenary.nvim", branch = "master" },         -- for curl, log and async functions
         },
         build = vim.g.os == "Windows_NT" and "" or "make tiktoken", -- Only on MacOS or Linux
         config = function()
@@ -55,11 +50,6 @@ return {
     {
         'Exafunction/codeium.vim',
         cmd = "Codeium",
-        keys = {
-            { "<C-c>", mode = { "i" } },
-            { "<C-f>", mode = { "i" } },
-            { "<C-g>", mode = { "i" } }
-        },
         config = function()
             vim.g.codeium_disable_bindings = 1
             vim.keymap.set('i', '<C-c>',
@@ -87,6 +77,9 @@ return {
         "olimorris/codecompanion.nvim",
         -- set lazy to true if we cannot connect to the url
         lazy = true,
+        keys = {
+            { "<leader>cc", mode = { "n", "v" } },
+        },
         cmd = "CodeCompanion",
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -96,12 +89,14 @@ return {
             require("codecompanion").setup({
                 strategies = {
                     chat = {
+                        adapter = "ollama_qwq",
                         -- adapter = "ollama_deepseek_r1",
-                        adapter = "copilot",
+                        -- adapter = "copilot",
                     },
                     inline = {
+                        adapter = "ollama_qwq",
                         -- adapter = "ollama_deepseek_r1",
-                        adapter = "copilot",
+                        -- adapter = "copilot",
                     },
                 },
                 adapters = {
@@ -120,9 +115,78 @@ return {
                             }
                         })
                     end,
+                    ollama_qwq = function()
+                        return require("codecompanion.adapters").extend("ollama", {
+                            env = {
+                                url = "http://127.0.0.1:11434",
+                            },
+                            schema = {
+                                model = {
+                                    default = "qwq:32b"
+                                },
+                                temperature = {
+                                    default = 0.0
+                                }
+                            }
+                        })
+                    end,
                 }
             })
+            require("which-key").add({
+                { "<leader>cc", ":CodeCompanionChat<CR>", desc = "Open CodeCompanion Chat" },
+            })
         end
+    },
+    -- }}}
+
+    --------------------------------------------------------------------------
+    -- {{{ minuet-ai.nvim
+    {
+        'milanglacier/minuet-ai.nvim',
+        lazy = true,
+        cmd = "Minuet",
+        config = function()
+            require('minuet').setup {
+                provider = 'openai_fim_compatible',
+                n_completions = 3, -- recommend for local model for resource saving
+                -- I recommend beginning with a small context window size and incrementally
+                -- expanding it, depending on your local computing power. A context window
+                -- of 512, serves as an good starting point to estimate your computing
+                -- power. Once you have a reliable estimate of your local computing power,
+                -- you should adjust the context window to a larger value.
+                context_window = 512,
+                provider_options = {
+                    openai_fim_compatible = {
+                        api_key = 'TERM',
+                        name = 'Ollama',
+                        end_point = 'http://127.0.0.1:11434/v1/completions',
+                        model = 'qwen2.5-coder:7b',
+                        optional = {
+                            max_tokens = 56,
+                            top_p = 0.9,
+                        },
+                    },
+                },
+                virtualtext = {
+                    auto_trigger_ft = { "*", },
+                    keymap = {
+                        -- accept whole completion
+                        accept = '<C-c>',
+                        -- accept one line
+                        -- accept_line = '<A-a>',
+                        -- accept n lines (prompts for number)
+                        -- e.g. "A-z 2 CR" will accept 2 lines
+                        -- accept_n_lines = '<A-z>',
+                        -- Cycle to prev completion item, or manually invoke completion
+                        prev = '<C-f>',
+                        -- Cycle to next completion item, or manually invoke completion
+                        next = '<C-g>',
+                        -- dismiss = '<A-e>',
+                    },
+                },
+
+            }
+        end,
     },
     -- }}}
 }
