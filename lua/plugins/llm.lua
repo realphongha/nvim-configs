@@ -77,10 +77,7 @@ return {
         "olimorris/codecompanion.nvim",
         -- set lazy to true if we cannot connect to the url
         lazy = true,
-        keys = {
-            { "<leader>cc", mode = { "n", "v" } },
-        },
-        cmd = "CodeCompanion",
+        cmd = "CodeCompanionChat",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
