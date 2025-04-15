@@ -112,6 +112,9 @@ return {
                                     default = "gemini-2.5-pro-exp-03-25",
                                     -- default = "gemini-2.0-flash"
                                 },
+                                max_tokens = {
+                                    default = 65536,
+                                }
                             }
                         })
                     end,
@@ -124,6 +127,9 @@ return {
                                 model = {
                                     default = "deepseek-r1:14b"
                                 },
+                                max_tokens = {
+                                    default = 65536,
+                                }
                             }
                         })
                     end,
@@ -136,6 +142,9 @@ return {
                                 model = {
                                     default = "qwq:32b"
                                 },
+                                max_tokens = {
+                                    default = 65536,
+                                }
                             }
                         })
                     end,
@@ -157,9 +166,9 @@ return {
         config = function()
             require('minuet').setup {
                 provider = 'gemini',
-                n_completions = 3,
-                context_window = 1024,
-                after_cursor_filter_length = 20,
+                n_completions = 1,
+                context_window = 16384,
+                -- after_cursor_filter_length = 20,
                 provider_options = {
                     gemini = {
                         model = 'gemini-2.0-flash',
