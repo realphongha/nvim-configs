@@ -92,7 +92,12 @@ return {
                         adapter = "gemini",
                         -- adapter = "ollama_qwq",
                         -- adapter = "ollama_deepseek_r1",
-                        -- adapter = "copilot",
+                        keymaps = {
+                            close = {
+                                modes = { n = "<C-x>", i = "<C-x>" },
+                            },
+                            -- Add further custom keymaps here
+                        }, -- adapter = "copilot",
                     },
                     inline = {
                         adapter = "gemini",
@@ -173,7 +178,7 @@ return {
                     gemini = {
                         model = 'gemini-2.0-flash',
                         stream = true,
-                        api_key = function () return vim.g.gemini_api_key end,
+                        api_key = function() return vim.g.gemini_api_key end,
                         optional = {
                             generationConfig = {
                                 maxOutputTokens = 256,
