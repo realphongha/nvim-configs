@@ -206,7 +206,7 @@ return {
         "0xstepit/flow.nvim",
         name = "flow",
         lazy = true,
-        tag = "vX.0.0",
+        tag = "v2.0.2",
         opts = {
             -- Your configuration options here.
         },
