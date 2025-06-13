@@ -210,11 +210,11 @@ local wk = require("which-key")
 wk.add({
     {
         mode = { "v" },
-        { '<leader>"', 'xa""<Esc>P', desc = 'Surround in ""', remap = false },
-        { "<leader>'", "xa''<Esc>P", desc = "Surround in ''", remap = false },
-        { "<leader>(", "xa()<Esc>P", desc = "Surround in ()", remap = false },
-        { "<leader>[", "xa[]<Esc>P", desc = "Surround in []", remap = false },
-        { "<leader>{", "xa()<Esc>P", desc = "Surround in {}", remap = false },
+        { '<leader>"', 'xi""<Esc>P', desc = 'Surround in ""', remap = false },
+        { "<leader>'", "xi''<Esc>P", desc = "Surround in ''", remap = false },
+        { "<leader>(", "xi()<Esc>P", desc = "Surround in ()", remap = false },
+        { "<leader>[", "xi[]<Esc>P", desc = "Surround in []", remap = false },
+        { "<leader>{", "xi()<Esc>P", desc = "Surround in {}", remap = false },
     },
     { "<leader>v",  group = ".vimrc" },
     { "<leader>ve", "<c-w>l:e $MYVIMRC<cr>", desc = "Edit .vimrc",   remap = false },
