@@ -114,8 +114,9 @@ return {
                             },
                             schema = {
                                 model = {
-                                    -- default = "gemini-2.5-pro-exp-03-25",
-                                    default = "gemini-2.5-flash-preview-05-20",
+                                    default = vim.g.gemini_model,
+                                    -- default = "gemini-2.5-pro-preview-06-05",
+                                    -- default = "gemini-2.5-flash-preview-05-20",
                                 },
                                 max_tokens = {
                                     default = 65536,
