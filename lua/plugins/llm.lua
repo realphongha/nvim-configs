@@ -177,12 +177,15 @@ return {
                 -- after_cursor_filter_length = 20,
                 provider_options = {
                     gemini = {
-                        model = 'gemini-2.0-flash',
+                        model = 'gemini-2.5-flash-preview-05-20',
                         stream = true,
                         api_key = function() return vim.g.gemini_api_key end,
                         optional = {
                             generationConfig = {
-                                maxOutputTokens = 256,
+                                maxOutputTokens = 25,
+                                thinkingConfig = {
+                                    thinkingBudget = 0,
+                                }
                             },
                         },
                     },
@@ -192,7 +195,7 @@ return {
                         end_point = 'http://127.0.0.1:11434/v1/completions',
                         model = 'qwen2.5-coder:3b',
                         optional = {
-                            max_tokens = 256,
+                            max_tokens = 25,
                             top_p = 0.9,
                         },
                     },
