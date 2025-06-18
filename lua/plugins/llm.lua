@@ -114,7 +114,7 @@ return {
                             },
                             schema = {
                                 model = {
-                                    default = vim.g.gemini_model,
+                                    default = vim.g.gemini_model_chat,
                                     -- default = "gemini-2.5-pro-preview-06-05",
                                     -- default = "gemini-2.5-flash-preview-05-20",
                                 },
@@ -177,7 +177,7 @@ return {
                 -- after_cursor_filter_length = 20,
                 provider_options = {
                     gemini = {
-                        model = 'gemini-2.5-flash-preview-05-20',
+                        model = vim.g.gemini_model_completion,
                         stream = true,
                         api_key = function() return vim.g.gemini_api_key end,
                         optional = {
