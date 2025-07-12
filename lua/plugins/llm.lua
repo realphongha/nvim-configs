@@ -46,9 +46,9 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ codeium.vim
+    -- {{{ windsurf.vim
     {
-        'Exafunction/codeium.vim',
+        'Exafunction/windsurf.vim',
         cmd = "Codeium",
         config = function()
             vim.g.codeium_disable_bindings = 1
@@ -219,6 +219,23 @@ return {
                 },
 
             }
+        end,
+    },
+    -- }}}
+
+    --------------------------------------------------------------------------
+    -- {{{ supermaven-nvim
+    {
+        "supermaven-inc/supermaven-nvim",
+        lazy = true,
+        cmd = "SupermavenStart",
+        config = function()
+            require("supermaven-nvim").setup({
+                keymaps = {
+                    accept_suggestion = "<C-c>",
+                    accept_word = "<C-j>",
+                },
+            })
         end,
     },
     -- }}}
