@@ -57,7 +57,6 @@ return {
     --- {{{ leetcode.nvim
     {
         "kawre/leetcode.nvim",
-        commit = "05d4153787fab5c6163150d2a0acf29cd1ef297f",
         lazy = (vim.fn.argv()[1] ~= leet_arg),
         build = ":TSUpdate html",
         dependencies = {
