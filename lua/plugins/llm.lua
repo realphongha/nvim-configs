@@ -107,53 +107,75 @@ return {
                     },
                 },
                 adapters = {
-                    gemini = function()
-                        return require("codecompanion.adapters").extend("gemini", {
-                            env = {
-                                api_key = vim.g.gemini_api_key,
-                            },
-                            schema = {
-                                model = {
-                                    default = vim.g.gemini_model_chat,
-                                    -- default = "gemini-2.5-pro-preview-06-05",
-                                    -- default = "gemini-2.5-flash-preview-05-20",
+                    acp = {
+                        acp = {
+                            gemini_cli = function()
+                                return require("codecompanion.adapters").extend("gemini_cli", {
+                                    commands = {
+                                        default = {
+                                            "gemini",
+                                            "--experimental-acp",
+                                        },
+                                    },
+                                    defaults = {
+                                        auth_method = "gemini-api-key",
+                                        mcpServers = {},
+                                        timeout = 20000, -- 20 seconds
+                                    },
+                                    env = {
+                                        GEMINI_API_KEY = "GEMINI_API_KEY",
+                                    },
+                                })
+                            end,
+                        },
+                    },
+                    http = {
+                        gemini = function()
+                            return require("codecompanion.adapters").extend("gemini", {
+                                env = {
+                                    api_key = "GEMINI_API_KEY",
                                 },
-                                max_tokens = {
-                                    default = 65536,
+                                schema = {
+                                    model = {
+                                        default = "gemini-2.5-pro",
+                                    },
+                                    max_tokens = {
+                                        default = 65536,
+                                    }
                                 }
-                            }
-                        })
-                    end,
-                    ollama_deepseek_r1 = function()
-                        return require("codecompanion.adapters").extend("ollama", {
-                            env = {
-                                url = "http://127.0.0.1:11434",
-                            },
-                            schema = {
-                                model = {
-                                    default = "deepseek-r1:14b"
+                            })
+                        end,
+                        ollama_deepseek_r1 = function()
+                            return require("codecompanion.adapters").extend("ollama", {
+                                env = {
+                                    url = "http://127.0.0.1:11434",
                                 },
-                                max_tokens = {
-                                    default = 65536,
+                                schema = {
+                                    model = {
+                                        default = "deepseek-r1:14b"
+                                    },
+                                    max_tokens = {
+                                        default = 65536,
+                                    }
                                 }
-                            }
-                        })
-                    end,
-                    ollama_qwq = function()
-                        return require("codecompanion.adapters").extend("ollama", {
-                            env = {
-                                url = "http://127.0.0.1:11434",
-                            },
-                            schema = {
-                                model = {
-                                    default = "qwq:32b"
+                            })
+                        end,
+                        ollama_qwq = function()
+                            return require("codecompanion.adapters").extend("ollama", {
+                                env = {
+                                    url = "http://127.0.0.1:11434",
                                 },
-                                max_tokens = {
-                                    default = 65536,
+                                schema = {
+                                    model = {
+                                        default = "qwq:32b"
+                                    },
+                                    max_tokens = {
+                                        default = 65536,
+                                    }
                                 }
-                            }
-                        })
-                    end,
+                            })
+                        end,
+                    }
                 }
             })
             require("which-key").add({
@@ -177,9 +199,9 @@ return {
                 -- after_cursor_filter_length = 20,
                 provider_options = {
                     gemini = {
-                        model = vim.g.gemini_model_completion,
+                        model = "gemini-2.5-flash-lite",
                         stream = true,
-                        api_key = function() return vim.g.gemini_api_key end,
+                        api_key = "GEMINI_API_KEY",
                         optional = {
                             generationConfig = {
                                 maxOutputTokens = 25,
