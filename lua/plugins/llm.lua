@@ -90,6 +90,7 @@ return {
                 strategies = {
                     chat = {
                         adapter = "gemini",
+                        -- adapter = "openai",
                         -- adapter = "ollama_qwq",
                         -- adapter = "ollama_deepseek_r1",
                         keymaps = {
@@ -101,6 +102,7 @@ return {
                     },
                     inline = {
                         adapter = "gemini",
+                        -- adapter = "openai",
                         -- adapter = "ollama_qwq",
                         -- adapter = "ollama_deepseek_r1",
                         -- adapter = "copilot",
@@ -130,6 +132,15 @@ return {
                         },
                     },
                     http = {
+                        openai = function()
+                            return require("codecompanion.adapters").extend("openai", {
+                                schema = {
+                                    model = {
+                                        default = "gpt-5",
+                                    },
+                                },
+                            })
+                        end,
                         gemini = function()
                             return require("codecompanion.adapters").extend("gemini", {
                                 env = {
@@ -199,16 +210,24 @@ return {
                 -- after_cursor_filter_length = 20,
                 provider_options = {
                     gemini = {
-                        model = "gemini-2.5-flash-lite",
+                        model = "gemini-2.5-flash",
                         stream = true,
                         api_key = "GEMINI_API_KEY",
                         optional = {
                             generationConfig = {
-                                maxOutputTokens = 25,
+                                maxOutputTokens = 64,
                                 thinkingConfig = {
                                     thinkingBudget = 0,
                                 }
                             },
+                        },
+                    },
+                    openai = {
+                        model = 'gpt-4.1-nano',
+                        stream = true,
+                        api_key = 'OPENAI_API_KEY',
+                        optional = {
+                            max_tokens = 64,
                         },
                     },
                     openai_fim_compatible = {
@@ -217,8 +236,7 @@ return {
                         end_point = 'http://127.0.0.1:11434/v1/completions',
                         model = 'qwen2.5-coder:3b',
                         optional = {
-                            max_tokens = 25,
-                            top_p = 0.9,
+                            max_tokens = 64,
                         },
                     },
                 },
