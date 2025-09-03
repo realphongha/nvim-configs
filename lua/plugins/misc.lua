@@ -33,8 +33,20 @@ return {
             input = { enabled = true },
             layout = { enabled = true },
             lazygit = { enabled = false },
-            notifier = { enabled = true },
-            notify = { enabled = true },
+            notifier = {
+                enabled = true,
+                config = function()
+                    require("which-key").add({
+                        {
+                            "<leader>hn",
+                            function() Snacks.notifier.show_history() end,
+                            desc = "Show notifier history",
+                            mode = { "n", "o", "v" }
+                        },
+                    })
+                end
+            },
+            notify = { enabled = false },
             picker = { enabled = false },
             profiler = { enabled = false },
             quickfile = { enabled = false },
@@ -54,7 +66,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    --- {{{ leetcode.nvim
+    -- {{{ leetcode.nvim
     {
         "kawre/leetcode.nvim",
         lazy = (vim.fn.argv()[1] ~= leet_arg),
