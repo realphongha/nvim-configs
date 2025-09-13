@@ -89,8 +89,8 @@ return {
             require("codecompanion").setup({
                 strategies = {
                     chat = {
-                        adapter = "gemini",
-                        -- adapter = "openai",
+                        -- adapter = "gemini",
+                        adapter = "openai",
                         -- adapter = "ollama_qwq",
                         -- adapter = "ollama_deepseek_r1",
                         keymaps = {
@@ -101,8 +101,8 @@ return {
                         }, -- adapter = "copilot",
                     },
                     inline = {
-                        adapter = "gemini",
-                        -- adapter = "openai",
+                        -- adapter = "gemini",
+                        adapter = "openai",
                         -- adapter = "ollama_qwq",
                         -- adapter = "ollama_deepseek_r1",
                         -- adapter = "copilot",
@@ -204,7 +204,7 @@ return {
         cmd = "Minuet",
         config = function()
             require('minuet').setup {
-                provider = 'gemini',
+                provider = 'openai',
                 n_completions = 1,
                 context_window = 16384,
                 -- after_cursor_filter_length = 20,
