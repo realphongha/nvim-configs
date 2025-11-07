@@ -184,32 +184,33 @@ return {
             require("mason-lspconfig").setup {
                 ensure_installed = ensure_installed,
             }
-            local lspconfig = require('lspconfig')
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
             -- pyright
             -- local python_path = vim.fn.trim(vim.fn.system("which python"))
-            -- lspconfig.pyright.setup {
+            -- vim.lsp.config('pyright', {
             --     settings = {
             --         python = {
             --             pythonPath = python_path,
             --         }
             --     },
             --     capabilities = capabilities
-            -- }
-            lspconfig.jedi_language_server.setup {
+            -- })
+
+            -- jedi
+            vim.lsp.config('jedi_language_server', {
                 cmd = { "jedi-language-server" },
                 filetypes = { "python" },
                 single_file_support = true,
-            }
+            })
 
             -- ts_ls
-            lspconfig.ts_ls.setup {
+            vim.lsp.config('ts_ls', {
                 capabilities = capabilities
-            }
+            })
 
             -- rust_analyzer
-            lspconfig.rust_analyzer.setup {
+            vim.lsp.config('rust_analyzer', {
                 -- Server-specific settings. See `:help lspconfig-setup`
                 settings = {
                     ['rust-analyzer'] = {
@@ -219,57 +220,74 @@ return {
                     },
                 },
                 capabilities = capabilities
-            }
+            })
 
             -- ccls
-            -- lspconfig.ccls.setup {
-            --     capabilities = capabilities
-            -- }
+            vim.lsp.config('ccls', {
+                capabilities = capabilities
+            })
 
             -- clangd.
-            lspconfig.clangd.setup {
+            vim.lsp.config('clangd', {
                 capabilities = capabilities,
                 support_single_file = true,
-            }
+            })
 
             --cmake
-            lspconfig.cmake.setup {}
+            vim.lsp.config('cmake', {})
 
             --lua for nvim
-            lspconfig.lua_ls.setup {
+            vim.lsp.config('lua_ls', {
                 on_init = function(client)
-                    local path = client.workspace_folders[1].name
-                    if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
-                        return
+                    if client.workspace_folders then
+                        local path = client.workspace_folders[1].name
+                        if
+                            path ~= vim.fn.stdpath('config')
+                            and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+                        then
+                            return
+                        end
                     end
 
                     client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
                         runtime = {
-                            -- Tell the language server which version of Lua you're using
-                            -- (most likely LuaJIT in the case of Neovim)
-                            version = 'LuaJIT'
+                            -- Tell the language server which version of Lua you're using (most
+                            -- likely LuaJIT in the case of Neovim)
+                            version = 'LuaJIT',
+                            -- Tell the language server how to find Lua modules same way as Neovim
+                            -- (see `:h lua-module-load`)
+                            path = {
+                                'lua/?.lua',
+                                'lua/?/init.lua',
+                            },
                         },
                         -- Make the server aware of Neovim runtime files
                         workspace = {
                             checkThirdParty = false,
                             library = {
                                 vim.env.VIMRUNTIME
-                                -- Depending on the usage, you might want to add additional paths here.
-                                -- "${3rd}/luv/library"
-                                -- "${3rd}/busted/library",
+                                -- Depending on the usage, you might want to add additional paths
+                                -- here.
+                                -- '${3rd}/luv/library'
+                                -- '${3rd}/busted/library'
                             }
-                            -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-                            -- library = vim.api.nvim_get_runtime_file("", true)
+                            -- Or pull in all of 'runtimepath'.
+                            -- NOTE: this is a lot slower and will cause issues when working on
+                            -- your own configuration.
+                            -- See https://github.com/neovim/nvim-lspconfig/issues/3189
+                            -- library = {
+                            --   vim.api.nvim_get_runtime_file('', true),
+                            -- }
                         }
                     })
                 end,
                 settings = {
                     Lua = {}
                 }
-            }
+            })
 
             -- marksman
-            lspconfig.marksman.setup {}
+            vim.lsp.config('marksman', {})
         end
     },
     --  }}}
@@ -287,15 +305,16 @@ return {
         },
         ft = "python,markdown,lua,c,cpp,cuda,rust,javascript,typesript,cmake",
         config = function()
-            local lspconfig = require('lspconfig')
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            local lsp_defaults = lspconfig.util.default_config
-
-            lsp_defaults.capabilities = vim.tbl_deep_extend(
-                'force',
-                lsp_defaults.capabilities,
-                capabilities
-            )
+            -- local lspconfig = require('lspconfig')
+            -- local lspconfig = vim.lsp.config
+            -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            -- local lsp_defaults = lspconfig.util.default_config
+            --
+            -- lsp_defaults.capabilities = vim.tbl_deep_extend(
+            --     'force',
+            --     lsp_defaults.capabilities,
+            --     capabilities
+            -- )
 
             -- Global mappings.
             -- See `:help vim.diagnostic.*` for documentation on any of the below functions
