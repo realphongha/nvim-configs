@@ -20,6 +20,7 @@
   "minuet-ai.nvim": { "branch": "main", "commit": "5d565cb23e0b365af14f9e9a2a45b2b46e7c4f3e" },
   "monokai": { "branch": "master", "commit": "b8bd44d5796503173627d7a1fc51f77ec3a08a63" },
   "multicursor.nvim": { "branch": "1.0", "commit": "0c6ceae228bf209e8b8717df9de500770c4e7022" },
+  "neocodeium": { "branch": "main", "commit": "bfe790d78e66adaa95cb50a8c75c64a752336e9c" },
   "no-clown-fiesta": { "branch": "master", "commit": "04b808e9769ded988089772ffcaf08d92d75d927" },
   "none-ls-extras.nvim": { "branch": "main", "commit": "71b5e3419f1f995e21480aaf871d88c21db339a2" },
   "none-ls.nvim": { "branch": "main", "commit": "550197530c12b4838d685cf4e0d5eb4cca8d52c7" },

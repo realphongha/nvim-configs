@@ -72,6 +72,22 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
+    -- {{{ neocodeium
+    {
+        "monkoose/neocodeium",
+        cmd = "Neocodeium",
+        config = function()
+            local neocodeium = require("neocodeium")
+            neocodeium.setup()
+            vim.keymap.set("i", "<C-c>", neocodeium.accept)
+            vim.keymap.set("i", "<C-f>", neocodeium.cycle)
+            vim.keymap.set("i", "<C-j>", neocodeium.accept_word)
+            vim.keymap.set("i", "<C-l>", neocodeium.accept_line)
+        end,
+    },
+    -- }}}
+
+    --------------------------------------------------------------------------
     -- {{{ codecompanion.nvim
     {
         "olimorris/codecompanion.nvim",
@@ -89,23 +105,15 @@ return {
             require("codecompanion").setup({
                 strategies = {
                     chat = {
-                        -- adapter = "gemini",
                         adapter = "openai",
-                        -- adapter = "ollama_qwq",
-                        -- adapter = "ollama_deepseek_r1",
                         keymaps = {
                             close = {
                                 modes = { n = "<C-x>", i = "<C-x>" },
                             },
-                            -- Add further custom keymaps here
-                        }, -- adapter = "copilot",
+                        },
                     },
                     inline = {
-                        -- adapter = "gemini",
                         adapter = "openai",
-                        -- adapter = "ollama_qwq",
-                        -- adapter = "ollama_deepseek_r1",
-                        -- adapter = "copilot",
                     },
                 },
                 adapters = {
@@ -136,7 +144,7 @@ return {
                             return require("codecompanion.adapters").extend("openai", {
                                 schema = {
                                     model = {
-                                        default = "gpt-5",
+                                        default = "gpt-5.1",
                                     },
                                 },
                             })
