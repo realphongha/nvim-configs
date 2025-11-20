@@ -1,6 +1,6 @@
 return {
     --------------------------------------------------------------------------
-    -- {{{ nvim-autopairs
+    -- {{{ windwp/nvim-autopairs
     {
         'windwp/nvim-autopairs',
         lazy = true,
@@ -10,7 +10,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ nvim-dap
+    -- {{{ mfussenegger/nvim-dap
     {
         "mfussenegger/nvim-dap",
         lazy = true,
@@ -139,7 +139,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ mason.nvim
+    -- {{{ williamboman/mason.nvim
     {
         "williamboman/mason.nvim",
         lazy = true,
@@ -162,7 +162,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    --  {{{ mason-lspconfig
+    --  {{{ williamboman/mason-lspconfig
     {
         "williamboman/mason-lspconfig.nvim",
         lazy = true,
@@ -293,7 +293,7 @@ return {
     --  }}}
 
     --------------------------------------------------------------------------
-    -- {{{ nvim-lspconfig
+    -- {{{ neovim/nvim-lspconfig
     {
         "neovim/nvim-lspconfig",
         lazy = true,
@@ -373,7 +373,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ nvim-cmp
+    -- {{{ hrsh7th/nvim-cmp
     {
         "hrsh7th/nvim-cmp",
         lazy = true,
@@ -529,7 +529,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ none-ls.vim
+    -- {{{ nvimtools/none-ls.vim
     {
         'nvimtools/none-ls.nvim',
         dependencies = {
@@ -566,7 +566,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ vim-doge
+    -- {{{ kkoomen/vim-doge
     {
         "kkoomen/vim-doge",
         lazy = false,

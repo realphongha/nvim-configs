@@ -2,7 +2,7 @@ local leet_arg = "leetcode.nvim"
 
 return {
     --------------------------------------------------------------------------
-    -- {{{ snacks.nvim
+    -- {{{ folke/snacks.nvim
     {
         "folke/snacks.nvim",
         priority = 1000,
@@ -66,7 +66,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ leetcode.nvim
+    -- {{{ kawre/leetcode.nvim
     {
         "kawre/leetcode.nvim",
         lazy = (vim.fn.argv()[1] ~= leet_arg),

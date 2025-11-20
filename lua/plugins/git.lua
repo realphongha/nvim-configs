@@ -1,6 +1,6 @@
 return {
     --------------------------------------------------------------------------
-    -- {{{ vim-fugitive
+    -- {{{ tpope/vim-fugitive
     {
         "tpope/vim-fugitive",
         lazy = true,

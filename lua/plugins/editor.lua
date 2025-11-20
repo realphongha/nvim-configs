@@ -1,6 +1,6 @@
 return {
     --------------------------------------------------------------------------
-    -- {{{ undotree
+    -- {{{ mbbill/undotree
     {
         "mbbill/undotree",
         lazy = true,
@@ -17,7 +17,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ vim-sleuth
+    -- {{{ tpope/vim-sleuth
     {
         "tpope/vim-sleuth",
         lazy = false,
@@ -25,7 +25,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ ts-comments
+    -- {{{ folke/ts-comments.nvim
     {
         "folke/ts-comments.nvim",
         opts = {},
@@ -35,7 +35,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ multicursor.nvim
+    -- {{{ jake-stewart/multicursor.nvim
     {
         "jake-stewart/multicursor.nvim",
         branch = "1.0",
@@ -140,7 +140,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ glow.nvim
+    -- {{{ ellisonleao/glow.nvim
     {
         "ellisonleao/glow.nvim",
         cmd = "Glow",
@@ -164,7 +164,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ which-key
+    -- {{{ folke/which-key.nvim
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
@@ -348,7 +348,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ quicker.nvim
+    -- {{{ stevearc/quicker.nvim
     {
         'stevearc/quicker.nvim',
         ft = "qf",
@@ -373,7 +373,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ bigfile.nvim
+    -- {{{ LunarVim/bigfile.nvim
     -- {
     --     "LunarVim/bigfile.nvim",
     --     lazy = false,

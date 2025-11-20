@@ -1,6 +1,6 @@
 return {
     --------------------------------------------------------------------------
-    -- {{{ catppuccin
+    -- {{{ catppuccin/nvim
     {
         "catppuccin/nvim",
         name = "catppuccin",
@@ -68,7 +68,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ rose-pine
+    -- {{{ rose-pine/neovim
     {
         "rose-pine/neovim",
         name = "rose-pine",
@@ -103,7 +103,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ tokyonight
+    -- {{{ folke/tokyonight.nvim
     {
         "folke/tokyonight.nvim",
         name = "tokyonight",
@@ -147,7 +147,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ kanagawa.nvim
+    -- {{{ rebelot/kanagawa.nvim
     {
         "rebelot/kanagawa.nvim",
         name = "kanagawa",
@@ -181,7 +181,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ no-clown-fiesta.nvim
+    -- {{{ aktersnurra/no-clown-fiesta.nvim
     {
         "aktersnurra/no-clown-fiesta.nvim",
         name = "no-clown-fiesta",
@@ -201,7 +201,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ flow.nvim
+    -- {{{ 0xstepit/flow.nvim
     {
         "0xstepit/flow.nvim",
         name = "flow",
@@ -214,7 +214,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ gruvbox
+    -- {{{ morhetz/gruvbox
     {
         "morhetz/gruvbox",
         name = "gruvbox",
@@ -223,7 +223,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ monokai
+    -- {{{ tanvirtin/monokai.nvim
     {
         "tanvirtin/monokai.nvim",
         name = "monokai",
@@ -232,7 +232,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ peaksea
+    -- {{{ calincru/peaksea.vim
     {
         "calincru/peaksea.vim",
         name = "peaksea",
@@ -241,7 +241,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ solarized
+    -- {{{ altercation/vim-colors-solarized
     {
         "altercation/vim-colors-solarized",
         name = "solarized",

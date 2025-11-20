@@ -1,6 +1,6 @@
 return {
     --------------------------------------------------------------------------
-    -- {{{ copilot.vim
+    -- {{{ github/copilot.vim
     {
         "github/copilot.vim",
         lazy = true,
@@ -21,7 +21,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ CopilotChat.nvim
+    -- {{{ CopilotC-Nvim/CopilotChat.nvim
     {
         "CopilotC-Nvim/CopilotChat.nvim",
         lazy = true,
@@ -46,7 +46,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ windsurf.vim
+    -- {{{ Exafunction/windsurf.vim
     {
         'Exafunction/windsurf.vim',
         cmd = "Codeium",
@@ -72,7 +72,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ neocodeium
+    -- {{{ monkoose/neocodeium
     {
         "monkoose/neocodeium",
         cmd = "Neocodeium",
@@ -88,7 +88,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ codecompanion.nvim
+    -- {{{ olimorris/codecompanion.nvim
     {
         "olimorris/codecompanion.nvim",
         -- set lazy to true if we cannot connect to the url
@@ -205,7 +205,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ minuet-ai.nvim
+    -- {{{ milanglacier/minuet-ai.nvim
     {
         'milanglacier/minuet-ai.nvim',
         lazy = true,
@@ -286,7 +286,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ supermaven-nvim
+    -- {{{ supermaven-inc/supermaven-nvim
     {
         "supermaven-inc/supermaven-nvim",
         lazy = true,

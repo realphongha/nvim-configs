@@ -1,6 +1,6 @@
 return {
     --------------------------------------------------------------------------
-    -- {{{ lightline.vim
+    -- {{{ itchyny/lightline.vim
     {
         "itchyny/lightline.vim",
         lazy = false,

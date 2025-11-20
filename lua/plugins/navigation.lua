@@ -1,6 +1,6 @@
 return {
     --------------------------------------------------------------------------
-    -- {{{ telescope.nvim
+    -- {{{ nvim-telescope/telescope.nvim
     {
         'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
@@ -27,7 +27,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ plenary.nvim
+    -- {{{ nvim-lua/plenary.nvim
     {
         "nvim-lua/plenary.nvim",
         lazy = true,
@@ -35,7 +35,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ nvim-tree.lua
+    -- {{{ nvim-tree/nvim-tree.lua
     {
         "nvim-tree/nvim-tree.lua",
         lazy = false,
@@ -132,7 +132,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ nvim-web-devicons
+    -- {{{ nvim-tree/nvim-web-devicons
     {
         "nvim-tree/nvim-web-devicons",
         lazy = true,

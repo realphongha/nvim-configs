@@ -1,6 +1,6 @@
 return {
     --------------------------------------------------------------------------
-    -- {{{ nvim-treesitter
+    -- {{{ nvim-treesitter/nvim-treesitter
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -52,7 +52,7 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ nvim-treesitter-textobjects
+    -- {{{ nvim-treesitter/nvim-treesitter-textobjects
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
         config = function()
