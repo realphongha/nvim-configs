@@ -283,28 +283,26 @@ vim.cmd([[:cnoremap <C-l> <Right>]])
 
 -- Quickly replace in all quickfixes
 function RP(search, replace)
-    local command = ":cdo s/" .. search .. "/" .. replace .. "/g | update"
+    local command = ":cfdo %s/" .. search .. "/" .. replace .. "/g | update | bd"
     vim.cmd(command)
 end
 
--- Quickly find in all project files using grep
-function FP(phrase, path, include, exclude)
+-- Quickly find in all project files using vimgrep
+function FP_no_verbose(phrase, path)
     if not path then path = "**" end
-    local command = [[:silent grep! -r "]] .. phrase .. [[" ]] .. path
-    if include then
-        command = command .. " --include " .. include
-    end
-    if exclude then
-        command = command .. " --exclude" .. exclude
-    end
-
+    local command = [[:silent vim! /]] .. phrase .. [[/gj ]] .. path
     vim.cmd(command)
-    print("Done searching! :copen to see the results!")
+end
+
+-- Quickly find in all project files using vimgrep and open the quickfix window
+function FP(phrase, path)
+    FP_no_verbose(phrase, path)
+    vim.cmd([[:copen]])
 end
 
 -- Quickly find in all project files using grep and replace all results
-function FRP(phrase, replace_phrase, path, include, exclude)
-    FP(phrase, path, include, exclude)
+function FRP(phrase, replace_phrase, path)
+    FP_no_verbose(phrase, path)
     RP(phrase, replace_phrase)
 end
 
