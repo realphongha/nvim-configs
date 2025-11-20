@@ -212,7 +212,7 @@ return {
         cmd = "Minuet",
         config = function()
             require('minuet').setup {
-                provider = 'openai',
+                provider = 'openai_fim_compatible',
                 n_completions = 1,
                 context_window = 16384,
                 -- after_cursor_filter_length = 20,
@@ -239,14 +239,28 @@ return {
                         },
                     },
                     openai_fim_compatible = {
-                        api_key = 'TERM',
-                        name = 'Ollama',
-                        end_point = 'http://127.0.0.1:11434/v1/completions',
-                        model = 'qwen2.5-coder:3b',
+                        api_key = 'OPENROUTER_API_KEY',
+                        end_point = 'https://openrouter.ai/api/v1/completions',
+                        model = 'qwen/qwen3-coder-30b-a3b-instruct',
+                        name = 'Openrouter',
                         optional = {
-                            max_tokens = 64,
+                            max_tokens = 56,
+                            top_p = 0.9,
+                            provider = {
+                                -- Prioritize throughput for faster completion
+                                sort = 'throughput',
+                            },
                         },
                     },
+                    -- openai_fim_compatible = {
+                    --     api_key = 'TERM',
+                    --     name = 'Ollama',
+                    --     end_point = 'http://127.0.0.1:11434/v1/completions',
+                    --     model = 'qwen2.5-coder:3b',
+                    --     optional = {
+                    --         max_tokens = 64,
+                    --     },
+                    -- },
                 },
                 virtualtext = {
                     auto_trigger_ft = { "*", },
