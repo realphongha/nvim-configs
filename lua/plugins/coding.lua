@@ -139,35 +139,25 @@ return {
     -- }}}
 
     --------------------------------------------------------------------------
-    -- {{{ williamboman/mason.nvim
+    -- {{{ mason-org/mason.nvim
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         lazy = true,
         cmd = "Mason",
         dependencies = {
             "neovim/nvim-lspconfig",
         },
-        config = function()
-            require("mason").setup({
-                ui = {
-                    icons = {
-                        package_installed = "✓",
-                        package_pending = "➜",
-                        package_uninstalled = "✗"
-                    }
-                }
-            })
-        end
+        opts = {},
     },
     -- }}}
 
     --------------------------------------------------------------------------
-    --  {{{ williamboman/mason-lspconfig
+    --  {{{ mason-org/mason-lspconfig
     {
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason-lspconfig.nvim",
         lazy = true,
         dependencies = {
-            "williamboman/mason.nvim",
+            "mason-org/mason.nvim",
             "neovim/nvim-lspconfig"
         },
         config = function()
@@ -300,24 +290,11 @@ return {
         cmd = "LspStart",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
+            "mason-org/mason.nvim",
+            "mason-org/mason-lspconfig.nvim",
         },
         ft = "python,markdown,lua,c,cpp,cuda,rust,javascript,typesript,cmake",
         config = function()
-            -- local lspconfig = require('lspconfig')
-            -- local lspconfig = vim.lsp.config
-            -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            -- local lsp_defaults = lspconfig.util.default_config
-            --
-            -- lsp_defaults.capabilities = vim.tbl_deep_extend(
-            --     'force',
-            --     lsp_defaults.capabilities,
-            --     capabilities
-            -- )
-
-            -- Global mappings.
-            -- See `:help vim.diagnostic.*` for documentation on any of the below functions
             require("which-key").add({
                 { "<leader>e", vim.diagnostic.open_float, desc = "Open diagnostic float window" },
                 { "<leader>q", vim.diagnostic.setloclist, desc = "Add buffer diagnostics to the location list" },
