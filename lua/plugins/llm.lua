@@ -212,13 +212,15 @@ return {
         cmd = "Minuet",
         config = function()
             require('minuet').setup {
-                provider = 'openai_fim_compatible',
+                provider = 'openai_compatible',
+                throttle = 1500, -- Increase to reduce costs and avoid rate limits
+                debounce = 600,  -- Increase to reduce costs and avoid rate limits
                 n_completions = 1,
                 context_window = 16384,
                 -- after_cursor_filter_length = 20,
                 provider_options = {
                     gemini = {
-                        model = "gemini-2.5-flash",
+                        model = "gemini-2.5-flash-lite",
                         stream = true,
                         api_key = "GEMINI_API_KEY",
                         optional = {
@@ -231,36 +233,36 @@ return {
                         },
                     },
                     openai = {
-                        model = 'gpt-4.1-nano',
+                        model = 'gpt-5-nano',
                         stream = true,
                         api_key = 'OPENAI_API_KEY',
                         optional = {
-                            max_tokens = 64,
+                            max_completion_tokens = 64,
+                            reasoning_effort = "minimal",
                         },
                     },
-                    openai_fim_compatible = {
+                    openai_compatible = {
                         api_key = 'OPENROUTER_API_KEY',
-                        end_point = 'https://openrouter.ai/api/v1/completions',
+                        end_point = 'https://openrouter.ai/api/v1/chat/completions',
                         model = 'qwen/qwen3-coder-30b-a3b-instruct',
                         name = 'Openrouter',
                         optional = {
-                            max_tokens = 56,
+                            max_tokens = 64,
                             top_p = 0.9,
                             provider = {
-                                -- Prioritize throughput for faster completion
                                 sort = 'throughput',
                             },
                         },
                     },
-                    -- openai_fim_compatible = {
-                    --     api_key = 'TERM',
-                    --     name = 'Ollama',
-                    --     end_point = 'http://127.0.0.1:11434/v1/completions',
-                    --     model = 'qwen2.5-coder:3b',
-                    --     optional = {
-                    --         max_tokens = 64,
-                    --     },
-                    -- },
+                    openai_fim_compatible = {
+                        api_key = 'TERM',
+                        name = 'Ollama',
+                        end_point = 'http://127.0.0.1:11434/v1/completions',
+                        model = 'qwen2.5-coder:7b',
+                        optional = {
+                            max_tokens = 128,
+                        },
+                    },
                 },
                 virtualtext = {
                     auto_trigger_ft = { "*", },
