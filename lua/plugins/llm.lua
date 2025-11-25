@@ -211,8 +211,30 @@ return {
         lazy = true,
         cmd = "Minuet",
         config = function()
+            function add_filename_comment()
+                if vim.bo.ft == nil or vim.bo.ft == '' then
+                    return ''
+                end
+
+                local filename_string = 'filename: ' .. vim.fn.expand '%'
+                local commentstring = vim.bo.commentstring
+
+                if commentstring == nil or commentstring == '' then
+                    return '# ' .. filename_string
+                end
+
+                -- Directly replace %s with the comment
+                if commentstring:find '%%s' then
+                    filename_string = commentstring:gsub('%%s', filename_string)
+                    return filename_string
+                end
+
+                -- Fallback to prepending comment if no %s found
+                return commentstring .. ' ' .. filename_string
+            end
+
             require('minuet').setup {
-                provider = 'openai_compatible',
+                provider = 'codestral',
                 throttle = 1500, -- Increase to reduce costs and avoid rate limits
                 debounce = 600,  -- Increase to reduce costs and avoid rate limits
                 n_completions = 1,
@@ -239,6 +261,29 @@ return {
                         optional = {
                             max_completion_tokens = 64,
                             reasoning_effort = "minimal",
+                        },
+                    },
+                    codestral = {
+                        model = 'codestral-latest',
+                        end_point = 'https://api.mistral.ai/v1/fim/completions',
+                        api_key = 'CODESTRAL_API_KEY',
+                        stream = true,
+                        template = {
+                            prompt = function(context_before_cursor, _, _)
+                                local utils = require 'minuet.utils'
+                                local language = utils.add_language_comment()
+                                local tab = utils.add_tab_comment()
+                                local filename = add_filename_comment()
+                                context_before_cursor = filename ..
+                                '\n' .. language .. '\n' .. tab .. '\n' .. context_before_cursor
+                                return context_before_cursor
+                            end,
+                            suffix = function(_, context_after_cursor, _)
+                                return context_after_cursor
+                            end,
+                        },
+                        optional = {
+                            max_tokens = 128,
                         },
                     },
                     openai_compatible = {
