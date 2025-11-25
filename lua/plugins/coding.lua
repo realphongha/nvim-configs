@@ -165,7 +165,7 @@ return {
             if vim.fn.executable("jedi-language-server") == 0 then
                 table.insert(ensure_installed, "jedi_language_server")
             end
-            if vim.fn.executable("typescript-language-server") == 0 then
+            if vim.fn.executable("typescript-language-server") == 0 and vim.fn.executable("npm") == 1 then
                 table.insert(ensure_installed, "ts_ls")
             end
             -- if vim.fn.executable("debugpy") == 0 then
