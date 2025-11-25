@@ -272,10 +272,10 @@ return {
                             prompt = function(context_before_cursor, _, _)
                                 local utils = require 'minuet.utils'
                                 local language = utils.add_language_comment()
-                                local tab = utils.add_tab_comment()
+                                -- local tab = utils.add_tab_comment()
                                 local filename = add_filename_comment()
-                                context_before_cursor = filename ..
-                                '\n' .. language .. '\n' .. tab .. '\n' .. context_before_cursor
+                                context_before_cursor = filename .. '\n'
+                                .. language .. '\n' .. context_before_cursor
                                 return context_before_cursor
                             end,
                             suffix = function(_, context_after_cursor, _)
@@ -284,6 +284,7 @@ return {
                         },
                         optional = {
                             max_tokens = 128,
+                            stop = { '\n\n' },
                         },
                     },
                     openai_compatible = {
