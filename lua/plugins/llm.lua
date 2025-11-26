@@ -105,7 +105,7 @@ return {
             require("codecompanion").setup({
                 strategies = {
                     chat = {
-                        adapter = "openai",
+                        adapter = "openrouter",
                         keymaps = {
                             close = {
                                 modes = { n = "<C-x>", i = "<C-x>" },
@@ -113,7 +113,7 @@ return {
                         },
                     },
                     inline = {
-                        adapter = "openai",
+                        adapter = "openrouter",
                     },
                 },
                 adapters = {
@@ -157,6 +157,28 @@ return {
                                 schema = {
                                     model = {
                                         default = "gemini-2.5-pro",
+                                    },
+                                    max_tokens = {
+                                        default = 65536,
+                                    }
+                                }
+                            })
+                        end,
+                        openrouter = function()
+                            return require("codecompanion.adapters").extend("openai_compatible", {
+                                env = {
+                                    url = "https://openrouter.ai/api",
+                                    api_key = "OPENROUTER_API_KEY",
+                                    chat_url = "/v1/chat/completions",
+                                },
+                                handlers = {
+                                    parse_message_meta = function(self, data)
+                                        return data
+                                    end,
+                                },
+                                schema = {
+                                    model = {
+                                        default = "x-ai/grok-4.1-fast:free"
                                     },
                                     max_tokens = {
                                         default = 65536,
@@ -275,7 +297,7 @@ return {
                                 -- local tab = utils.add_tab_comment()
                                 local filename = add_filename_comment()
                                 context_before_cursor = filename .. '\n'
-                                .. language .. '\n' .. context_before_cursor
+                                    .. language .. '\n' .. context_before_cursor
                                 return context_before_cursor
                             end,
                             suffix = function(_, context_after_cursor, _)
