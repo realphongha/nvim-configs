@@ -1,50 +1,29 @@
 return {
     --------------------------------------------------------------------------
-    -- {{{ itchyny/lightline.vim
+    -- {{{ nvim-lualine/lualine.nvim
     {
-        "itchyny/lightline.vim",
-        lazy = false,
-        config = function()
-            vim.cmd([[
-            " Statusline contents
-            " let colorscheme = 'catppuccin'
-            let g:lightline = {
-            \ 'active': {
-            \   'left': [ ['mode', 'paste'],
-            \             ['gitbranch', 'readonly', 'relativepath', 'modified'] ],
-            \   'right': [ [ 'lineinfo' ], ['percent'] ]
-            \ },
-            \ 'component_function': {
-            \   'gitbranch': 'FugitiveHead'
-            \ },
-            \ 'separator': { 'left': ' ', 'right': ' ' },
-            \ 'subseparator': { 'left': ' ', 'right': ' ' },
-            \ 'colorscheme': 'default',
-            \ }
-
-            function! s:lightline_update()
-                if !exists('g:loaded_lightline')
-                   return
-                endif
-                try
-                    if stridx(g:colors_name, "catppuccin") >= 0
-                        let g:lightline.colorscheme = "catppuccin"
-                    else
-                        let g:lightline.colorscheme = "default"
-                    endif
-                    call lightline#init()
-                    call lightline#colorscheme()
-                    call lightline#update()
-                catch
-                endtry
-            endfunction
-
-            augroup LightlineColorscheme
-              autocmd!
-              autocmd ColorScheme * call s:lightline_update()
-            augroup END
-            ]])
-        end
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        opts = {
+            options = {
+                icons_enabled = true,
+                theme = "auto",
+                component_separators = { left = '', right = '' },
+                section_separators = { left = '', right = '' },
+                disabled_filetypes = {
+                    statusline = {},
+                    winbar = {},
+                },
+                ignore_focus = {},
+                always_divide_middle = true,
+                globalstatus = false,
+                refresh = {
+                    statusline = 1000,
+                    tabline = 1000,
+                    winbar = 1000,
+                },
+            },
+        }
     },
     -- }}}
 }
