@@ -1,6 +1,6 @@
 # nvim-configs
 My neovim configs.  
-Support nvim>=0.10.0 on MacOS, Linux and Windows.
+Support nvim>=0.11 on MacOS, Linux and Windows.
 
 # How to install?
 Install [Neovim](https://github.com/neovim/neovim/releases/tag/stable) first.  
@@ -60,13 +60,13 @@ them first, you can use [mason.nvim](https://github.com/williamboman/mason.nvim)
 * lua-language-server: [Install](https://luals.github.io/#neovim-install) 
 
 ### To add other LSP supports:
-* Install LSP servers (manually or using mason.nvim)
 * Add LSP configs for neovim in `lua/plugins/coding.lua`, mason-lspconfig->config section.
+* Install LSP servers (manually or using mason.nvim)
 * Add lazy load condition to nvim-lspconfig->ft section in `lua/plugins/coding.lua`
 
 # To add your personal configs and plugins
 Create `lua/my_configs.lua` for your personal configs or 
-`lua/my_plugins.lua` for your personal plugins (in `lazy.nvim` format).
+`lua/my_plugins.lua` for your personal plugins (in `lazy.nvim` format, already in .gitignore).
 
 # Misc
 * Check out [my configs for tmux](https://github.com/realphongha/dotfiles/blob/master/.tmux.conf).
@@ -80,5 +80,5 @@ context menu (only for Windows) (stolen from [here](https://github.com/neovim/ne
 
 # Acknowledgements
 This repo is directly inspired by [LazyVim](https://github.com/LazyVim/LazyVim), 
-[vimrc](https://github.com/amix/vimrc), 
-[ThePrimeagen video](https://www.youtube.com/watch?v=w7i4amO_zaE) and 
+[vimrc](https://github.com/amix/vimrc), and
+[ThePrimeagen video](https://www.youtube.com/watch?v=w7i4amO_zaE).
