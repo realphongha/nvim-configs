@@ -48,7 +48,7 @@ vim.opt.encoding = "utf-8"
 
 -- No backup
 vim.opt.backup = false
-vim.opt.wb = false
+vim.opt.writebackup = false
 vim.opt.swapfile = false
 
 -- Use system clipboard
@@ -214,11 +214,10 @@ wk.add({
         { "<leader>'", "xi''<Esc>P", desc = "Surround in ''", remap = false },
         { "<leader>(", "xi()<Esc>P", desc = "Surround in ()", remap = false },
         { "<leader>[", "xi[]<Esc>P", desc = "Surround in []", remap = false },
-        { "<leader>{", "xi()<Esc>P", desc = "Surround in {}", remap = false },
+        { "<leader>{", "xi{}<Esc>P", desc = "Surround in {}", remap = false },
     },
     { "<leader>v",  group = ".vimrc" },
     { "<leader>ve", "<c-w>l:e $MYVIMRC<cr>", desc = "Edit .vimrc",   remap = false },
-    { "<leader>vs", "<c-w>l:e $MYVIMRC<cr>", desc = "Source .vimrc", remap = false },
 })
 
 -- Map terminal opening settings
