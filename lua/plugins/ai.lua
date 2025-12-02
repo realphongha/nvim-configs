@@ -186,29 +186,14 @@ return {
                                 }
                             })
                         end,
-                        ollama_deepseek_r1 = function()
+                        ollama = function()
                             return require("codecompanion.adapters").extend("ollama", {
                                 env = {
                                     url = "http://127.0.0.1:11434",
                                 },
                                 schema = {
                                     model = {
-                                        default = "deepseek-r1:14b"
-                                    },
-                                    max_tokens = {
-                                        default = 65536,
-                                    }
-                                }
-                            })
-                        end,
-                        ollama_qwq = function()
-                            return require("codecompanion.adapters").extend("ollama", {
-                                env = {
-                                    url = "http://127.0.0.1:11434",
-                                },
-                                schema = {
-                                    model = {
-                                        default = "qwq:32b"
+                                        default = "gpt-oss:20b"
                                     },
                                     max_tokens = {
                                         default = 65536,
