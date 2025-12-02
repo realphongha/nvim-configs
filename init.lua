@@ -217,7 +217,7 @@ wk.add({
         { "<leader>{", "xi{}<Esc>P", desc = "Surround in {}", remap = false },
     },
     { "<leader>v",  group = ".vimrc" },
-    { "<leader>ve", "<c-w>l:e $MYVIMRC<cr>", desc = "Edit .vimrc",   remap = false },
+    { "<leader>ve", "<c-w>l:e $MYVIMRC<cr>", desc = "Edit .vimrc", remap = false },
 })
 
 -- Map terminal opening settings
@@ -304,6 +304,24 @@ function FRP(phrase, replace_phrase, path)
     FP_no_verbose(phrase, path)
     RP(phrase, replace_phrase)
 end
+
+-- Buffers
+wk.add({
+    {
+        "<leader>cb",
+        function()
+            local current_buf = vim.api.nvim_get_current_buf()
+            for _, b in ipairs(vim.api.nvim_list_bufs()) do
+                if vim.api.nvim_get_option_value("buflisted", { buf = b }) and b ~= current_buf then
+                    vim.api.nvim_buf_delete(b, { force = false })
+                end
+            end
+        end,
+        desc = "Delete all buffers except the current one",
+        mode = { "n", "o", "v" },
+        remap = false
+    },
+})
 
 -- }}}
 
