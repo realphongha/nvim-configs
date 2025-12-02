@@ -13,6 +13,7 @@ rm -rf ~/.config/nvim
 # removes all your previous nvim data
 # rm -rf ~/.local/share/nvim
 git clone https://github.com/realphongha/nvim-configs.git ~/.config/nvim
+
 ```
 ## For Windows (on Powershell)
 ```powershell
