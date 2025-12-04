@@ -115,7 +115,7 @@ return {
                                 },
                                 schema = {
                                     model = {
-                                        default = "x-ai/grok-4.1-fast:free"
+                                        default = "x-ai/grok-4.1-fast"
                                     },
                                     max_tokens = {
                                         default = 65536,
