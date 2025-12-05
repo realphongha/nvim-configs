@@ -129,7 +129,7 @@ return {
                     }
                 }
             },
-            image_support = true,
+            image_support = false,
             picker = { provider = "telescope" },
         },
     }
