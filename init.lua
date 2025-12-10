@@ -127,28 +127,6 @@ vim.opt.tm = 500
 
 -- Always show the status line
 vim.opt.laststatus = 2
-
--- Returns true if paste mode is enabled
--- function HasPaste()
---     if (vim.opt.paste) then
---         return "PASTE MODE  "
---     end
---     return ""
--- end
-
--- Format the status line
--- vim.cmd([[
--- function! HasPaste()
---     if &paste
---         return 'PASTE MODE  '
---     endif
---     return ''
--- endfunction
--- ]])
--- vim.cmd(
---     [[set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ PATH:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c]]
--- )
-
 -- }}}
 
 ------------------------------------------------------------------------------
