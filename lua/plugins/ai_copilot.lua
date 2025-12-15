@@ -37,20 +37,27 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
+            'nvim-telescope/telescope.nvim',
         },
         config = function()
             require("codecompanion").setup({
-                strategies = {
+                interactions = {
                     chat = {
                         adapter = "openrouter",
-                        keymaps = {
-                            close = {
-                                modes = { n = "<C-x>", i = "<C-x>" },
-                            },
-                        },
                     },
                     inline = {
                         adapter = "openrouter",
+                    },
+                    cmd = {
+                        adapter = "openrouter",
+                    },
+                    background = {
+                        adapter = "openrouter",
+                    },
+                },
+                display = {
+                    action_palette = {
+                        provider = "telescope",
                     },
                 },
                 adapters = {
