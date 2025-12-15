@@ -15,7 +15,7 @@ return {
         build = vim.g.os == "Windows_NT" and "" or "make tiktoken", -- Only on MacOS or Linux
         config = function()
             require("CopilotChat").setup({
-                model = "claude-3.5-sonnet",
+                model = "claude-opus-4.5",
             })
             require("which-key").add({
                 { "<leader>cg", ":CopilotChat<CR>", desc = "Open Github Copilot Chat" },
@@ -43,16 +43,16 @@ return {
             require("codecompanion").setup({
                 interactions = {
                     chat = {
-                        adapter = "openrouter",
+                        adapter = "openrouter_grok",
                     },
                     inline = {
-                        adapter = "openrouter",
+                        adapter = "openrouter_grok",
                     },
                     cmd = {
-                        adapter = "openrouter",
+                        adapter = "openrouter_grok",
                     },
                     background = {
-                        adapter = "openrouter",
+                        adapter = "openrouter_grok",
                     },
                 },
                 display = {
@@ -88,7 +88,7 @@ return {
                             return require("codecompanion.adapters").extend("openai", {
                                 schema = {
                                     model = {
-                                        default = "gpt-5.1",
+                                        default = "gpt-5.2",
                                     },
                                 },
                             })
@@ -100,7 +100,7 @@ return {
                                 },
                                 schema = {
                                     model = {
-                                        default = "gemini-2.5-pro",
+                                        default = "gemini-3-pro-preview",
                                     },
                                     max_tokens = {
                                         default = 65536,
@@ -108,7 +108,7 @@ return {
                                 }
                             })
                         end,
-                        openrouter = function()
+                        openrouter_grok = function()
                             return require("codecompanion.adapters").extend("openai_compatible", {
                                 env = {
                                     url = "https://openrouter.ai/api",
@@ -123,6 +123,28 @@ return {
                                 schema = {
                                     model = {
                                         default = "x-ai/grok-4.1-fast"
+                                    },
+                                    max_tokens = {
+                                        default = 65536,
+                                    }
+                                }
+                            })
+                        end,
+                        openrouter_claude = function()
+                            return require("codecompanion.adapters").extend("openai_compatible", {
+                                env = {
+                                    url = "https://openrouter.ai/api",
+                                    api_key = "OPENROUTER_API_KEY",
+                                    chat_url = "/v1/chat/completions",
+                                },
+                                handlers = {
+                                    parse_message_meta = function(self, data)
+                                        return data
+                                    end,
+                                },
+                                schema = {
+                                    model = {
+                                        default = "anthropic/claude-opus-4.5"
                                     },
                                     max_tokens = {
                                         default = 65536,
