@@ -44,6 +44,11 @@ return {
                 interactions = {
                     chat = {
                         adapter = "openrouter_grok",
+                        keymaps = {
+                            close = {
+                                modes = { n = "<C-x>", i = "<C-x>" },
+                            },
+                        },
                     },
                     inline = {
                         adapter = "openrouter_grok",
