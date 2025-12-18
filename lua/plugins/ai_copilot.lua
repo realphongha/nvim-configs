@@ -43,7 +43,7 @@ return {
             require("codecompanion").setup({
                 interactions = {
                     chat = {
-                        adapter = "openrouter_grok",
+                        adapter = "openrouter_gemini",
                         keymaps = {
                             close = {
                                 modes = { n = "<C-x>", i = "<C-x>" },
@@ -58,6 +58,21 @@ return {
                     },
                     background = {
                         adapter = "openrouter_grok",
+                        chat = {
+                        callbacks = {
+                          ["on_ready"] = {
+                            actions = {
+                              "interactions.background.builtin.chat_make_title",
+                            },
+                            -- Enable "on_ready" callback which contains the title generation action
+                            enabled = true,
+                          },
+                        },
+                        opts = {
+                          -- Enable background interactions generally
+                          enabled = true,
+                        },
+                      },
                     },
                 },
                 display = {
@@ -128,6 +143,28 @@ return {
                                 schema = {
                                     model = {
                                         default = "x-ai/grok-4.1-fast"
+                                    },
+                                    max_tokens = {
+                                        default = 65536,
+                                    }
+                                }
+                            })
+                        end,
+                        openrouter_gemini = function()
+                            return require("codecompanion.adapters").extend("openai_compatible", {
+                                env = {
+                                    url = "https://openrouter.ai/api",
+                                    api_key = "OPENROUTER_API_KEY",
+                                    chat_url = "/v1/chat/completions",
+                                },
+                                handlers = {
+                                    parse_message_meta = function(self, data)
+                                        return data
+                                    end,
+                                },
+                                schema = {
+                                    model = {
+                                        default = "google/gemini-3-flash-preview"
                                     },
                                     max_tokens = {
                                         default = 65536,
