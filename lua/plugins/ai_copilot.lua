@@ -33,7 +33,7 @@ return {
         keys = {
             { "<leader>cc", mode = { "n", "v" } },
         },
-        cmd = "CodeCompanionChat",
+        cmd = {"CodeCompanionChat", "CodeCompanion", "CodeCompanionCmd", "CodeCompanionActions"},
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",

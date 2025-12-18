@@ -113,7 +113,7 @@ return {
                         },
                     },
                     openai = {
-                        model = 'gpt-5-nano',
+                        model = 'gpt-4.1-nano',
                         stream = true,
                         api_key = 'OPENAI_API_KEY',
                         optional = {
@@ -148,14 +148,10 @@ return {
                     openai_compatible = {
                         api_key = 'OPENROUTER_API_KEY',
                         end_point = 'https://openrouter.ai/api/v1/chat/completions',
-                        model = 'qwen/qwen3-coder-30b-a3b-instruct',
+                        model = 'openai/gpt-4.1-nano',
                         name = 'Openrouter',
                         optional = {
                             max_tokens = 64,
-                            top_p = 0.9,
-                            provider = {
-                                sort = 'throughput',
-                            },
                         },
                     },
                     openai_fim_compatible = {
@@ -164,7 +160,7 @@ return {
                         end_point = 'http://127.0.0.1:11434/v1/completions',
                         model = 'qwen2.5-coder:7b',
                         optional = {
-                            max_tokens = 128,
+                            max_tokens = 64,
                         },
                     },
                 },
