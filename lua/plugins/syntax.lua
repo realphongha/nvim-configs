@@ -628,7 +628,7 @@ return {
                         selection_modes = {
                             ['@parameter.outer'] = 'v', -- charwise
                             ['@function.outer'] = 'V', -- linewise
-                            ['@class.outer'] = '<c-v>', -- blockwise
+                            ['@class.outer'] = 'V', -- linewise
                         },
                         -- include_surrounding_whitespace = true,
                     },
