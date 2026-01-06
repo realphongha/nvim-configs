@@ -7,8 +7,8 @@ return {
         lazy = true,
         cmd = "Telescope",
         keys = {
-            { "<leader>a", mode = "n" },
             { "<C-p>",     mode = "n" },
+            { "<C-p>a", mode = "n" },
             { "<leader>g", mode = "n" },
             { "<leader>b", mode = "n" },
         },
@@ -18,7 +18,7 @@ return {
 
             require("which-key").add({
                 { "<C-p>",     builtin.git_files,  desc = "Find files by name (in this git repo)" },
-                { "<leader>a", builtin.find_files, desc = "Find files by name" },
+                { "<C-p>a", builtin.find_files, desc = "Find files by name" },
                 { "<leader>b", builtin.buffers,    desc = "Find buffers" },
                 { "<leader>g", builtin.live_grep,  desc = "Live grep" },
             })
