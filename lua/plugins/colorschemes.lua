@@ -248,4 +248,20 @@ return {
         lazy = true,
     },
     -- }}}
+
+    --------------------------------------------------------------------------
+    -- {{{ scottmckendry/cyberdream.nvim
+    {
+        "scottmckendry/cyberdream.nvim",
+        lazy = true,
+    },
+    -- }}}
+
+    --------------------------------------------------------------------------
+    -- {{{ EdenEast/nightfox.nvim
+    {
+        "EdenEast/nightfox.nvim",
+        lazy = true,
+    },
+    -- }}}
 }
