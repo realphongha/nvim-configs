@@ -43,7 +43,7 @@ return {
             require("codecompanion").setup({
                 interactions = {
                     chat = {
-                        adapter = "openrouter_gemini",
+                        adapter = "openrouter_gpt",
                         keymaps = {
                             close = {
                                 modes = { n = "<C-x>", i = "<C-x>" },
@@ -51,13 +51,13 @@ return {
                         },
                     },
                     inline = {
-                        adapter = "openrouter_grok",
+                        adapter = "openrouter_gpt",
                     },
                     cmd = {
-                        adapter = "openrouter_grok",
+                        adapter = "openrouter_gemini",
                     },
                     background = {
-                        adapter = "openrouter_grok",
+                        adapter = "openrouter_gemini",
                         chat = {
                             callbacks = {
                                 ["on_ready"] = {
@@ -108,7 +108,7 @@ return {
                             return require("codecompanion.adapters").extend("openai", {
                                 schema = {
                                     model = {
-                                        default = "gpt-5.2",
+                                        default = "gpt-5.4",
                                     },
                                 },
                             })
@@ -120,7 +120,7 @@ return {
                                 },
                                 schema = {
                                     model = {
-                                        default = "gemini-3-pro-preview",
+                                        default = "gemini-3-flash-preview",
                                     },
                                     max_tokens = {
                                         default = 65536,
@@ -186,7 +186,29 @@ return {
                                 },
                                 schema = {
                                     model = {
-                                        default = "anthropic/claude-opus-4.5"
+                                        default = "anthropic/claude-opus-4.6"
+                                    },
+                                    max_tokens = {
+                                        default = 65536,
+                                    }
+                                }
+                            })
+                        end,
+                        openrouter_gpt = function()
+                            return require("codecompanion.adapters").extend("openai_compatible", {
+                                env = {
+                                    url = "https://openrouter.ai/api",
+                                    api_key = "OPENROUTER_API_KEY",
+                                    chat_url = "/v1/chat/completions",
+                                },
+                                handlers = {
+                                    parse_message_meta = function(self, data)
+                                        return data
+                                    end,
+                                },
+                                schema = {
+                                    model = {
+                                        default = "openai/gpt-5.4"
                                     },
                                     max_tokens = {
                                         default = 65536,
