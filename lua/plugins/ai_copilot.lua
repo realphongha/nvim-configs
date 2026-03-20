@@ -15,7 +15,7 @@ return {
         build = vim.g.os == "Windows_NT" and "" or "make tiktoken", -- Only on MacOS or Linux
         config = function()
             require("CopilotChat").setup({
-                model = "claude-opus-4.5",
+                model = "gpt-5.4-mini",
             })
             require("which-key").add({
                 { "<leader>cg", ":CopilotChat<CR>", desc = "Open Github Copilot Chat" },
@@ -43,7 +43,7 @@ return {
             require("codecompanion").setup({
                 interactions = {
                     chat = {
-                        adapter = "openrouter_gpt",
+                        adapter = { name = "openrouter", model = "gpt-5.4-mini"},
                         keymaps = {
                             close = {
                                 modes = { n = "<C-x>", i = "<C-x>" },
@@ -51,13 +51,13 @@ return {
                         },
                     },
                     inline = {
-                        adapter = "openrouter_gpt",
+                        adapter = { name = "openrouter", model = "gpt-5.4-mini"},
                     },
                     cmd = {
-                        adapter = "openrouter_gemini",
+                        adapter = { name = "openrouter", model = "gpt-5.4-nano"},
                     },
                     background = {
-                        adapter = "openrouter_gemini",
+                        adapter = { name = "openrouter", model = "gpt-5.4-nano"},
                         chat = {
                             callbacks = {
                                 ["on_ready"] = {
@@ -81,36 +81,17 @@ return {
                     },
                 },
                 adapters = {
-                    acp = {
-                        acp = {
-                            gemini_cli = function()
-                                return require("codecompanion.adapters").extend("gemini_cli", {
-                                    commands = {
-                                        default = {
-                                            "gemini",
-                                            "--experimental-acp",
-                                        },
-                                    },
-                                    defaults = {
-                                        auth_method = "gemini-api-key",
-                                        mcpServers = {},
-                                        timeout = 20000, -- 20 seconds
-                                    },
-                                    env = {
-                                        GEMINI_API_KEY = "GEMINI_API_KEY",
-                                    },
-                                })
-                            end,
-                        },
-                    },
                     http = {
                         openai = function()
                             return require("codecompanion.adapters").extend("openai", {
-                                schema = {
-                                    model = {
-                                        default = "gpt-5.4",
-                                    },
+                                env = {
+                                    api_key = "OPENAI_API_KEY",
                                 },
+                                schema = {
+                                    max_tokens = {
+                                        default = 65536,
+                                    }
+                                }
                             })
                         end,
                         gemini = function()
@@ -119,16 +100,13 @@ return {
                                     api_key = "GEMINI_API_KEY",
                                 },
                                 schema = {
-                                    model = {
-                                        default = "gemini-3-flash-preview",
-                                    },
                                     max_tokens = {
                                         default = 65536,
                                     }
                                 }
                             })
                         end,
-                        openrouter_grok = function()
+                        openrouter = function()
                             return require("codecompanion.adapters").extend("openai_compatible", {
                                 env = {
                                     url = "https://openrouter.ai/api",
@@ -141,75 +119,6 @@ return {
                                     end,
                                 },
                                 schema = {
-                                    model = {
-                                        default = "x-ai/grok-4.1-fast"
-                                    },
-                                    max_tokens = {
-                                        default = 65536,
-                                    }
-                                }
-                            })
-                        end,
-                        openrouter_gemini = function()
-                            return require("codecompanion.adapters").extend("openai_compatible", {
-                                env = {
-                                    url = "https://openrouter.ai/api",
-                                    api_key = "OPENROUTER_API_KEY",
-                                    chat_url = "/v1/chat/completions",
-                                },
-                                handlers = {
-                                    parse_message_meta = function(self, data)
-                                        return data
-                                    end,
-                                },
-                                schema = {
-                                    model = {
-                                        default = "google/gemini-3-flash-preview"
-                                    },
-                                    max_tokens = {
-                                        default = 65536,
-                                    }
-                                }
-                            })
-                        end,
-                        openrouter_claude = function()
-                            return require("codecompanion.adapters").extend("openai_compatible", {
-                                env = {
-                                    url = "https://openrouter.ai/api",
-                                    api_key = "OPENROUTER_API_KEY",
-                                    chat_url = "/v1/chat/completions",
-                                },
-                                handlers = {
-                                    parse_message_meta = function(self, data)
-                                        return data
-                                    end,
-                                },
-                                schema = {
-                                    model = {
-                                        default = "anthropic/claude-opus-4.6"
-                                    },
-                                    max_tokens = {
-                                        default = 65536,
-                                    }
-                                }
-                            })
-                        end,
-                        openrouter_gpt = function()
-                            return require("codecompanion.adapters").extend("openai_compatible", {
-                                env = {
-                                    url = "https://openrouter.ai/api",
-                                    api_key = "OPENROUTER_API_KEY",
-                                    chat_url = "/v1/chat/completions",
-                                },
-                                handlers = {
-                                    parse_message_meta = function(self, data)
-                                        return data
-                                    end,
-                                },
-                                schema = {
-                                    model = {
-                                        default = "openai/gpt-5.4"
-                                    },
                                     max_tokens = {
                                         default = 65536,
                                     }
@@ -222,9 +131,18 @@ return {
                                     url = "http://127.0.0.1:11434",
                                 },
                                 schema = {
-                                    model = {
-                                        default = "gpt-oss:20b"
-                                    },
+                                    max_tokens = {
+                                        default = 65536,
+                                    }
+                                }
+                            })
+                        end,
+                        vllm = function()
+                            return require("codecompanion.adapters").extend("ollama", {
+                                env = {
+                                    url = "http://127.0.0.1:8000/v1",
+                                },
+                                schema = {
                                     max_tokens = {
                                         default = 65536,
                                     }
