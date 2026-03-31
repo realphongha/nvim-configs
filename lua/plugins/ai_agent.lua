@@ -43,7 +43,7 @@ return {
             require("codecompanion").setup({
                 interactions = {
                     chat = {
-                        adapter = { name = "openrouter", model = "gpt-5.4-mini"},
+                        adapter = { name = "openrouter", model = "openai/gpt-5.4-mini" },
                         keymaps = {
                             close = {
                                 modes = { n = "<C-x>", i = "<C-x>" },
@@ -51,13 +51,13 @@ return {
                         },
                     },
                     inline = {
-                        adapter = { name = "openrouter", model = "gpt-5.4-mini"},
+                        adapter = { name = "openrouter", model = "openai/gpt-5.4-mini" },
                     },
                     cmd = {
-                        adapter = { name = "openrouter", model = "gpt-5.4-nano"},
+                        adapter = { name = "openrouter", model = "openai/gpt-5.4-nano" },
                     },
                     background = {
-                        adapter = { name = "openrouter", model = "gpt-5.4-nano"},
+                        adapter = { name = "openrouter", model = "openai/gpt-5.4-nano" },
                         chat = {
                             callbacks = {
                                 ["on_ready"] = {
