@@ -65,6 +65,7 @@ vim.opt.writebackup = false
 vim.opt.swapfile = false
 
 -- Use system clipboard
+vim.g.clipboard = "osc52"  -- Should support copy/paste via ssh with Kitty
 vim.opt.clipboard:append { "unnamed", "unnamedplus" }
 
 -- Disable mouse supporting for faster copying on ssh servers
