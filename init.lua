@@ -66,6 +66,13 @@ vim.opt.swapfile = false
 
 -- OSC 52 clipboard to support copy via ssh
 -- Note: copy only, paste is troublesome so disabled
+local function paste()
+  return {
+    vim.fn.split(vim.fn.getreg(""), "\n"),
+    vim.fn.getregtype(""),
+  }
+end
+
 vim.g.clipboard = {
   name = 'OSC 52',
   copy = {
@@ -73,8 +80,8 @@ vim.g.clipboard = {
     ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
   },
   paste = {
-    ['+'] = function() return {} end, -- Disable OSC 52 paste
-    ['*'] = function() return {} end, -- Disable OSC 52 paste
+    ['+'] = paste,
+    ['*'] = paste,
   },
 }
 
