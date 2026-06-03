@@ -195,7 +195,16 @@ return {
             -- })
 
             -- basedpyright
-            vim.lsp.enable('basedpyright')
+            vim.lsp.config('basedpyright', {
+                settings = {
+                    -- https://docs.basedpyright.com/latest/configuration/language-server-settings/
+                    basedpyright = {
+                        analysis = {
+                            typeCheckingMode = "off",
+                        }
+                    }
+                }
+            })
 
             -- ts_ls
             vim.lsp.config('ts_ls', {
