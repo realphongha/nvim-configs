@@ -161,10 +161,10 @@ return {
             "neovim/nvim-lspconfig"
         },
         config = function()
-            local ensure_installed = { "lua_ls", "marksman" }
-            if vim.fn.executable("jedi-language-server") == 0 then
-                table.insert(ensure_installed, "jedi_language_server")
-            end
+            local ensure_installed = { "lua_ls", "marksman", "basedpyright" }
+            -- if vim.fn.executable("jedi-language-server") == 0 then
+            --     table.insert(ensure_installed, "jedi_language_server")
+            -- end
             if vim.fn.executable("typescript-language-server") == 0 and vim.fn.executable("npm") == 1 then
                 table.insert(ensure_installed, "ts_ls")
             end
@@ -188,11 +188,14 @@ return {
             -- })
 
             -- jedi
-            vim.lsp.config('jedi_language_server', {
-                cmd = { "jedi-language-server" },
-                filetypes = { "python" },
-                single_file_support = true,
-            })
+            -- vim.lsp.config('jedi_language_server', {
+            --     cmd = { "jedi-language-server" },
+            --     filetypes = { "python" },
+            --     single_file_support = true,
+            -- })
+
+            -- basedpyright
+            vim.lsp.enable('basedpyright')
 
             -- ts_ls
             vim.lsp.config('ts_ls', {
