@@ -161,10 +161,13 @@ return {
             "neovim/nvim-lspconfig"
         },
         config = function()
-            local ensure_installed = { "lua_ls", "marksman", "basedpyright" }
+            local ensure_installed = { "lua_ls", "marksman" }
             -- if vim.fn.executable("jedi-language-server") == 0 then
             --     table.insert(ensure_installed, "jedi_language_server")
             -- end
+            if vim.fn.executable("ty") == 0 then
+                table.insert(ensure_installed, "ty")
+            end
             if vim.fn.executable("typescript-language-server") == 0 and vim.fn.executable("npm") == 1 then
                 table.insert(ensure_installed, "ts_ls")
             end
@@ -195,16 +198,19 @@ return {
             -- })
 
             -- basedpyright
-            vim.lsp.config('basedpyright', {
-                settings = {
-                    -- https://docs.basedpyright.com/latest/configuration/language-server-settings/
-                    basedpyright = {
-                        analysis = {
-                            typeCheckingMode = "off",
-                        }
-                    }
-                }
-            })
+            -- vim.lsp.config('basedpyright', {
+            --     settings = {
+            --         -- https://docs.basedpyright.com/latest/configuration/language-server-settings/
+            --         basedpyright = {
+            --             analysis = {
+            --                 typeCheckingMode = "off",
+            --             }
+            --         }
+            --     }
+            -- })
+
+            -- ty
+            vim.lsp.enable("ty")
 
             -- ts_ls
             vim.lsp.config('ts_ls', {
