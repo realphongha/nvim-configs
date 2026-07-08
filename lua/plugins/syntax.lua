@@ -607,7 +607,8 @@ return {
             local ensureInstalled = {
                 "c", "lua", "vim", "vimdoc", "python", "cmake", "markdown"
             }
-            local alreadyInstalled = require('nvim-treesitter').get_installed()
+            -- local alreadyInstalled = require('nvim-treesitter').get_installed()
+            local alreadyInstalled = vim.api.nvim_get_runtime_file('parser/*', true)
             local parsersToInstall = vim.iter(ensureInstalled)
                 :filter(function(parser)
                     return not vim.tbl_contains(alreadyInstalled, parser)
