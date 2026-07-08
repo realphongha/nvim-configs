@@ -65,28 +65,18 @@ vim.opt.writebackup = false
 vim.opt.swapfile = false
 
 -- OSC 52 clipboard to support copy via ssh
--- Note: copy only, paste is troublesome so disabled
-local function paste()
-  return {
-    vim.fn.split(vim.fn.getreg(""), "\n"),
-    vim.fn.getregtype(""),
+-- Note: copy only, paste is troublesome
+if vim.env.SSH_TTY then
+  vim.g.clipboard = {
+    name = "OSC52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
   }
 end
 
-vim.g.clipboard = {
-  name = 'OSC 52',
-  copy = {
-    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-  },
-  paste = {
-    ['+'] = paste,
-    ['*'] = paste,
-  },
-}
-
--- Use system clipboard
-vim.opt.clipboard:append { "unnamed", "unnamedplus" }
+vim.opt.clipboard:append({ "unnamedplus" })
 
 -- Disable mouse supporting for faster copying on ssh servers
 vim.opt.mouse = ""
